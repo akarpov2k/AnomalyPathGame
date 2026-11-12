@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_hub_depot",
+  "titleKey": "location.depot.title",
+  "locationKind": "hub",
+  "subtype": "hub",
+  "tags": ["hub", "outdoor"],
+  "tier": 2,
+  "backgrounds": ["bg_site_house"],
+  "ambience": "amb-hub-settlement",
+  "worldMap": { "left": 0.443, "bottom": 0.355, "right": 0.670, "top": 0.657 },
+  "objectCount": [0, 0],
+  "spawnPool": ["spawn_angar_gvozd"],
+  "stubAfterQuest": "qst_story_05_angar",
+  "danger": 0.3,
+  "rarity": "unique",
+  "spawnChance": 1,
+  "unique": true
+}

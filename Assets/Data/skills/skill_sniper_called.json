@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_sniper_called",
+  "nameKey": "skill.skill_sniper_called.name",
+  "descriptionKey": "skill.skill_sniper_called.desc",
+  "type": "attack",
+  "apCost": 2,
+  "ammoCost": 1,
+  "accuracy": 1.1,
+  "injuries": ["injury_broken_arm", "injury_head_concussion"],
+  "effects": [
+    { "type": "damage", "multiplier": 1.2, "hits": 1 }
+  ]
+}

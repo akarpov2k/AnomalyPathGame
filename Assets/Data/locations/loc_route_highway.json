@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_route_highway",
+  "titleKey": "location.route.highway.title",
+  "locationKind": "wild",
+  "subtype": "path",
+  "role": "highway",
+  "tags": ["road", "outdoor"],
+  "tier": 0,
+  "backgrounds": ["bg_route_highway", "bg_route_highway_rain"],
+  "ambience": "amb-highway-anomaly",
+  "sceneArt": "loc_route_highway",
+  "roadArt": "loc_road_highway",
+  "walkBackdrop": "backdrops/walk_industrial_path",
+  "walkParts": ["backdrops/walkparts_loc_route_highway_1", "backdrops/walkparts_loc_route_highway_2", "backdrops/walkparts_loc_route_highway_3"],
+  "walkRoad": "backdrops/walk_road",
+  "walkPathX": 0.5,
+  "walkPaths": [0.6, 0.63, 0.55],
+  "objectCount": [3, 5],
+  "spawnPool": ["spawn_car_wreck", "spawn_road_crate", "spawn_enemy_bandit", "spawn_anomaly_glow", "spawn_anomaly_chem"],
+  "danger": 0.3,
+  "chainLength": [1, 3],
+  "chainWeights": { "1": 0.1, "2": 0.45, "3": 0.45 },
+  "rarity": "common",
+  "spawnChance": 1,
+  "unique": false,
+  "stage": {
+    "tint": "#d8d8d2",
+    "brightness": 0.94,
+    "stashHeight": 0.7,
+    "anchors": [
+      { "slot": "left", "x": 0.20, "y": 0.14, "ppm": 162 },
+      { "slot": "right", "x": 0.70, "y": 0.11, "ppm": 170 },
+      { "slot": "center", "x": 0.50, "y": 0.19, "ppm": 150 }
+    ]
+  }
+}

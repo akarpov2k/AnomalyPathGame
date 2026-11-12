@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_enemy_merc",
+  "titleKey": "spawn.spawn_enemy_merc.title",
+  "height": 1.8,
+  "objectKind": "enemy",
+  "requiresTags": ["indoor"],
+  "excludesTags": ["hub"],
+  "weight": 2,
+  "spawnChance": 0.35,
+  "minTier": 1,
+  "maxTier": 3,
+  "actorId": "enemy_merc"
+}

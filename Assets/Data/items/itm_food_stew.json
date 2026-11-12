@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_food_stew",
+  "extends": "_base/consumable_noncombat.json",
+  "nameKey": "item.itm_food_stew.name",
+  "icon": "icons/itm_food_stew",
+  "footprint": [1, 1],
+  "maxStack": 10,
+  "tier": 1,
+  "weight": 0.5,
+  "price": { "mode": "fixed", "buy": 40, "sell": 15 },
+  "consumable": {
+    "effects": [{ "type": "restoreFood", "amount": 60 }]
+  }
+}

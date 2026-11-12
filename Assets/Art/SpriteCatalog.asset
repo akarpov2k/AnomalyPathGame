@@ -1,0 +1,587 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7b963d9867ba941994a4f94dfc2abd, type: 3}
+  m_Name: SpriteCatalog
+  m_EditorClassIdentifier: AnomalyPath.Runtime::AnomalyPath.Runtime.Ui.Art.SpriteCatalog
+  entries:
+  - id: icons/ammo_545
+    value: {fileID: 21300000, guid: 129e44e5648ac0e4ba46995075ab4a27, type: 3}
+  - id: icons/ammo_762x39
+    value: {fileID: 21300000, guid: 95f5c3c3078bb5c4d988c7b4014c6093, type: 3}
+  - id: icons/ammo_762x54
+    value: {fileID: 21300000, guid: 69fc42ece1a8b9f46b137b2e6e69871c, type: 3}
+  - id: icons/ammo_9x18
+    value: {fileID: 21300000, guid: a02d045b1010fd244888df4d3af62db0, type: 3}
+  - id: icons/anomaly_chem
+    value: {fileID: 21300000, guid: 0a8045751f1c08b40973346eddb6da63, type: 3}
+  - id: icons/anomaly_crater
+    value: {fileID: 21300000, guid: b88bb87c0fe68374b90163036ad22a22, type: 3}
+  - id: icons/anomaly_glow
+    value: {fileID: 21300000, guid: 8ebb792a8771c1948b97083dbc624ac3, type: 3}
+  - id: icons/anomaly_gravity
+    value: {fileID: 21300000, guid: 428a982a5e1750c468843e82ac592b49, type: 3}
+  - id: icons/art_chemical_toxin
+    value: {fileID: 21300000, guid: 384e3a3d052cffa48afc31bd690bd0d8, type: 3}
+  - id: icons/art_electric_spark
+    value: {fileID: 21300000, guid: ed4c8e58ca5e3aa408820cbcfa563f6b, type: 3}
+  - id: icons/art_fire_ember
+    value: {fileID: 21300000, guid: cb3225567fcc9e94cad14a7f87d24840, type: 3}
+  - id: icons/art_gravity_lens
+    value: {fileID: 21300000, guid: e25dbf09d841b414badb41da64008e76, type: 3}
+  - id: icons/fx_muzzle_flash
+    value: {fileID: 21300000, guid: 94502b3916deae24e8f5bc01b83c0ff7, type: 3}
+  - id: icons/fx_tracer
+    value: {fileID: 21300000, guid: deb2c2a830571f947b7e61de3a5ac81d, type: 3}
+  - id: icons/injury_broken_arm
+    value: {fileID: 21300000, guid: 438c6e7edaf33dc459724da224315e20, type: 3}
+  - id: icons/injury_broken_leg
+    value: {fileID: 21300000, guid: 617ac89651da3484a9576da3e94a1ff0, type: 3}
+  - id: icons/injury_head_concussion
+    value: {fileID: 21300000, guid: a62bdc8a72158834a97ca1548cf3f077, type: 3}
+  - id: icons/itm_armor_exoskeleton
+    value: {fileID: 21300000, guid: 2407931d4c0ca6646bd7556c842159f3, type: 3}
+  - id: icons/itm_armor_jacket
+    value: {fileID: 21300000, guid: 40fbaf5931f3958448d8f6c33414dc67, type: 3}
+  - id: icons/itm_armor_plate
+    value: {fileID: 21300000, guid: 322e23d42d6db0f459bd4083b17b007a, type: 3}
+  - id: icons/itm_atp_flash
+    value: {fileID: 21300000, guid: d001c2d8ff2ab934bbfda33c046e9ff3, type: 3}
+  - id: icons/itm_backpack_small
+    value: {fileID: 21300000, guid: 29ca1847cb80a224781fb35edea9f797, type: 3}
+  - id: icons/itm_belt_artifact
+    value: {fileID: 21300000, guid: 6f99f28ee9b4549449d252abb5442f53, type: 3}
+  - id: icons/itm_food_irp
+    value: {fileID: 21300000, guid: c7f7b03d5d93bd64893ba8084226c1b7, type: 3}
+  - id: icons/itm_food_soup
+    value: {fileID: 21300000, guid: 803f9e9e9fa3afb4cba7075b9378ec51, type: 3}
+  - id: icons/itm_food_stew
+    value: {fileID: 21300000, guid: be9d39a6461abd049bde953de6ea514e, type: 3}
+  - id: icons/itm_helmet_light
+    value: {fileID: 21300000, guid: 2e33d5dd69bdd314882bfd716c402be0, type: 3}
+  - id: icons/itm_medkit_army
+    value: {fileID: 21300000, guid: 9130d8f6d670f9c49a0206de54c82fb2, type: 3}
+  - id: icons/itm_medkit_large
+    value: {fileID: 21300000, guid: 2c5fdf7ee858f7c4dbfb8b1e3da06139, type: 3}
+  - id: icons/itm_medkit_normal
+    value: {fileID: 21300000, guid: fb80b14e89a88974b8b0a3e0b9b9a701, type: 3}
+  - id: icons/itm_splint
+    value: {fileID: 21300000, guid: de952a8035a825944ac6b470bde2d561, type: 3}
+  - id: icons/itm_stim_adrenaline
+    value: {fileID: 21300000, guid: 1f477681c394bec479b9586bd7d5454c, type: 3}
+  - id: icons/itm_stim_guard
+    value: {fileID: 21300000, guid: 2dc6f7f3399285740b37ba4df869e272, type: 3}
+  - id: icons/itm_surv
+    value: {fileID: 21300000, guid: c86c2206fb5530949a6a0155c2316bb0, type: 3}
+  - id: icons/itm_trophy_bear_hide
+    value: {fileID: 21300000, guid: fcf647bca502cf241ac3a6042dd0c1b0, type: 3}
+  - id: icons/itm_trophy_boar_hoof
+    value: {fileID: 21300000, guid: cc692afe92ce0ea49a3774f6ca257c11, type: 3}
+  - id: icons/itm_trophy_wolf_tail
+    value: {fileID: 21300000, guid: 3f0a7a2ace7e16d428c8cb03c38da55b, type: 3}
+  - id: icons/itm_water_bottle
+    value: {fileID: 21300000, guid: b1c12c230f6fe8044979817f2e360128, type: 3}
+  - id: icons/obj_car_wreck
+    value: {fileID: 21300000, guid: b826baae06ad2ce41bf87ef6fd614295, type: 3}
+  - id: icons/obj_car_wreck_mirror
+    value: {fileID: 21300000, guid: 9a86bb5b28e71f04da6ace0b0ec5f07a, type: 3}
+  - id: icons/obj_field_debris
+    value: {fileID: 21300000, guid: 05f5cde0babf5ab4686d23a9cd3e74f1, type: 3}
+  - id: icons/obj_field_debris_mirror
+    value: {fileID: 21300000, guid: c3cde795d6d794f4aadd6c05d358c96b, type: 3}
+  - id: icons/obj_forest_cache
+    value: {fileID: 21300000, guid: 21ebe4e45f8e5254baa67cbb4c1a2301, type: 3}
+  - id: icons/obj_forest_cache_mirror
+    value: {fileID: 21300000, guid: 34957ff1ea71f504fb44efd6c2533123, type: 3}
+  - id: icons/obj_forest_deadfall
+    value: {fileID: 21300000, guid: f5aef9e027feb324f92f8f077ff50baa, type: 3}
+  - id: icons/obj_forest_deadfall_mirror
+    value: {fileID: 21300000, guid: 37acc6eeca1521c46b11e528c0392cb4, type: 3}
+  - id: icons/obj_house_cabinet
+    value: {fileID: 21300000, guid: 1fa9f5d3e0f3e5447904c5d5f9edf519, type: 3}
+  - id: icons/obj_house_cabinet_mirror
+    value: {fileID: 21300000, guid: d1bc795f3381445408bf1255f8516293, type: 3}
+  - id: icons/obj_house_table
+    value: {fileID: 21300000, guid: 47e951cf9010c5044bc0c2983524d7f0, type: 3}
+  - id: icons/obj_industrial_crate
+    value: {fileID: 21300000, guid: ddbcd35ca66ffb44d8a6d29e7856211a, type: 3}
+  - id: icons/obj_road_crate
+    value: {fileID: 21300000, guid: 5db74412a48e59646a4fab9838830214, type: 3}
+  - id: icons/obj_road_crate_mirror
+    value: {fileID: 21300000, guid: 46a01725ecdccbc478f9f09bca9c6eec, type: 3}
+  - id: icons/obj_room_desk
+    value: {fileID: 21300000, guid: a4825bd18b5376940a633c7c1a549ced, type: 3}
+  - id: icons/obj_room_desk_mirror
+    value: {fileID: 21300000, guid: 9643c7989bbbc6244a711d56543cc772, type: 3}
+  - id: icons/obj_room_shelf
+    value: {fileID: 21300000, guid: 019aa4814c6569d41b82f442a351089e, type: 3}
+  - id: icons/obj_stash
+    value: {fileID: 21300000, guid: 47d4d2613f700304ab31b393ec3d109d, type: 3}
+  - id: icons/obj_stash_mirror
+    value: {fileID: 21300000, guid: f1861fcb5e7f928459853c3abdfa7714, type: 3}
+  - id: icons/obj_swamp_debris
+    value: {fileID: 21300000, guid: 6b0c9772c94d9f54383cc9d0cdc3be56, type: 3}
+  - id: icons/obj_swamp_debris_mirror
+    value: {fileID: 21300000, guid: 09ce81819440c3a468d4571d4b5bf6a1, type: 3}
+  - id: icons/tal_endurance
+    value: {fileID: 21300000, guid: 29cbdbab2cc3f9d4b847842c0b7df2a5, type: 3}
+  - id: icons/tal_focus
+    value: {fileID: 21300000, guid: 8c3706d6c894afa45b37f8c4f0f94bb2, type: 3}
+  - id: icons/tal_luck
+    value: {fileID: 21300000, guid: 8cb25df2a4c793247b8b238eb85d37cc, type: 3}
+  - id: icons/tal_scavenger
+    value: {fileID: 21300000, guid: 04769d0bf86ba2a49b3f6bce1e427cbc, type: 3}
+  - id: icons/tal_second_wind
+    value: {fileID: 21300000, guid: 4a71af3bf21acbe4eab20425965cc3b1, type: 3}
+  - id: icons/tal_steady_hand
+    value: {fileID: 21300000, guid: fe9db6c66a611a043b3f311e538a8b82, type: 3}
+  - id: icons/tal_survivor
+    value: {fileID: 21300000, guid: a94d50fb1ce245047bd52cf4433a5479, type: 3}
+  - id: icons/tal_toughness
+    value: {fileID: 21300000, guid: 4f450df4e17411c41b8d0fa4bedaac1c, type: 3}
+  - id: icons/ui_ap_circle
+    value: {fileID: 21300000, guid: d8d9f216ca679c048a9fe96fbcd43ed0, type: 3}
+  - id: icons/ui_bar_fill
+    value: {fileID: 21300000, guid: dc5d4b3da5f032f46a38296209d5cf65, type: 3}
+  - id: icons/ui_clock_face
+    value: {fileID: 21300000, guid: 50f8e8f1e59d3fc4cbff539726e94b6b, type: 3}
+  - id: icons/ui_clock_hand
+    value: {fileID: 21300000, guid: 196d00446f7d64a4384ae49c2b8495ff, type: 3}
+  - id: icons/ui_hub_backpack
+    value: {fileID: 21300000, guid: 7654d47d11188424583dadcae4cb6fb1, type: 3}
+  - id: icons/ui_hub_bag
+    value: {fileID: 21300000, guid: 39729de4d9b459b4f92a407611726828, type: 3}
+  - id: icons/ui_hub_gear
+    value: {fileID: 21300000, guid: cb094f18cf825614bb6f192a7a754152, type: 3}
+  - id: icons/ui_hub_map
+    value: {fileID: 21300000, guid: 45162d68835b93446a5a1db387b9cbd2, type: 3}
+  - id: icons/ui_hub_plate
+    value: {fileID: 21300000, guid: a634ab8cd68b3694fb8019a7e46f916a, type: 3}
+  - id: icons/ui_hub_rest
+    value: {fileID: 21300000, guid: 5899cbfd77aa97d4d8bbc4681c17c5c4, type: 3}
+  - id: icons/ui_hub_speech
+    value: {fileID: 21300000, guid: 42f9fdcfed28bb54a92cb73a8277698f, type: 3}
+  - id: icons/ui_hub_wrench
+    value: {fileID: 21300000, guid: 34273a1bc9d7eec4f96190f188ff044f, type: 3}
+  - id: icons/ui_icon_close
+    value: {fileID: 21300000, guid: c9677bf0835c0804bb786e34f5f4fac8, type: 3}
+  - id: icons/ui_icon_eye
+    value: {fileID: 21300000, guid: 14ccc3c1e34db124e92190b32d124ee6, type: 3}
+  - id: icons/ui_stat_food
+    value: {fileID: 21300000, guid: 5fbc28071984b0d478a709c477b9cf44, type: 3}
+  - id: icons/ui_stat_health
+    value: {fileID: 21300000, guid: ae4f9bd02a6522248a6c32566de2173e, type: 3}
+  - id: icons/ui_stat_stamina
+    value: {fileID: 21300000, guid: db8b3b08131efca488c606d75cf62b42, type: 3}
+  - id: icons/ui_stat_water
+    value: {fileID: 21300000, guid: dad4b24b90010684884d1d45d47ecb17, type: 3}
+  - id: icons/wpn_ak74
+    value: {fileID: 21300000, guid: 367d942d2ec601b4cb30bca1174ced91, type: 3}
+  - id: icons/wpn_akm
+    value: {fileID: 21300000, guid: fe5d2a150994fff41ac06b0d4e251b2e, type: 3}
+  - id: icons/wpn_ks23
+    value: {fileID: 21300000, guid: 9bbc5c25e1b8af44e900a8fad495b775, type: 3}
+  - id: icons/wpn_pm
+    value: {fileID: 21300000, guid: e1effab79ef8f4746affc7aa0c84488f, type: 3}
+  - id: icons/wpn_sv98
+    value: {fileID: 21300000, guid: 8ad6711938d2297458da5fb26c0ebd70, type: 3}
+  - id: icons/zone_far
+    value: {fileID: 21300000, guid: 575fe62ba418c8c49a7a2bc9ef6dfd2d, type: 3}
+  - id: icons/zone_mid
+    value: {fileID: 21300000, guid: 4249fc54042480f4c94302b91c1d3dbc, type: 3}
+  - id: icons/zone_near
+    value: {fileID: 21300000, guid: bf5db5498fd795844a23cdc5fd2b815d, type: 3}
+  - id: bg_hub_house
+    value: {fileID: 21300000, guid: 3f49138f49cf5414bad59a46b332dbcc, type: 3}
+  - id: bg_hub_settlement
+    value: {fileID: 21300000, guid: 9c2c029ce057e2d498083980275ea8f2, type: 3}
+  - id: bg_interior_room
+    value: {fileID: 21300000, guid: f7a0bc65360dbfc438183cf5f422da59, type: 3}
+  - id: bg_route_forest
+    value: {fileID: 21300000, guid: 1dc54f3907e905749bbc55faa5b2e989, type: 3}
+  - id: bg_route_highway
+    value: {fileID: 21300000, guid: 55abf78903ede3b458fcd69562b0e691, type: 3}
+  - id: bg_route_highway_rain
+    value: {fileID: 21300000, guid: f8b75514eee09564fb750b3f78b9bb5c, type: 3}
+  - id: bg_site_anomaly
+    value: {fileID: 21300000, guid: 59db3b22748934c429b271cdd95038f7, type: 3}
+  - id: bg_site_house
+    value: {fileID: 21300000, guid: d49658c7f016f564aa2f9cefc709bffa, type: 3}
+  - id: backdrops/combat_bg_hub_house
+    value: {fileID: 21300000, guid: 351f8f547e8bf5340b1ad12c8389b615, type: 3}
+  - id: backdrops/combat_bg_hub_settlement
+    value: {fileID: 21300000, guid: 72fccad28f7b19b44b629a9efb4fef27, type: 3}
+  - id: backdrops/combat_bg_interior_room
+    value: {fileID: 21300000, guid: fa36b305ecdcafd4eb21205ceabc1e28, type: 3}
+  - id: backdrops/combat_bg_route_forest
+    value: {fileID: 21300000, guid: 1012aa4eb2906fa48bef3ff2ec55052c, type: 3}
+  - id: backdrops/combat_bg_route_highway
+    value: {fileID: 21300000, guid: 5232efd63f4d5d54fa17365dd56bf702, type: 3}
+  - id: backdrops/combat_bg_route_highway_rain
+    value: {fileID: 21300000, guid: be5a9be083ca70c45bb691971c334f9d, type: 3}
+  - id: backdrops/combat_bg_site_anomaly
+    value: {fileID: 21300000, guid: a64910ec2a6339f4490955c5a92d36cc, type: 3}
+  - id: backdrops/combat_bg_site_house
+    value: {fileID: 21300000, guid: f83cd0be66218af4b892f2742a2d786a, type: 3}
+  - id: backdrops/dialog_panel
+    value: {fileID: 21300000, guid: 57695633cc5806742a8c91bacfac2899, type: 3}
+  - id: backdrops/inventory
+    value: {fileID: 21300000, guid: 58ec6c38ed6590a4fb617f3c21939004, type: 3}
+  - id: backdrops/inventory_trader
+    value: {fileID: 21300000, guid: adef81c8c711afc438d49c06644c95e9, type: 3}
+  - id: backdrops/menu_art
+    value: {fileID: 21300000, guid: a6a21fcca71200748baf8f76e6a46bd0, type: 3}
+  - id: backdrops/menu_backdrop
+    value: {fileID: 21300000, guid: 17c358c7b300a5548a04586126dd2093, type: 3}
+  - id: backdrops/screen
+    value: {fileID: 21300000, guid: 4733eec4d11c5904084ed6aeceb385be, type: 3}
+  - id: backdrops/ui_bg_base
+    value: {fileID: 21300000, guid: 8420e29af691fe94a906ce7e9c6ebcb5, type: 3}
+  - id: backdrops/ui_bg_inventory
+    value: {fileID: 21300000, guid: 27f7fc4c8e5adcc4cb77bfd4c8a3dba1, type: 3}
+  - id: backdrops/ui_bg_lock
+    value: {fileID: 21300000, guid: f777c611299c87241bc0df3c97ce2fc5, type: 3}
+  - id: backdrops/ui_bg_quests
+    value: {fileID: 21300000, guid: 9ef495f9c47cf7449ab914c54e8fe248, type: 3}
+  - id: backdrops/ui_bg_radar
+    value: {fileID: 21300000, guid: 4af0192682062a743a6f74ad93fb9f84, type: 3}
+  - id: backdrops/ui_bg_reward
+    value: {fileID: 21300000, guid: 1553bc829743b6c4eaeb887d56766a58, type: 3}
+  - id: backdrops/ui_bg_talents
+    value: {fileID: 21300000, guid: 24c9223fab9abea4cbccc9a16380209d, type: 3}
+  - id: backdrops/ui_bg_trade
+    value: {fileID: 21300000, guid: 5b084b896a778bb47906bf51dbade3dc, type: 3}
+  - id: backdrops/walkparts_loc_atp_barracks_1
+    value: {fileID: 21300000, guid: d81c31daf93583947afcbbaa9abd3af6, type: 3}
+  - id: backdrops/walkparts_loc_atp_barracks_2
+    value: {fileID: 21300000, guid: d5f34f9152406354dad7acdbd0bc8a70, type: 3}
+  - id: backdrops/walkparts_loc_atp_barracks_3
+    value: {fileID: 21300000, guid: 320466800e7c9644f8c87c27a18d3c70, type: 3}
+  - id: backdrops/walkparts_loc_atp_barracks_interior_1
+    value: {fileID: 21300000, guid: 45c928befd256ab4bbbe84756ad99c5e, type: 3}
+  - id: backdrops/walkparts_loc_atp_barracks_interior_2
+    value: {fileID: 21300000, guid: 53c3ae4a015801d41a0774bb2ee78169, type: 3}
+  - id: backdrops/walkparts_loc_atp_barracks_interior_3
+    value: {fileID: 21300000, guid: 4cbd0168fdd79bf42a6c47e7ca3067bd, type: 3}
+  - id: backdrops/walkparts_loc_atp_dispatch_1
+    value: {fileID: 21300000, guid: a7b999b707965c449bcdc33147e4dd99, type: 3}
+  - id: backdrops/walkparts_loc_atp_dispatch_2
+    value: {fileID: 21300000, guid: 2a7477f8ad8807c4d96f204d982d08ca, type: 3}
+  - id: backdrops/walkparts_loc_atp_dispatch_3
+    value: {fileID: 21300000, guid: 60a416c54c43cc741a3c835a4cd995cb, type: 3}
+  - id: backdrops/walkparts_loc_atp_dispatch_interior_1
+    value: {fileID: 21300000, guid: 109c828a0de14b148ace7c612c645afd, type: 3}
+  - id: backdrops/walkparts_loc_atp_dispatch_interior_2
+    value: {fileID: 21300000, guid: 6ea884ccd83279d419223cf2e4deb24d, type: 3}
+  - id: backdrops/walkparts_loc_atp_dispatch_interior_3
+    value: {fileID: 21300000, guid: 25c074360b5cd6e46a05dcd3d2cba048, type: 3}
+  - id: backdrops/walkparts_loc_atp_garage_1
+    value: {fileID: 21300000, guid: a6c72cf660f607e448d1a83c1ee0ff96, type: 3}
+  - id: backdrops/walkparts_loc_atp_garage_2
+    value: {fileID: 21300000, guid: e5881ce55cd31654f970b6b06dd7737d, type: 3}
+  - id: backdrops/walkparts_loc_atp_garage_3
+    value: {fileID: 21300000, guid: a0fe0ef0815d53145ba61242a0ad8773, type: 3}
+  - id: backdrops/walkparts_loc_atp_garage_interior_1
+    value: {fileID: 21300000, guid: b57c56bb533a08a4db50c7f05d709954, type: 3}
+  - id: backdrops/walkparts_loc_atp_garage_interior_2
+    value: {fileID: 21300000, guid: 72d264d7482857842beaf52fb7f3f818, type: 3}
+  - id: backdrops/walkparts_loc_atp_garage_interior_3
+    value: {fileID: 21300000, guid: 0a10b3dbfa6dcc34f96347b0be2b4e94, type: 3}
+  - id: backdrops/walkparts_loc_atp_gate_1
+    value: {fileID: 21300000, guid: f017afe4069e00f4ab42be6b6d57b9ca, type: 3}
+  - id: backdrops/walkparts_loc_atp_gate_2
+    value: {fileID: 21300000, guid: 643e5350ad33ff24fba7fa8997bd10e8, type: 3}
+  - id: backdrops/walkparts_loc_atp_gate_3
+    value: {fileID: 21300000, guid: c976c27d3aa0c0c4a97748613cf33df0, type: 3}
+  - id: backdrops/walkparts_loc_atp_gate_interior_1
+    value: {fileID: 21300000, guid: 81db9fd3545d21b4881d7b7bf8eed55a, type: 3}
+  - id: backdrops/walkparts_loc_atp_gate_interior_2
+    value: {fileID: 21300000, guid: 0a256797914c73c4b8751438e5654485, type: 3}
+  - id: backdrops/walkparts_loc_atp_gate_interior_3
+    value: {fileID: 21300000, guid: b33fa30f1c4a04d489aed1eb08d44c13, type: 3}
+  - id: backdrops/walkparts_loc_atp_yard_1
+    value: {fileID: 21300000, guid: fbd4411d152be8441a49526ca86807e0, type: 3}
+  - id: backdrops/walkparts_loc_atp_yard_2
+    value: {fileID: 21300000, guid: 6d560dd8d5dd9fd4a82078d7f5afacaf, type: 3}
+  - id: backdrops/walkparts_loc_atp_yard_3
+    value: {fileID: 21300000, guid: 83043c2165c635e409ac71bab1a60006, type: 3}
+  - id: backdrops/walkparts_loc_building_block_1
+    value: {fileID: 21300000, guid: 024642f10e02186408369abd55054d84, type: 3}
+  - id: backdrops/walkparts_loc_building_block_2
+    value: {fileID: 21300000, guid: 643216fda013b994094e1907130c7c0b, type: 3}
+  - id: backdrops/walkparts_loc_building_block_3
+    value: {fileID: 21300000, guid: 9d7651cccdf185e4098580c38e437986, type: 3}
+  - id: backdrops/walkparts_loc_building_block_interior_1
+    value: {fileID: 21300000, guid: 55d71e618fef5fd459e17f7df38ee09e, type: 3}
+  - id: backdrops/walkparts_loc_building_block_interior_2
+    value: {fileID: 21300000, guid: 6e3b3b1d8cb4a394ebcf21083b35370e, type: 3}
+  - id: backdrops/walkparts_loc_building_block_interior_3
+    value: {fileID: 21300000, guid: a743de3da7df5e14b9bb8fcca220bf88, type: 3}
+  - id: backdrops/walkparts_loc_building_industrial_1
+    value: {fileID: 21300000, guid: 6dd49ad145c63354f9e3864a0a073ffa, type: 3}
+  - id: backdrops/walkparts_loc_building_industrial_2
+    value: {fileID: 21300000, guid: 4caf6d4057832aa4688448f8a121dbd9, type: 3}
+  - id: backdrops/walkparts_loc_building_industrial_3
+    value: {fileID: 21300000, guid: d84aa8d77670c0446968d6201854cb23, type: 3}
+  - id: backdrops/walkparts_loc_building_industrial_interior_1
+    value: {fileID: 21300000, guid: cb2f1c4bde82d0449bf8166b5343c940, type: 3}
+  - id: backdrops/walkparts_loc_building_industrial_interior_2
+    value: {fileID: 21300000, guid: df4ed779ccf842f4599da4af39d115ef, type: 3}
+  - id: backdrops/walkparts_loc_building_industrial_interior_3
+    value: {fileID: 21300000, guid: d211d1c86453dab4ba4114470dfe5717, type: 3}
+  - id: backdrops/walkparts_loc_building_laboratory_1
+    value: {fileID: 21300000, guid: f2c8d757e536d6341b7553a5700cd85c, type: 3}
+  - id: backdrops/walkparts_loc_building_laboratory_2
+    value: {fileID: 21300000, guid: 70cf274c3f273c745898e7f60cc68b2c, type: 3}
+  - id: backdrops/walkparts_loc_building_laboratory_3
+    value: {fileID: 21300000, guid: c7584e7df1dfc354680aff8c3886db02, type: 3}
+  - id: backdrops/walkparts_loc_building_laboratory_interior_1
+    value: {fileID: 21300000, guid: b717e2d91d4d11941bcb711c38080931, type: 3}
+  - id: backdrops/walkparts_loc_building_laboratory_interior_2
+    value: {fileID: 21300000, guid: fd3ebb31ae083ad4fa87e9fec6536099, type: 3}
+  - id: backdrops/walkparts_loc_building_laboratory_interior_3
+    value: {fileID: 21300000, guid: 4a72b613fc2e54f43be49943893bc930, type: 3}
+  - id: backdrops/walkparts_loc_route_forest_1
+    value: {fileID: 21300000, guid: e99de01bbf47de845b0369061074e4e8, type: 3}
+  - id: backdrops/walkparts_loc_route_forest_2
+    value: {fileID: 21300000, guid: 24ee326d1883e9844b7cd4d8058928ca, type: 3}
+  - id: backdrops/walkparts_loc_route_forest_3
+    value: {fileID: 21300000, guid: d5c040be426efa5458f8dd397281e8e0, type: 3}
+  - id: backdrops/walkparts_loc_route_highway_1
+    value: {fileID: 21300000, guid: 11ede69a9cfaa484fa2254de33dabe15, type: 3}
+  - id: backdrops/walkparts_loc_route_highway_2
+    value: {fileID: 21300000, guid: fb0ca156be96c7544b7bfb59d96c0cae, type: 3}
+  - id: backdrops/walkparts_loc_route_highway_3
+    value: {fileID: 21300000, guid: 76a930e9dbf7e32428beb4f481268f73, type: 3}
+  - id: backdrops/walkparts_loc_site_anomaly_1
+    value: {fileID: 21300000, guid: 593784760f6b9b5468e1814337d898df, type: 3}
+  - id: backdrops/walkparts_loc_site_anomaly_2
+    value: {fileID: 21300000, guid: e2842c733cda9444eac6580feeb337c2, type: 3}
+  - id: backdrops/walkparts_loc_site_anomaly_3
+    value: {fileID: 21300000, guid: c95943f4697e1d04ca50c1eb2245325b, type: 3}
+  - id: backdrops/walkparts_loc_site_house_1
+    value: {fileID: 21300000, guid: 17114b20313666d499baff18804d7a7e, type: 3}
+  - id: backdrops/walkparts_loc_site_house_2
+    value: {fileID: 21300000, guid: a1f90594f142f944dbb402e90b044640, type: 3}
+  - id: backdrops/walkparts_loc_site_house_3
+    value: {fileID: 21300000, guid: ab269c8e1130d2c4da773d5edb6cb586, type: 3}
+  - id: backdrops/walkparts_loc_site_house_interior_1
+    value: {fileID: 21300000, guid: bcc84f2ff4d57c9438440feec4d291ec, type: 3}
+  - id: backdrops/walkparts_loc_site_house_interior_2
+    value: {fileID: 21300000, guid: 2660d56ad98549945b5a2b2445116d0f, type: 3}
+  - id: backdrops/walkparts_loc_site_house_interior_3
+    value: {fileID: 21300000, guid: 4869d79f55218574da2b8df1e36ad938, type: 3}
+  - id: backdrops/walkparts_loc_terrain_field_1
+    value: {fileID: 21300000, guid: 9f7049e542766684bb8b8bf48093e416, type: 3}
+  - id: backdrops/walkparts_loc_terrain_field_2
+    value: {fileID: 21300000, guid: fc4bfeec63d51074daeee0e77df6b9d0, type: 3}
+  - id: backdrops/walkparts_loc_terrain_field_3
+    value: {fileID: 21300000, guid: 03d6b9996d67a674d8674df7be7798d2, type: 3}
+  - id: backdrops/walkparts_loc_terrain_forest_1
+    value: {fileID: 21300000, guid: 4bcad3f480cea814c875ce672c4559d6, type: 3}
+  - id: backdrops/walkparts_loc_terrain_forest_2
+    value: {fileID: 21300000, guid: ce370aac668523d4fbe70bdd13b3ca7f, type: 3}
+  - id: backdrops/walkparts_loc_terrain_forest_3
+    value: {fileID: 21300000, guid: 38e27c3fea61cf341a73ff856c760bc6, type: 3}
+  - id: backdrops/walkparts_loc_terrain_swamp_1
+    value: {fileID: 21300000, guid: 87faf184dcf120b43820fa2704d067d4, type: 3}
+  - id: backdrops/walkparts_loc_terrain_swamp_2
+    value: {fileID: 21300000, guid: b6fb005386e1ed746b8f380cae34afa5, type: 3}
+  - id: backdrops/walkparts_loc_terrain_swamp_3
+    value: {fileID: 21300000, guid: 93d0aaf05dd0e29419cfc10851ac9d24, type: 3}
+  - id: backdrops/walk_atp_barracks
+    value: {fileID: 21300000, guid: 6310df467bbc0134693eb11d93d0cc54, type: 3}
+  - id: backdrops/walk_atp_barracks_interior
+    value: {fileID: 21300000, guid: 1f511e28dd9fbdd449b29b1cb19eda01, type: 3}
+  - id: backdrops/walk_atp_dispatch
+    value: {fileID: 21300000, guid: 80a170727dd7d334a9e057cf2085587e, type: 3}
+  - id: backdrops/walk_atp_dispatch_interior
+    value: {fileID: 21300000, guid: 73228f28dec5f7841b80411faeeb0b71, type: 3}
+  - id: backdrops/walk_atp_garage
+    value: {fileID: 21300000, guid: 8b302d799a8575942936181eb51de00c, type: 3}
+  - id: backdrops/walk_atp_garage_interior
+    value: {fileID: 21300000, guid: f0da77a4bf39a72409dc4b7c157bb6a5, type: 3}
+  - id: backdrops/walk_atp_gate
+    value: {fileID: 21300000, guid: c2f3c7e72c969994888b0961aa140bff, type: 3}
+  - id: backdrops/walk_atp_gate_interior
+    value: {fileID: 21300000, guid: 3651e8d179fab9f4b83434c255fee2e4, type: 3}
+  - id: backdrops/walk_atp_yard
+    value: {fileID: 21300000, guid: 5fabc3c662c75a44e8b565c9df05ab81, type: 3}
+  - id: backdrops/walk_building_block
+    value: {fileID: 21300000, guid: cc440f9ad6b432e44b25b68ed0a9e2f3, type: 3}
+  - id: backdrops/walk_building_industrial
+    value: {fileID: 21300000, guid: bbd4bcbac4e2eb14b948745b9d3cf9ea, type: 3}
+  - id: backdrops/walk_building_laboratory
+    value: {fileID: 21300000, guid: bb04e4704175c244b993229f6e507dd1, type: 3}
+  - id: backdrops/walk_floor_wood
+    value: {fileID: 21300000, guid: f8026e11cbd97d64f8b18d3f14b50809, type: 3}
+  - id: backdrops/walk_forest_path
+    value: {fileID: 21300000, guid: 7940fd9b7456ff84c8cf33acbe2c46b5, type: 3}
+  - id: backdrops/walk_house_interior
+    value: {fileID: 21300000, guid: f010fd90cfd4503478be20044d19f926, type: 3}
+  - id: backdrops/walk_industrial_interior
+    value: {fileID: 21300000, guid: 371b93e74009a904db523f1ee6360d9e, type: 3}
+  - id: backdrops/walk_industrial_path
+    value: {fileID: 21300000, guid: f62d26c668a160a49ba3e97f2d68c781, type: 3}
+  - id: backdrops/walk_lab_interior
+    value: {fileID: 21300000, guid: ee5b82a72aa3aef47aef7a702f8b2381, type: 3}
+  - id: backdrops/walk_panel_interior
+    value: {fileID: 21300000, guid: 43436b46076558244889f10a8c83e84c, type: 3}
+  - id: backdrops/walk_path
+    value: {fileID: 21300000, guid: de59f1be8e2d0ee40aebd0be0962e0fa, type: 3}
+  - id: backdrops/walk_road
+    value: {fileID: 21300000, guid: a23cb4417a936fb418b2df08fdd53b90, type: 3}
+  - id: backdrops/walk_road_concrete
+    value: {fileID: 21300000, guid: ce1aaf307d347a3428b11b36c0064187, type: 3}
+  - id: backdrops/walk_road_dirt
+    value: {fileID: 21300000, guid: 25f9b0d6a4202e6479d42c79752d79b3, type: 3}
+  - id: backdrops/walk_road_interior
+    value: {fileID: 21300000, guid: 4daeafd03a64e334599f5c1d04c999b3, type: 3}
+  - id: backdrops/walk_site_anomaly
+    value: {fileID: 21300000, guid: b494624e8aafb544e9eb32f70a319441, type: 3}
+  - id: backdrops/walk_terrain_field
+    value: {fileID: 21300000, guid: 02e99c9723546ca429274344498c3006, type: 3}
+  - id: backdrops/walk_terrain_forest
+    value: {fileID: 21300000, guid: acdf43a64d7fa764f8a279ed0f6b9702, type: 3}
+  - id: backdrops/walk_terrain_swamp
+    value: {fileID: 21300000, guid: eec41188f1af8434a8db0797f787819e, type: 3}
+  - id: backdrops/world_map
+    value: {fileID: 21300000, guid: 2acb76549fafa4449ae3ebc89d73d793, type: 3}
+  - id: portraits/enemy_bandit
+    value: {fileID: 21300000, guid: 0a4ad3c777b19c94ebe12626cd9438b3, type: 3}
+  - id: portraits/enemy_merc
+    value: {fileID: 21300000, guid: 90b8628c8f4d99842b62dcbf3fd11cc4, type: 3}
+  - id: portraits/mutant_boar
+    value: {fileID: 21300000, guid: 933f021b783371744a1ed0970f5b261b, type: 3}
+  - id: portraits/mutant_wolf
+    value: {fileID: 21300000, guid: 808b7414232fbe24fbf9be10e3bc2af7, type: 3}
+  - id: portraits/trd_hub_medic
+    value: {fileID: 21300000, guid: ddf344847934e9240b400205255d93a7, type: 3}
+  - id: portraits/trd_hub_medic_full
+    value: {fileID: 21300000, guid: 4ba0e13284eba5e419bdbb048beaa37e, type: 3}
+  - id: portraits/trd_hub_medic_thumb
+    value: {fileID: 21300000, guid: 359314fe4b6d02b46a0fcbfef888bedc, type: 3}
+  - id: portraits/trd_hub_smuggler
+    value: {fileID: 21300000, guid: a909e16d972ad874296b5d7cf7a2ee26, type: 3}
+  - id: portraits/trd_hub_smuggler_full
+    value: {fileID: 21300000, guid: c449ad93570e06f49a7d20ce46722ece, type: 3}
+  - id: portraits/trd_hub_smuggler_thumb
+    value: {fileID: 21300000, guid: c9a94cf9c6e6abd4eb431c460495878e, type: 3}
+  - id: buttons/ui_btn_mp_ind_empty
+    value: {fileID: 21300000, guid: fd1236382fc9cdb4b80decfa2719c996, type: 3}
+  - id: buttons/ui_btn_mp_ind_green
+    value: {fileID: 21300000, guid: 36c7d37ad57bf5245b0f7bd1ef8ccad5, type: 3}
+  - id: buttons/ui_plate_highlight
+    value: {fileID: 21300000, guid: c0f4f64a6631b984382bdd159822b88a, type: 3}
+  - id: buttons/ui_plate_normal
+    value: {fileID: 21300000, guid: 19dd27fa11bd177488d746592a282db0, type: 3}
+  - id: costumes/combat_enemy_bandit
+    value: {fileID: 21300000, guid: 5aae469bbff79bc488f7a90b7620f865, type: 3}
+  - id: costumes/combat_enemy_merc
+    value: {fileID: 21300000, guid: 9c8deef7b25026640b0d9da37225a324, type: 3}
+  - id: costumes/combat_itm_armor_exoskeleton
+    value: {fileID: 21300000, guid: 6d8c2fc130493524d83b210a34f2b1d5, type: 3}
+  - id: costumes/combat_itm_armor_jacket
+    value: {fileID: 21300000, guid: a13e5d8da19f72e48a492537b2f32af8, type: 3}
+  - id: costumes/combat_itm_armor_plate
+    value: {fileID: 21300000, guid: 2dd0c26fa38b22343b722f8792b5f046, type: 3}
+  - id: costumes/combat_mutant_bear
+    value: {fileID: 21300000, guid: 7de726bfb544f3144a47fd964781f052, type: 3}
+  - id: costumes/combat_mutant_boar
+    value: {fileID: 21300000, guid: 9a970b1a7e65b9948b800b481488f11b, type: 3}
+  - id: costumes/combat_mutant_wolf
+    value: {fileID: 21300000, guid: 2f1b9cb9aee3726478538999c342631a, type: 3}
+  - id: costumes/combat_silhouette
+    value: {fileID: 21300000, guid: 4225692c824ad034c84ffebc2d0f8055, type: 3}
+  - id: costumes/itm_armor_exoskeleton
+    value: {fileID: 21300000, guid: 619534a635bd6a640b59c23c0bf0f23c, type: 3}
+  - id: costumes/itm_armor_jacket
+    value: {fileID: 21300000, guid: 43a925d32595f6b48b685412c6ac8b0d, type: 3}
+  - id: costumes/itm_armor_plate
+    value: {fileID: 21300000, guid: f3accaf80527dda40a07f43dab332987, type: 3}
+  - id: costumes/silhouette
+    value: {fileID: 21300000, guid: 39d4525c854c14340aae70729d57856b, type: 3}
+  - id: loc_atp_barracks
+    value: {fileID: 21300000, guid: 4e48e8d7a6106274b8a3996bdf4e1a8e, type: 3}
+  - id: loc_atp_dispatch
+    value: {fileID: 21300000, guid: 22d2d967df4442a4b963dc5149d1f9e7, type: 3}
+  - id: loc_atp_garage
+    value: {fileID: 21300000, guid: 719cbe0801a407640b9f80bbd816a846, type: 3}
+  - id: loc_atp_gate
+    value: {fileID: 21300000, guid: 221aa864a8bc5624e88a21a24ef1750c, type: 3}
+  - id: loc_atp_yard
+    value: {fileID: 21300000, guid: 572d5d4c8037489489bd88d906114251, type: 3}
+  - id: loc_building_laboratory
+    value: {fileID: 21300000, guid: 0ee68f29dad1c5c4d917f00e3e539ceb, type: 3}
+  - id: loc_industrial_hangar
+    value: {fileID: 21300000, guid: 1c5bbd61ab9e97842a1c7f2375f65572, type: 3}
+  - id: loc_road_anomaly
+    value: {fileID: 21300000, guid: 26abe5809b2a64140afdf2aa60dd35ea, type: 3}
+  - id: loc_road_atp_barracks
+    value: {fileID: 21300000, guid: 9b8b2fce6cd41ec4d9fe10fe77485ae4, type: 3}
+  - id: loc_road_atp_dispatch
+    value: {fileID: 21300000, guid: 2525c2e0661af7a4a8e534bba89dcf29, type: 3}
+  - id: loc_road_atp_garage
+    value: {fileID: 21300000, guid: d23a1774368547e4d8b8988dd05b44ae, type: 3}
+  - id: loc_road_atp_gate
+    value: {fileID: 21300000, guid: 301ab358d4e1cb9408950d2e377bcf6a, type: 3}
+  - id: loc_road_atp_yard
+    value: {fileID: 21300000, guid: 0e01f416a76623343b4c314b90f8c46a, type: 3}
+  - id: loc_road_block
+    value: {fileID: 21300000, guid: 00db3445c5785a042a36a7fae6974451, type: 3}
+  - id: loc_road_field
+    value: {fileID: 21300000, guid: 1bf62715d5dda474ca3afb4f0bc75431, type: 3}
+  - id: loc_road_forest
+    value: {fileID: 21300000, guid: ac4421f906fd75d42a480b258890bbfe, type: 3}
+  - id: loc_road_highway
+    value: {fileID: 21300000, guid: 71a7988c4d189d640a44ed12f9f889d3, type: 3}
+  - id: loc_road_house
+    value: {fileID: 21300000, guid: 8c9ba8d29b3931e4ba75e99112149469, type: 3}
+  - id: loc_road_industrial
+    value: {fileID: 21300000, guid: d6106c86096979e47b96e31cd95fe423, type: 3}
+  - id: loc_road_laboratory
+    value: {fileID: 21300000, guid: f7bd48a1910da5840878afe67501184c, type: 3}
+  - id: loc_road_plain
+    value: {fileID: 21300000, guid: 9df392625dcdc8f42ae91f53cab857e6, type: 3}
+  - id: loc_road_swamp
+    value: {fileID: 21300000, guid: 5b44ea2ad3a1fa14c8d617a70daa2af3, type: 3}
+  - id: loc_route_forest
+    value: {fileID: 21300000, guid: 64c4ecc734d3d3b42a01f265a2ae0627, type: 3}
+  - id: loc_route_highway
+    value: {fileID: 21300000, guid: 137a1d2c3d1089744bad285d941d31bd, type: 3}
+  - id: loc_ruined_block
+    value: {fileID: 21300000, guid: 9959fda37525ddf488b9ffa5bcb14e12, type: 3}
+  - id: loc_site_anomaly
+    value: {fileID: 21300000, guid: f6217d2424a59964eb00b25152bd26ff, type: 3}
+  - id: loc_sky_day
+    value: {fileID: 21300000, guid: 4562be614084c1b479151da811a99b98, type: 3}
+  - id: loc_sky_night
+    value: {fileID: 21300000, guid: a3d97502a41b6b542a40d4421346a281, type: 3}
+  - id: loc_swamp
+    value: {fileID: 21300000, guid: 2d2999641686e61498f2bb59cac67f48, type: 3}
+  - id: loc_terrain_field
+    value: {fileID: 21300000, guid: 00ea36dcda1bab546ae513c315e6f242, type: 3}
+  - id: loc_terrain_forest
+    value: {fileID: 21300000, guid: 5abf32fcdcdbb4840834185dafcd23c5, type: 3}
+  - id: loc_wooden_house
+    value: {fileID: 21300000, guid: 8e12d31663b313140820dc9859fa8667, type: 3}
+  - id: quests/clearAnomaly
+    value: {fileID: 21300000, guid: e53ee80d7b4b457448b0bbe791f48569, type: 3}
+  - id: quests/clearLocation
+    value: {fileID: 21300000, guid: aae2d39e3e2294e418793602eb3b92bd, type: 3}
+  - id: quests/default
+    value: {fileID: 21300000, guid: 75d333ea565ccde459c75f0ebace14c5, type: 3}
+  - id: quests/findItems
+    value: {fileID: 21300000, guid: 2a9bf2403118bc745a4f1b5985602693, type: 3}
+  - id: quests/gatherArtifacts
+    value: {fileID: 21300000, guid: 09f659735f922294d8b44297bd55d30a, type: 3}
+  - id: quests/killMutants
+    value: {fileID: 21300000, guid: 1538c4b2d5395974e9dacbfad530f235, type: 3}

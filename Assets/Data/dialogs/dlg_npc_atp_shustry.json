@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "dialogs",
+  "id": "dlg_npc_atp_shustry",
+  "startNodeId": "root",
+  "nodes": [
+    {
+      "id": "root",
+      "speakerActorId": "npc_atp_shustry",
+      "textKey": "dialog.dlg_npc_atp_shustry.root",
+      "options": [
+        {
+          "id": "who",
+          "textKey": "dialog.dlg_npc_atp_shustry.opt.who",
+          "nextNodeId": "who"
+        },
+        {
+          "id": "where",
+          "textKey": "dialog.dlg_npc_atp_shustry.opt.where",
+          "nextNodeId": "where"
+        },
+        {
+          "id": "flash",
+          "textKey": "dialog.dlg_npc_atp_shustry.opt.flash",
+          "requirements": { "questStates": [{ "questId": "qst_story_04_atp", "state": "active" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "flash"
+        },
+        {
+          "id": "done",
+          "textKey": "dialog.dlg_npc_atp_shustry.opt.done",
+          "requirements": { "questStates": [{ "questId": "qst_story_04_atp", "state": "ready" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "after_clear"
+        },
+        {
+          "id": "bye",
+          "textKey": "dialog.common.bye",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "who",
+      "textKey": "dialog.dlg_npc_atp_shustry.who",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "nextNodeId": "root" }
+      ]
+    },
+    {
+      "id": "where",
+      "textKey": "dialog.dlg_npc_atp_shustry.where",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "nextNodeId": "root" }
+      ]
+    },
+    {
+      "id": "flash",
+      "textKey": "dialog.dlg_npc_atp_shustry.flash",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "nextNodeId": "root" }
+      ]
+    },
+    {
+      "id": "after_clear",
+      "textKey": "dialog.dlg_npc_atp_shustry.after_clear",
+      "options": [
+        { "id": "thanks", "textKey": "dialog.common.thanks", "end": true },
+        { "id": "what", "textKey": "dialog.dlg_npc_atp_shustry.opt.what", "nextNodeId": "what" }
+      ]
+    },
+    {
+      "id": "what",
+      "textKey": "dialog.dlg_npc_atp_shustry.what",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "nextNodeId": "after_clear" }
+      ]
+    }
+  ]
+}

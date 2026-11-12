@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_burst",
+  "nameKey": "skill.skill_burst.name",
+  "descriptionKey": "skill.skill_burst.desc",
+  "type": "attack",
+  "apCost": 2,
+  "ammoCost": 3,
+  "accuracy": 0.9,
+  "effects": [
+    { "type": "damage", "multiplier": 1.0, "hits": 3 },
+    { "type": "status", "target": "self", "statusId": "status_recoil", "accuracy": -0.15, "turns": 1 }
+  ]
+}

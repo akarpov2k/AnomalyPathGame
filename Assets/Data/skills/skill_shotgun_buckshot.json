@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_shotgun_buckshot",
+  "nameKey": "skill.skill_shotgun_buckshot.name",
+  "descriptionKey": "skill.skill_shotgun_buckshot.desc",
+  "type": "attack",
+  "apCost": 2,
+  "ammoCost": 1,
+  "accuracy": 1.0,
+  "effects": [
+    { "type": "damage", "multiplier": 0.3, "hits": 7 }
+  ]
+}

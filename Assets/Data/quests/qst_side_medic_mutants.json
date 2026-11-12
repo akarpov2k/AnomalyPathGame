@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "quests",
+  "id": "qst_side_medic_mutants",
+  "questKind": "story",
+  "storyLine": "medic",
+  "titleKey": "quest.qst_side_medic_mutants.title",
+  "descriptionKey": "quest.qst_side_medic_mutants.desc",
+  "giverActorId": "trd_hub_medic",
+  "progressScope": "life",
+  "requirements": { "quests": ["qst_story_03_dogs"] },
+  "objectives": [
+    {
+      "type": "killActors",
+      "actorPool": ["mutant_wolf", "mutant_boar", "mutant_bear"],
+      "count": 20,
+      "minTier": 1,
+      "maxTier": 1
+    }
+  ],
+  "rewards": {
+    "money": 500,
+    "items": [
+      { "itemId": "itm_medkit_army", "count": 2 },
+      { "itemId": "itm_stim_guard", "count": 1 }
+    ]
+  }
+}

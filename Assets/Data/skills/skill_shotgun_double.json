@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_shotgun_double",
+  "nameKey": "skill.skill_shotgun_double.name",
+  "descriptionKey": "skill.skill_shotgun_double.desc",
+  "type": "attack",
+  "apCost": 3,
+  "ammoCost": 2,
+  "accuracy": 0.9,
+  "effects": [
+    { "type": "damage", "multiplier": 0.8, "hits": 2 }
+  ]
+}

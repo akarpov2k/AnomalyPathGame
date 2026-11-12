@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "kind": "injuries",
+  "id": "injury_head_concussion",
+  "nameKey": "injury.injury_head_concussion.name",
+  "icon": "icons/injury_head_concussion",
+  "chance": 0.10,
+  "accuracyBonus": -0.2,
+  "duration": { "kind": "hours", "amount": 4 }
+}

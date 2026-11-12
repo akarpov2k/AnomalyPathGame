@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_anomaly_crater",
+  "titleKey": "spawn.spawn_anomaly_crater.title",
+  "icon": "icons/anomaly_crater",
+  "height": 1.25,
+  "objectKind": "anomaly",
+  "anomalyId": "anomaly_crater",
+  "requiresTags": [],
+  "excludesTags": [],
+  "weight": 1,
+  "spawnChance": 0.3,
+  "minTier": 0,
+  "maxTier": 3
+}

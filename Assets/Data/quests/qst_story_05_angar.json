@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "kind": "quests",
+  "id": "qst_story_05_angar",
+  "questKind": "story",
+  "storyLine": "main",
+  "titleKey": "quest.qst_story_05_angar.title",
+  "descriptionKey": "quest.qst_story_05_angar.desc",
+  "giverActorId": "trd_hub_smuggler",
+  "turnInActorId": "npc_angar_gvozd",
+  "progressScope": "life",
+  "requirements": { "quests": ["qst_story_04_atp"] },
+  "objectives": [
+    { "type": "reachLocation", "locationId": "loc_hub_depot" },
+    { "type": "talkToActor", "actorId": "npc_angar_gvozd" }
+  ],
+  "rewards": {
+    "money": 3000,
+    "items": [
+      { "itemId": "itm_medkit_army", "count": 2 }
+    ],
+    "unlocks": ["unlock_angar"]
+  }
+}

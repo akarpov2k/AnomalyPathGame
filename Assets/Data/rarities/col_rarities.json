@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "rarities",
+  "collection": true,
+  "id": "col_rarities",
+  "entries": [
+    "rarities/rar_common.json",
+    "rarities/rar_rare.json",
+    "rarities/rar_special.json",
+    "rarities/rar_epic.json",
+    "rarities/rar_legendary.json",
+    "rarities/rar_unique.json"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_road_crate",
+  "titleKey": "spawn.spawn_road_crate.title",
+  "icon": "icons/obj_road_crate",
+  "height": 0.5,
+  "objectKind": "loot",
+  "requiresTags": ["road", "outdoor"],
+  "excludesTags": ["hub"],
+  "weight": 2,
+  "spawnChance": 0.6,
+  "minTier": 0,
+  "maxTier": 2,
+  "lootTable": "loot_human"
+}

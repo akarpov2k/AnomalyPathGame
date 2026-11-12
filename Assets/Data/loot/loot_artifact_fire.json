@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "kind": "lootTables",
+  "id": "loot_artifact_fire",
+  "entries": [
+    { "itemId": "art_fire_ember", "always": true, "ignoreTierBand": true }
+  ]
+}

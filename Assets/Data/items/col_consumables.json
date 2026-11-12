@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "collection": true,
+  "id": "col_consumables",
+  "entries": [
+    "items/itm_medkit_normal.json",
+    "items/itm_medkit_army.json",
+    "items/itm_stim_adrenaline.json",
+    "items/itm_stim_guard.json",
+    "items/itm_splint.json",
+    "items/itm_surv.json",
+    "items/itm_medkit_large.json",
+    "items/itm_food_stew.json",
+    "items/itm_water_bottle.json",
+    "items/itm_food_soup.json",
+    "items/itm_food_irp.json"
+  ]
+}

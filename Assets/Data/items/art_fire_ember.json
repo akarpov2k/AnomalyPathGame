@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "art_fire_ember",
+  "nameKey": "item.art_fire_ember.name",
+  "icon": "icons/art_fire_ember",
+  "category": "artifact",
+  "artifactType": "fire",
+  "modifiers": [
+    { "stat": "healthMax", "value": 4 },
+    { "stat": "accuracy", "value": 0.04 },
+    { "stat": "protection", "damageTypeId": "dmg_fire", "value": 3 },
+    { "stat": "protection", "damageTypeId": "dmg_rupture", "value": -2 }
+  ],
+  "extraProperties": [
+    { "stat": "accuracy", "value": 0.02 },
+    { "stat": "healthMax", "value": 2 },
+    { "stat": "protection", "damageTypeId": "dmg_fire", "value": 1 }
+  ],
+  "footprint": [1, 1],
+  "maxStack": 1,
+  "tier": 4,
+  "weight": 0.5,
+  "rarity": "special",
+  "price": { "mode": "fixed", "buy": 1200, "sell": 500 }
+}

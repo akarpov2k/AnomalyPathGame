@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_stock",
+  "nameKey": "skill.skill_stock.name",
+  "descriptionKey": "skill.skill_stock.desc",
+  "type": "attack",
+  "apCost": 1,
+  "ammoCost": 0,
+  "accuracy": 1.0,
+  "injuries": ["injury_head_concussion"],
+  "effects": [
+    { "type": "damage", "multiplier": 0.4, "hits": 1 }
+  ]
+}

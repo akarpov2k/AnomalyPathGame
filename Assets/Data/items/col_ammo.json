@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "collection": true,
+  "id": "col_ammo",
+  "entries": [
+    "items/ammo_545.json",
+    "items/ammo_545_ap.json",
+    "items/ammo_762x39.json",
+    "items/ammo_762x39_ap.json",
+    "items/ammo_9x18.json",
+    "items/ammo_762x54.json",
+    "items/ammo_762x54_ap.json",
+    "items/ammo_23x75.json"
+  ]
+}

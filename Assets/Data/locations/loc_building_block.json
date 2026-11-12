@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_building_block",
+  "titleKey": "location.building.block.title",
+  "locationKind": "wild",
+  "subtype": "building",
+  "role": "industrial",
+  "tags": ["outdoor", "indoor", "industrial"],
+  "tier": 1,
+  "backgrounds": ["bg_site_house"],
+  "ambience": "amb-forest-swamp",
+  "sceneArt": "loc_ruined_block",
+  "roadArt": "loc_road_block",
+  "walkBackdrop": "backdrops/walk_building_block",
+  "walkParts": ["backdrops/walkparts_loc_building_block_1", "backdrops/walkparts_loc_building_block_2", "backdrops/walkparts_loc_building_block_3"],
+  "walkRoad": "backdrops/walk_road",
+  "walkPathX": 0.5,
+  "interiorId": "loc_building_block_interior",
+  "objectCount": [3, 5],
+  "spawnPool": ["spawn_industrial_crate", "spawn_enemy_bandit", "spawn_enemy_merc", "spawn_anomaly_glow", "spawn_anomaly_chem", "spawn_anomaly_crater"],
+  "danger": 0.5,
+  "chainLength": [1, 2],
+  "chainWeights": { "1": 0.6, "2": 0.4 },
+  "rarity": "common",
+  "spawnChance": 1,
+  "unique": false,
+  "stage": {
+    "tint": "#d6d2c8",
+    "brightness": 0.94,
+    "stashHeight": 0.7,
+    "anchors": [
+      { "slot": "left", "x": 0.18, "y": 0.13, "ppm": 165 },
+      { "slot": "right", "x": 0.68, "y": 0.11, "ppm": 172 },
+      { "slot": "center", "x": 0.49, "y": 0.18, "ppm": 152 }
+    ]
+  }
+}

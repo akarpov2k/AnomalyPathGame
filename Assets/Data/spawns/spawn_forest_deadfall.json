@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_forest_deadfall",
+  "titleKey": "spawn.spawn_forest_deadfall.title",
+  "icon": "icons/obj_forest_deadfall",
+  "height": 0.8,
+  "objectKind": "loot",
+  "requiresTags": ["forest", "outdoor"],
+  "excludesTags": ["hub"],
+  "weight": 3,
+  "spawnChance": 0.5,
+  "minTier": 0,
+  "maxTier": 2,
+  "lootTable": "loot_human"
+}

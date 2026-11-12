@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "kind": "quests",
+  "id": "qst_story_03_dogs",
+  "questKind": "story",
+  "storyLine": "main",
+  "titleKey": "quest.qst_story_03_dogs.title",
+  "descriptionKey": "quest.qst_story_03_dogs.desc",
+  "giverActorId": "trd_hub_smuggler",
+  "nextQuestId": "qst_story_04_atp",
+  "progressScope": "life",
+  "requirements": { "quests": ["qst_story_02_job"] },
+  "objectives": [
+    {
+      "type": "killActors",
+      "actorPool": ["mutant_wolf"],
+      "count": 10,
+      "minTier": 1,
+      "maxTier": 1
+    }
+  ],
+  "rewards": {
+    "money": 600,
+    "items": [
+      { "itemId": "ammo_545", "count": 60 },
+      { "itemId": "itm_medkit_normal", "count": 1 }
+    ]
+  },
+  "variants": [
+    {
+      "id": "hard",
+      "objectives": [
+        {
+          "type": "killActors",
+          "actorPool": ["mutant_wolf"],
+          "count": 20,
+          "minTier": 1,
+          "maxTier": 1
+        }
+      ],
+      "rewards": {
+        "money": 420,
+        "items": [
+          { "itemId": "ammo_545", "count": 42 }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_building_laboratory",
+  "titleKey": "location.building.laboratory.title",
+  "locationKind": "wild",
+  "subtype": "building",
+  "role": "laboratory",
+  "tags": ["indoor", "outdoor", "industrial"],
+  "tier": 2,
+  "backgrounds": ["bg_interior_room"],
+  "ambience": "amb-forest-swamp",
+  "sceneArt": "loc_building_laboratory",
+  "roadArt": "loc_road_laboratory",
+  "walkBackdrop": "backdrops/walk_building_laboratory",
+  "walkParts": ["backdrops/walkparts_loc_building_laboratory_1", "backdrops/walkparts_loc_building_laboratory_2", "backdrops/walkparts_loc_building_laboratory_3"],
+  "walkRoad": "backdrops/walk_road_concrete",
+  "walkPathX": 0.5,
+  "walkPaths": [0.78, 0.33, 0.55],
+  "interiorId": "loc_building_laboratory_interior",
+  "objectCount": [3, 5],
+  "spawnPool": ["spawn_industrial_crate", "spawn_enemy_merc", "spawn_anomaly_glow", "spawn_anomaly_chem", "spawn_anomaly_crater", "spawn_anomaly_gravity"],
+  "danger": 0.7,
+  "chainLength": [1, 1],
+  "rarity": "rare",
+  "spawnChance": 1,
+  "unique": false,
+  "stage": {
+    "tint": "#cfd8d8",
+    "brightness": 0.94,
+    "stashHeight": 0.7,
+    "anchors": [
+      { "slot": "left", "x": 0.20, "y": 0.14, "ppm": 162 },
+      { "slot": "right", "x": 0.70, "y": 0.11, "ppm": 170 },
+      { "slot": "center", "x": 0.50, "y": 0.19, "ppm": 150 }
+    ]
+  }
+}

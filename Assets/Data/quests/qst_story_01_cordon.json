@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "kind": "quests",
+  "id": "qst_story_01_cordon",
+  "questKind": "story",
+  "storyLine": "main",
+  "titleKey": "quest.qst_story_01_cordon.title",
+  "descriptionKey": "quest.qst_story_01_cordon.desc",
+  "giverActorId": "trd_hub_smuggler",
+  "nextQuestId": "qst_story_02_job",
+  "progressScope": "raid",
+  "objectives": [
+    {
+      "type": "clearLocations",
+      "count": 4,
+      "excludeSubtypes": ["path"]
+    }
+  ],
+  "rewards": {
+    "items": [
+      { "itemId": "ammo_9x18", "count": 30 },
+      { "itemId": "itm_medkit_normal", "count": 1 }
+    ]
+  },
+  "variants": [
+    {
+      "id": "hard",
+      "objectives": [
+        {
+          "type": "clearLocations",
+          "count": 8,
+          "excludeSubtypes": ["path"]
+        }
+      ],
+      "rewards": {
+        "items": [
+          { "itemId": "ammo_9x18", "count": 21 }
+        ]
+      }
+    }
+  ]
+}

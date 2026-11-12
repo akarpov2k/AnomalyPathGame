@@ -1,0 +1,215 @@
+#nullable enable
+using System;
+using System.Collections.Generic;
+using AnomalyPath.Core.Abstractions;
+using AnomalyPath.Core.Combat;
+using AnomalyPath.Core.Data;
+using AnomalyPath.Core.Localization;
+using AnomalyPath.Core.Loot;
+using AnomalyPath.Core.Repositories;
+using AnomalyPath.Core.Templates;
+
+namespace AnomalyPath.Core.Validation
+{
+    /// <summary>Часть класса <see cref="DataValidator"/>: добыча.</summary>
+    public sealed partial class DataValidator
+    {
+        private static void ValidateLoot(LoadedData data, List<ValidationIssue> issues)
+        {
+            LootRepository loot;
+            ItemRepository items;
+            ActorRepository actors;
+            try
+            {
+                loot = LootRepository.FromLoadedData(data);
+                items = ItemRepository.FromLoadedData(data);
+                actors = ActorRepository.FromLoadedData(data);
+            }
+            catch (DataException)
+            {
+                return;
+            }
+
+            foreach (var table in loot.All)
+            {
+                foreach (var entry in table.Entries)
+                {
+                    if (!items.TryGet(entry.ItemId, out var template))
+                    {
+                        issues.Add(new ValidationIssue(
+                            table.Id,
+                            CoreErrors.LootItemNotFound,
+                            CoreText.Format(CoreErrors.LootItemNotFound, entry.ItemId)));
+                        continue;
+                    }
+
+                    if (entry.FixedRarity.HasValue && !HasLootRarity(template.Category))
+                    {
+                        issues.Add(new ValidationIssue(
+                            table.Id,
+                            CoreErrors.LootRarityOnCategory,
+                            CoreText.Format(CoreErrors.LootRarityOnCategory, entry.ItemId)));
+                    }
+                }
+
+                ExpandLootTable(
+                    table,
+                    loot,
+                    new HashSet<string>(StringComparer.Ordinal),
+                    new HashSet<string>(StringComparer.Ordinal),
+                    issues);
+            }
+
+            foreach (var actor in actors.All)
+            {
+                if (actor.LootTableId == null)
+                {
+                    continue;
+                }
+
+                if (actor.Type != ActorType.Enemy)
+                {
+                    issues.Add(new ValidationIssue(
+                        actor.Id,
+                        CoreErrors.LootTableOnNonEnemy,
+                        CoreText.Format(CoreErrors.LootTableOnNonEnemy, actor.Id)));
+                    continue;
+                }
+
+                if (!loot.TryGet(actor.LootTableId, out _))
+                {
+                    issues.Add(new ValidationIssue(
+                        actor.Id,
+                        CoreErrors.LootTableNotFound,
+                        CoreText.Format(CoreErrors.LootTableNotFound, actor.LootTableId)));
+                }
+            }
+
+            ValidateStashes(loot, items, issues);
+        }
+
+        private static void ValidateStashes(
+            ILootRepository loot,
+            ItemRepository items,
+            List<ValidationIssue> issues)
+        {
+            var stashes = loot.Settings.Stashes;
+            if (stashes == null)
+            {
+                return;
+            }
+
+            foreach (var pool in stashes.Pools)
+            {
+                if (!loot.TryGet(pool.LootTableId, out _))
+                {
+                    issues.Add(new ValidationIssue(
+                        LootSettings.RecordId,
+                        CoreErrors.StashTableNotFound,
+                        CoreText.Format(CoreErrors.StashTableNotFound, pool.LootTableId)));
+                }
+            }
+
+            if (!loot.TryGet(stashes.JackpotLootTableId, out var jackpot))
+            {
+                issues.Add(new ValidationIssue(
+                    LootSettings.RecordId,
+                    CoreErrors.StashTableNotFound,
+                    CoreText.Format(CoreErrors.StashTableNotFound, stashes.JackpotLootTableId)));
+                return;
+            }
+
+            ValidateJackpotRarity(
+                jackpot,
+                loot,
+                items,
+                new HashSet<string>(StringComparer.Ordinal),
+                issues);
+        }
+
+        private static bool HasLootRarity(ItemCategory category) =>
+            category == ItemCategory.Weapon ||
+            category == ItemCategory.Armor ||
+            category == ItemCategory.Helmet;
+
+        private static void ValidateJackpotRarity(
+            LootTable table,
+            ILootRepository loot,
+            ItemRepository items,
+            HashSet<string> visited,
+            List<ValidationIssue> issues)
+        {
+            if (!visited.Add(table.Id))
+            {
+                return;
+            }
+
+            foreach (var entry in table.Entries)
+            {
+                if (!items.TryGet(entry.ItemId, out var template))
+                {
+                    continue;
+                }
+
+                if ((entry.FixedRarity ?? template.Rarity) < Rarity.Special)
+                {
+                    issues.Add(new ValidationIssue(
+                        table.Id,
+                        CoreErrors.StashJackpotRarity,
+                        CoreText.Format(CoreErrors.StashJackpotRarity, entry.ItemId)));
+                }
+            }
+
+            foreach (var sharedId in table.SharedTableIds)
+            {
+                if (loot.TryGet(sharedId, out var shared))
+                {
+                    ValidateJackpotRarity(shared, loot, items, visited, issues);
+                }
+            }
+        }
+
+        private static void ExpandLootTable(
+            LootTable table,
+            ILootRepository loot,
+            HashSet<string> visiting,
+            HashSet<string> seen,
+            List<ValidationIssue> issues)
+        {
+            visiting.Add(table.Id);
+            foreach (var sharedId in table.SharedTableIds)
+            {
+                if (visiting.Contains(sharedId))
+                {
+                    issues.Add(new ValidationIssue(
+                        table.Id,
+                        CoreErrors.LootTableCycle,
+                        CoreText.Format(CoreErrors.LootTableCycle, sharedId)));
+                    continue;
+                }
+
+                if (!loot.TryGet(sharedId, out var shared))
+                {
+                    issues.Add(new ValidationIssue(
+                        table.Id,
+                        CoreErrors.LootTableNotFound,
+                        CoreText.Format(CoreErrors.LootTableNotFound, sharedId)));
+                    continue;
+                }
+
+                if (!seen.Add(sharedId))
+                {
+                    issues.Add(new ValidationIssue(
+                        table.Id,
+                        CoreErrors.LootTableDuplicate,
+                        CoreText.Format(CoreErrors.LootTableDuplicate, sharedId)));
+                    continue;
+                }
+
+                ExpandLootTable(shared, loot, visiting, seen, issues);
+            }
+
+            visiting.Remove(table.Id);
+        }
+    }
+}

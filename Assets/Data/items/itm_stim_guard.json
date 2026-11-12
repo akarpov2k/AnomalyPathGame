@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_stim_guard",
+  "nameKey": "item.itm_stim_guard.name",
+  "icon": "icons/itm_stim_guard",
+  "category": "consumable",
+  "footprint": [1, 1],
+  "maxStack": 1,
+  "tier": 2,
+  "weight": 0.1,
+  "price": { "mode": "fixed", "buy": 250, "sell": 100 },
+  "consumable": {
+    "useTime": 1,
+    "charges": 1,
+    "usableInCombat": true,
+    "effects": [
+      { "type": "modifier", "stat": "protection", "value": 3, "damageTypeId": "dmg_bullet" }
+    ]
+  }
+}

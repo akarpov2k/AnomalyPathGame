@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_splint",
+  "nameKey": "item.itm_splint.name",
+  "icon": "icons/itm_splint",
+  "category": "consumable",
+  "footprint": [1, 2],
+  "maxStack": 1,
+  "tier": 1,
+  "weight": 0.4,
+  "price": { "mode": "fixed", "buy": 90, "sell": 35 },
+  "equipSlots": [],
+  "consumable": {
+    "useTime": 2,
+    "charges": 1,
+    "usableInCombat": false,
+    "effects": [{ "type": "heal", "amount": 10 }],
+    "healsInjuries": ["injury_broken_arm", "injury_broken_leg"]
+  }
+}

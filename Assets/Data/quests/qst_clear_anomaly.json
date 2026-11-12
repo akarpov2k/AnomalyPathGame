@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "kind": "quests",
+  "id": "qst_clear_anomaly",
+  "questKind": "repeatable",
+  "questType": "clearLocation",
+  "titleKey": "quest.qst_clear_anomaly.title",
+  "descriptionKey": "quest.qst_clear_anomaly.desc",
+  "art": "quests/clearAnomaly",
+  "difficulty": "hard",
+  "cooldownHours": 24,
+  "failCondition": "death",
+  "requirements": { "tier": 1 },
+  "target": {
+    "locationPool": ["loc_site_anomaly"],
+    "minTier": 2,
+    "maxTier": 2
+  },
+  "rewards": { "money": 600 }
+}

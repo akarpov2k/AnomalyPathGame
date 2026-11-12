@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "actors",
+  "id": "mutant_bear",
+  "type": "enemy",
+  "nameKey": "actor.mutant_bear.name",
+  "costume": "costumes/combat_mutant_bear",
+  "roles": ["mutant"],
+  "rarity": "epic",
+  "lootTable": "loot_mutant_bear",
+  "combat": {
+    "tier": 3,
+    "level": 3,
+    "health": 100,
+    "ap": 4,
+    "xp": 100,
+    "protection": { "dmg_rupture": 5, "dmg_bullet": 2 },
+    "accuracy": 0.75,
+    "skills": ["skill_maul"],
+    "defaultSkillId": "skill_maul",
+    "attack": { "damage": 18, "damageTypeId": "dmg_rupture" }
+  }
+}

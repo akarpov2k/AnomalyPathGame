@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_terrain_field",
+  "titleKey": "location.terrain.field.title",
+  "locationKind": "wild",
+  "subtype": "terrain",
+  "role": "field",
+  "tags": ["outdoor", "rural"],
+  "tier": 0,
+  "backgrounds": ["bg_route_highway"],
+  "ambience": "amb-highway-anomaly",
+  "sceneArt": "loc_terrain_field",
+  "roadArt": "loc_road_field",
+  "walkBackdrop": "backdrops/walk_terrain_field",
+  "walkParts": ["backdrops/walkparts_loc_terrain_field_1", "backdrops/walkparts_loc_terrain_field_2", "backdrops/walkparts_loc_terrain_field_3"],
+  "walkRoad": "backdrops/walk_road_dirt",
+  "walkPathX": 0.5,
+  "walkPaths": [0.45, 0.47, 0.5],
+  "objectCount": [3, 5],
+  "spawnPool": ["spawn_field_debris", "spawn_enemy_bandit", "spawn_anomaly_glow", "spawn_anomaly_chem", "spawn_enemy_wolf"],
+  "danger": 0.2,
+  "chainLength": [2, 5],
+  "chainWeights": { "2": 0.2, "3": 0.4, "4": 0.3, "5": 0.1 },
+  "rarity": "common",
+  "spawnChance": 1,
+  "unique": false,
+  "stage": {
+    "tint": "#e2dcc8",
+    "brightness": 0.93,
+    "stashHeight": 0.7,
+    "anchors": [
+      { "slot": "left", "x": 0.20, "y": 0.15, "ppm": 160 },
+      { "slot": "right", "x": 0.70, "y": 0.12, "ppm": 168 },
+      { "slot": "center", "x": 0.50, "y": 0.2, "ppm": 150 }
+    ]
+  }
+}

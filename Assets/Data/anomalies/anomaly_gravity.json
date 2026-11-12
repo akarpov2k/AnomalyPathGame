@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "anomalies",
+  "id": "anomaly_gravity",
+  "artifactType": "gravity",
+  "damageTypeId": "dmg_rupture",
+  "damage": 18,
+  "attempts": 1,
+  "artifactChance": 0.55,
+  "artifactTable": "loot_artifact_gravity",
+  "tiers": [1, 2]
+}

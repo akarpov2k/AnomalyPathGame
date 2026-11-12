@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "kind": "actors",
+  "id": "npc_atp_shustry",
+  "type": "npc",
+  "nameKey": "actor.npc_atp_shustry.name",
+  "descriptionKey": "actor.npc_atp_shustry.desc",
+  "roles": ["quest"],
+  "dialogId": "dlg_npc_atp_shustry"
+}

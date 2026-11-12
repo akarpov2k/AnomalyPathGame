@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "lootTables",
+  "collection": true,
+  "id": "col_loot",
+  "entries": [
+    "loot/loot_common.json",
+    "loot/loot_human.json",
+    "loot/loot_mutant_wolf.json",
+    "loot/loot_mutant_boar.json",
+    "loot/loot_mutant_bear.json",
+    "loot/loot_stash_0.json",
+    "loot/loot_stash_1.json",
+    "loot/loot_stash_2.json",
+    "loot/loot_jackpot.json",
+    "loot/loot_artifact_fire.json",
+    "loot/loot_artifact_electric.json",
+    "loot/loot_artifact_chemical.json",
+    "loot/loot_artifact_gravity.json"
+  ]
+}

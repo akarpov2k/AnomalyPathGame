@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_enemy_wolf",
+  "titleKey": "spawn.spawn_enemy_wolf.title",
+  "height": 0.85,
+  "objectKind": "enemy",
+  "requiresTags": ["outdoor"],
+  "excludesTags": ["hub"],
+  "weight": 2,
+  "spawnChance": 0.4,
+  "minTier": 0,
+  "maxTier": 2,
+  "actorId": "mutant_wolf"
+}

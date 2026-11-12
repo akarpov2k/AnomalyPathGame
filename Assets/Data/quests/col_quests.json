@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "kind": "quests",
+  "collection": true,
+  "id": "col_quests",
+  "entries": [
+    "quests/qst_clear_house.json",
+    "quests/qst_clear_anomaly.json",
+    "quests/qst_kill_mutants.json",
+    "quests/qst_gather_artifacts.json",
+    "quests/qst_find_weapons.json",
+    "quests/qst_find_armor.json",
+    "quests/qst_story_01_cordon.json",
+    "quests/qst_story_02_job.json",
+    "quests/qst_story_03_dogs.json",
+    "quests/qst_side_medic_mutants.json",
+    "quests/qst_story_04_atp.json",
+    "quests/qst_story_05_angar.json"
+  ]
+}

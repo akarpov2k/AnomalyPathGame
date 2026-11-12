@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "art_chemical_toxin",
+  "nameKey": "item.art_chemical_toxin.name",
+  "icon": "icons/art_chemical_toxin",
+  "category": "artifact",
+  "artifactType": "chemical",
+  "modifiers": [
+    { "stat": "healthMax", "value": 3 },
+    { "stat": "stamina", "value": 2 },
+    { "stat": "protection", "damageTypeId": "dmg_chemical", "value": 3 },
+    { "stat": "accuracy", "value": -0.03 }
+  ],
+  "extraProperties": [
+    { "stat": "healthMax", "value": 2 },
+    { "stat": "stamina", "value": 1 },
+    { "stat": "protection", "damageTypeId": "dmg_chemical", "value": 1 }
+  ],
+  "footprint": [1, 1],
+  "maxStack": 1,
+  "tier": 4,
+  "weight": 0.7,
+  "rarity": "special",
+  "price": { "mode": "fixed", "buy": 1100, "sell": 450 }
+}

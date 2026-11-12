@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_anomaly_gravity",
+  "titleKey": "spawn.spawn_anomaly_gravity.title",
+  "icon": "icons/anomaly_gravity",
+  "height": 2.1,
+  "objectKind": "anomaly",
+  "anomalyId": "anomaly_gravity",
+  "requiresTags": [],
+  "excludesTags": [],
+  "weight": 1,
+  "spawnChance": 0.25,
+  "minTier": 0,
+  "maxTier": 3
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "kind": "injuries",
+  "id": "injury_broken_leg",
+  "nameKey": "injury.injury_broken_leg.name",
+  "icon": "icons/injury_broken_leg",
+  "chance": 0.15,
+  "actionApCostBonus": 1,
+  "duration": { "kind": "until_healed" }
+}

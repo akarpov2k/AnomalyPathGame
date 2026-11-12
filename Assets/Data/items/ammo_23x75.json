@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "ammo_23x75",
+  "nameKey": "item.ammo_23x75.name",
+  "icon": "icons/ammo_762x54",
+  "category": "ammo",
+  "footprint": [1, 1],
+  "maxStack": 30,
+  "tier": 4,
+  "weight": 0.05,
+  "caliber": "23x75",
+  "price": { "mode": "fixed", "buy": 12, "sell": 5 }
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "abstract": true,
+  "category": "consumable",
+  "maxStack": 1,
+  "rotatable": true,
+  "equipSlots": [],
+  "consumable": {
+    "useTime": 1,
+    "charges": 1,
+    "usableInCombat": false
+  }
+}

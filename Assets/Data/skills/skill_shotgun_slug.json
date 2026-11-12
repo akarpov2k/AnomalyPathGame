@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_shotgun_slug",
+  "nameKey": "skill.skill_shotgun_slug.name",
+  "descriptionKey": "skill.skill_shotgun_slug.desc",
+  "type": "attack",
+  "apCost": 2,
+  "ammoCost": 1,
+  "accuracy": 0.9,
+  "effects": [
+    { "type": "damage", "multiplier": 1.6, "hits": 1 }
+  ]
+}

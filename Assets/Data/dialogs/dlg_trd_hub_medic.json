@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "kind": "dialogs",
+  "id": "dlg_trd_hub_medic",
+  "startNodeId": "root",
+  "nodes": [
+    {
+      "id": "root",
+      "speakerActorId": "trd_hub_medic",
+      "textKey": "dialog.dlg_trd_hub_medic.root",
+      "options": [
+        {
+          "id": "accept",
+          "textKey": "dialog.common.take",
+          "requirements": {
+            "quests": ["qst_story_03_dogs"],
+            "questStates": [{ "questId": "qst_side_medic_mutants", "state": "available" }]
+          },
+          "hiddenIfUnavailable": true,
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_side_medic_mutants" }],
+          "nextNodeId": "m1_accept"
+        },
+        {
+          "id": "money",
+          "textKey": "dialog.dlg_trd_hub_medic.opt.money",
+          "requirements": {
+            "quests": ["qst_story_03_dogs"],
+            "questStates": [{ "questId": "qst_side_medic_mutants", "state": "available" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "m1_money"
+        },
+        {
+          "id": "refuse",
+          "textKey": "dialog.dlg_trd_hub_medic.opt.refuse",
+          "requirements": {
+            "quests": ["qst_story_03_dogs"],
+            "questStates": [{ "questId": "qst_side_medic_mutants", "state": "available" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "m1_refuse"
+        },
+        {
+          "id": "decline",
+          "textKey": "dialog.dlg_trd_hub_medic.opt.decline",
+          "requirements": {
+            "quests": ["qst_story_03_dogs"],
+            "questStates": [{ "questId": "qst_side_medic_mutants", "state": "available" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "m1_decline"
+        },
+        {
+          "id": "active",
+          "textKey": "dialog.dlg_trd_hub_medic.opt.active",
+          "requirements": { "questStates": [{ "questId": "qst_side_medic_mutants", "state": "active" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "m1_active"
+        },
+        {
+          "id": "ready",
+          "textKey": "dialog.dlg_trd_hub_medic.opt.ready",
+          "requirements": { "questStates": [{ "questId": "qst_side_medic_mutants", "state": "ready" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "m1_ready"
+        },
+        {
+          "id": "bye",
+          "textKey": "dialog.common.bye",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "m1_accept",
+      "textKey": "dialog.dlg_trd_hub_medic.m1_accept",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "m1_money",
+      "textKey": "dialog.dlg_trd_hub_medic.m1_money",
+      "options": [
+        {
+          "id": "take",
+          "textKey": "dialog.common.take",
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_side_medic_mutants" }],
+          "nextNodeId": "m1_accept"
+        },
+        {
+          "id": "later",
+          "textKey": "dialog.common.later",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "m1_refuse",
+      "textKey": "dialog.dlg_trd_hub_medic.m1_refuse",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "m1_decline",
+      "textKey": "dialog.dlg_trd_hub_medic.m1_decline",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "m1_active",
+      "textKey": "dialog.dlg_trd_hub_medic.m1_active",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "m1_ready",
+      "textKey": "dialog.dlg_trd_hub_medic.m1_ready",
+      "options": [
+        {
+          "id": "std",
+          "textKey": "dialog.dlg_trd_hub_medic.opt.reward",
+          "requirements": { "questStates": [{ "questId": "qst_side_medic_mutants", "state": "ready" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "m1_reward"
+        },
+        {
+          "id": "not",
+          "textKey": "dialog.common.not_yet",
+          "nextNodeId": "m1_active"
+        }
+      ]
+    },
+    {
+      "id": "m1_reward",
+      "textKey": "dialog.dlg_trd_hub_medic.m1_reward",
+      "options": [
+        {
+          "id": "thanks",
+          "textKey": "dialog.common.thanks",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_side_medic_mutants" }],
+          "end": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "dialogs",
+  "collection": true,
+  "id": "col_dialogs",
+  "entries": [
+    "dialogs/dlg_trd_hub_smuggler.json",
+    "dialogs/dlg_trd_hub_medic.json",
+    "dialogs/dlg_npc_atp_shustry.json",
+    "dialogs/dlg_angar_gvozd.json"
+  ]
+}

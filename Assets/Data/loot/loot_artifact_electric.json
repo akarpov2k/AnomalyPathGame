@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "kind": "lootTables",
+  "id": "loot_artifact_electric",
+  "entries": [
+    { "itemId": "art_electric_spark", "always": true, "ignoreTierBand": true }
+  ]
+}

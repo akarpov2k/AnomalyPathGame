@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_industrial_crate",
+  "titleKey": "spawn.spawn_industrial_crate.title",
+  "icon": "icons/obj_industrial_crate",
+  "height": 0.55,
+  "objectKind": "loot",
+  "requiresTags": ["indoor", "industrial"],
+  "excludesTags": ["hub"],
+  "weight": 2,
+  "spawnChance": 0.6,
+  "minTier": 1,
+  "maxTier": 3,
+  "lootTable": "loot_human"
+}

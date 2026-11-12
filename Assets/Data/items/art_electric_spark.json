@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "art_electric_spark",
+  "nameKey": "item.art_electric_spark.name",
+  "icon": "icons/art_electric_spark",
+  "category": "artifact",
+  "artifactType": "electric",
+  "modifiers": [
+    { "stat": "stamina", "value": 3 },
+    { "stat": "accuracy", "value": -0.05 },
+    { "stat": "protection", "damageTypeId": "dmg_electric", "value": 3 },
+    { "stat": "healthMax", "value": -2 }
+  ],
+  "extraProperties": [
+    { "stat": "stamina", "value": 2 },
+    { "stat": "accuracy", "value": 0.02 },
+    { "stat": "protection", "damageTypeId": "dmg_electric", "value": 1 }
+  ],
+  "footprint": [1, 1],
+  "maxStack": 1,
+  "tier": 4,
+  "weight": 0.8,
+  "rarity": "special",
+  "price": { "mode": "fixed", "buy": 1400, "sell": 600 }
+}

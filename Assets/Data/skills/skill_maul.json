@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_maul",
+  "nameKey": "skill.skill_maul.name",
+  "descriptionKey": "skill.skill_maul.desc",
+  "type": "attack",
+  "apCost": 1,
+  "ammoCost": 0,
+  "accuracy": 1.0,
+  "injuries": ["injury_broken_arm", "injury_broken_leg", "injury_head_concussion"],
+  "effects": [
+    { "type": "damage", "multiplier": 1.0, "hits": 1 }
+  ]
+}

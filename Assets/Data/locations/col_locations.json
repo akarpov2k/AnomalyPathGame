@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "collection": true,
+  "id": "col_locations_core",
+  "entries": [
+    "locations/loc_hub_settlement.json",
+    "locations/loc_route_highway.json",
+    "locations/loc_route_forest.json",
+    "locations/loc_site_house.json",
+    "locations/loc_site_anomaly.json",
+    "locations/loc_building_industrial.json",
+    "locations/loc_building_block.json",
+    "locations/loc_building_block_interior.json",
+    "locations/loc_site_house_interior.json",
+    "locations/loc_building_industrial_interior.json",
+    "locations/loc_building_laboratory_interior.json",
+    "locations/loc_building_laboratory.json",
+    "locations/loc_terrain_forest.json",
+    "locations/loc_terrain_swamp.json",
+    "locations/loc_terrain_field.json",
+    "locations/loc_atp_gate.json",
+    "locations/loc_atp_gate_interior.json",
+    "locations/loc_atp_yard.json",
+    "locations/loc_atp_garage.json",
+    "locations/loc_atp_garage_interior.json",
+    "locations/loc_atp_barracks.json",
+    "locations/loc_atp_barracks_interior.json",
+    "locations/loc_atp_dispatch.json",
+    "locations/loc_atp_dispatch_interior.json",
+    "locations/loc_hub_depot.json"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "chains",
+  "collection": true,
+  "id": "col_chains",
+  "entries": [
+    "chains/chain_atp.json"
+  ]
+}

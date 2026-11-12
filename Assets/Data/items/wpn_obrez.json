@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "wpn_obrez",
+  "extends": "_base/weapon_rifle.json",
+  "include": ["_base/priced_standard.json"],
+  "nameKey": "item.wpn_obrez.name",
+  "descriptionKey": "item.wpn_obrez.desc",
+  "icon": "icons/wpn_ks23",
+  "footprint": [2, 2],
+  "tier": 2,
+  "weight": 2.4,
+  "rarity": "common",
+  "equipSlots": ["main", "secondary"],
+  "price": { "mode": "fixed", "buy": 650, "sell": 260 },
+  "weapon": {
+    "classId": "wclass_shotgun",
+    "damage": 20,
+    "accuracyCoefficient": 0.65,
+    "magazine": 2,
+    "ammoCaliber": "23x75",
+    "durabilityMax": 60,
+    "durabilityPerShot": 1.0,
+    "reloadPerShell": true,
+    "skills": ["skill_shotgun_buckshot", "skill_shotgun_slug", "skill_shotgun_double", "skill_stock"],
+    "defaultSkillId": "skill_shotgun_buckshot"
+  }
+}

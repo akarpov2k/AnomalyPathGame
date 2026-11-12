@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_bite",
+  "nameKey": "skill.skill_bite.name",
+  "descriptionKey": "skill.skill_bite.desc",
+  "type": "attack",
+  "apCost": 1,
+  "ammoCost": 0,
+  "accuracy": 1.0,
+  "effects": [
+    { "type": "damage", "multiplier": 1.0, "hits": 1 }
+  ]
+}

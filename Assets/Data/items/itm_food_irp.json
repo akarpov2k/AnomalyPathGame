@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_food_irp",
+  "extends": "_base/consumable_noncombat.json",
+  "nameKey": "item.itm_food_irp.name",
+  "icon": "icons/itm_food_irp",
+  "footprint": [2, 2],
+  "maxStack": 10,
+  "tier": 2,
+  "weight": 1.2,
+  "price": { "mode": "fixed", "buy": 120, "sell": 50 },
+  "consumable": {
+    "effects": [{ "type": "restoreFood", "amount": 100 }]
+  }
+}

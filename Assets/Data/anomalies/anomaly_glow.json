@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "anomalies",
+  "id": "anomaly_glow",
+  "artifactType": "electric",
+  "damageTypeId": "dmg_electric",
+  "damage": 10,
+  "attempts": 2,
+  "artifactChance": 0.45,
+  "artifactTable": "loot_artifact_electric",
+  "tiers": [0, 1, 2]
+}

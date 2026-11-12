@@ -1,0 +1,359 @@
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Text.RegularExpressions;
+
+namespace AnomalyPath.Editor.Art
+{
+    /// <summary>
+    /// Читает из данных id картинок: <c>icon</c> у предметов и <c>backgrounds</c> у локаций.
+    /// Категория и габариты ищутся по цепочке <c>extends</c>, иначе у оружия не было бы категории.
+    /// </summary>
+    internal static class DataArtIds
+    {
+        /// <summary>Иконка предмета с категорией и габаритами.</summary>
+        internal sealed class IconId
+        {
+            /// <summary>Создаёт описание иконки предмета.</summary>
+            /// <param name="id">Id вида <c>icons/wpn_ak74</c>.</param>
+            /// <param name="category">Категория предмета.</param>
+            /// <param name="footprintWidth">Ширина в клетках.</param>
+            /// <param name="footprintHeight">Высота в клетках.</param>
+            internal IconId(string id, string category, int footprintWidth, int footprintHeight)
+            {
+                Id = id;
+                Category = category;
+                FootprintWidth = footprintWidth;
+                FootprintHeight = footprintHeight;
+            }
+
+            /// <summary>Id иконки.</summary>
+            internal string Id { get; }
+
+            /// <summary>Категория предмета.</summary>
+            internal string Category { get; }
+
+            /// <summary>Ширина предмета в клетках.</summary>
+            internal int FootprintWidth { get; }
+
+            /// <summary>Высота предмета в клетках.</summary>
+            internal int FootprintHeight { get; }
+        }
+
+        /// <summary>Ид портрета актёра и его кадрирование.</summary>
+        internal sealed class PortraitId
+        {
+            /// <summary>Создаёт описание портрета.</summary>
+            /// <param name="id">Id вида <c>portraits/trd_hub_smuggler</c>.</param>
+            /// <param name="mode">Режим: <c>full</c> или <c>waist</c>.</param>
+            internal PortraitId(string id, string mode)
+            {
+                Id = id;
+                Mode = mode;
+            }
+
+            /// <summary>Id портрета.</summary>
+            internal string Id { get; }
+
+            /// <summary>Режим кадрирования.</summary>
+            internal string Mode { get; }
+        }
+
+        private const string DataRoot = "Assets/Data";
+        private const int MaxExtendsDepth = 6;
+
+        private static readonly Regex IconPattern = new Regex("\"icon\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex KindPattern = new Regex("\"kind\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex PortraitPattern = new Regex("\"portrait\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex HubPortraitPattern = new Regex("\"hubPortrait\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex PortraitModePattern = new Regex("\"portraitMode\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex CategoryPattern = new Regex("\"category\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex ExtendsPattern = new Regex("\"extends\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex FootprintPattern =
+            new Regex("\"footprint\"\\s*:\\s*\\[\\s*(\\d+)\\s*,\\s*(\\d+)\\s*\\]", RegexOptions.Compiled);
+        private static readonly Regex BackgroundsPattern = new Regex("\"backgrounds\"\\s*:\\s*\\[([^\\]]*)\\]", RegexOptions.Compiled);
+        private static readonly Regex SceneArtPattern = new Regex("\"sceneArt\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex RoadArtPattern = new Regex("\"roadArt\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex AmbiencePattern = new Regex("\"ambience\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex MusicPattern =
+            new Regex("\"(?:menuMusic|combatMusic)\"\\s*:\\s*\"([^\"]+)\"", RegexOptions.Compiled);
+        private static readonly Regex QuotedPattern = new Regex("\"([^\"]+)\"", RegexOptions.Compiled);
+
+        /// <summary>
+        /// Возвращает все id иконок из данных без повторов. В одном файле иконок может быть
+        /// несколько — дерево талантов хранит все узлы в <c>talents.json</c>, — поэтому читаются
+        /// все совпадения поля <c>icon</c>, а не первое.
+        /// </summary>
+        /// <returns>Список иконок с категориями и габаритами.</returns>
+        internal static IReadOnlyList<IconId> Icons()
+        {
+            var result = new List<IconId>();
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var file in Files())
+            {
+                var text = Read(file);
+                if (text == null)
+                {
+                    continue;
+                }
+
+                var category = ResolveCategory(text);
+                var width = 1;
+                var height = 1;
+                var footprint = ResolveValue(text, FootprintPattern);
+                if (footprint != null && footprint.Groups.Count > 2)
+                {
+                    width = ParseInt(footprint.Groups[1].Value, 1);
+                    height = ParseInt(footprint.Groups[2].Value, 1);
+                }
+
+                foreach (Match icon in IconPattern.Matches(text))
+                {
+                    if (seen.Add(icon.Groups[1].Value))
+                    {
+                        result.Add(new IconId(icon.Groups[1].Value, category, width, height));
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>Возвращает все id портретов актёров из данных без повторов.</summary>
+        /// <returns>Список портретов с режимом кадрирования.</returns>
+        internal static IReadOnlyList<PortraitId> Portraits()
+        {
+            var result = new List<PortraitId>();
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var file in Files())
+            {
+                var text = Read(file);
+                if (text == null)
+                {
+                    continue;
+                }
+
+                var portrait = PortraitPattern.Match(text);
+                if (!portrait.Success || !seen.Add(portrait.Groups[1].Value))
+                {
+                    continue;
+                }
+
+                var mode = PortraitModePattern.Match(text);
+                result.Add(new PortraitId(
+                    portrait.Groups[1].Value,
+                    mode.Success ? mode.Groups[1].Value : "full"));
+            }
+
+            return result;
+        }
+
+        /// <summary>Возвращает id полноростовых картинок торговцев для экрана хаба.</summary>
+        /// <returns>Список id из поля <c>hubPortrait</c> без повторов.</returns>
+        internal static IReadOnlyList<string> HubPortraits()
+        {
+            var result = new List<string>();
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var file in Files())
+            {
+                var text = Read(file);
+                if (text == null)
+                {
+                    continue;
+                }
+
+                foreach (Match match in HubPortraitPattern.Matches(text))
+                {
+                    if (seen.Add(match.Groups[1].Value))
+                    {
+                        result.Add(match.Groups[1].Value);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>Возвращает все id фонов локаций из данных без повторов.</summary>
+        /// <returns>Список id фонов.</returns>
+        internal static IReadOnlyList<string> Backgrounds()        {
+            var result = new List<string>();
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var file in Files())
+            {
+                var text = Read(file);
+                if (text == null)
+                {
+                    continue;
+                }
+
+                foreach (Match match in BackgroundsPattern.Matches(text))
+                {
+                    foreach (Match quoted in QuotedPattern.Matches(match.Groups[1].Value))
+                    {
+                        if (seen.Add(quoted.Groups[1].Value))
+                        {
+                            result.Add(quoted.Groups[1].Value);
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>Возвращает id вырезок локаций и дорог из данных без повторов.</summary>
+        /// <returns>Список id арта сцены: поля <c>sceneArt</c> и <c>roadArt</c>.</returns>
+        internal static IReadOnlyList<string> SceneArt()
+        {
+            var result = new List<string>();
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var file in Files())
+            {
+                var text = Read(file);
+                if (text == null)
+                {
+                    continue;
+                }
+
+                foreach (var pattern in new[] { SceneArtPattern, RoadArtPattern })
+                {
+                    foreach (Match match in pattern.Matches(text))
+                    {
+                        var id = match.Groups[1].Value;
+                        if (!string.IsNullOrWhiteSpace(id) && seen.Add(id))
+                        {
+                            result.Add(id);
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>Возвращает id эмбиентов локаций из данных без повторов.</summary>
+        /// <returns>Список id поля <c>ambience</c>.</returns>
+        internal static IReadOnlyList<string> Ambience()
+        {
+            var result = new List<string>();
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var file in Files())
+            {
+                var text = Read(file);
+                if (text == null)
+                {
+                    continue;
+                }
+
+                foreach (Match match in AmbiencePattern.Matches(text))
+                {
+                    var id = match.Groups[1].Value;
+                    if (!string.IsNullOrWhiteSpace(id) && seen.Add(id))
+                    {
+                        result.Add(id);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>Возвращает id музыки из правил без повторов: меню и бой.</summary>
+        /// <returns>Список id полей <c>menuMusic</c> и <c>combatMusic</c>.</returns>
+        internal static IReadOnlyList<string> Music()
+        {
+            var result = new List<string>();
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var file in Files())
+            {
+                var text = Read(file);
+                if (text == null)
+                {
+                    continue;
+                }
+
+                foreach (Match match in MusicPattern.Matches(text))
+                {
+                    var id = match.Groups[1].Value;
+                    if (!string.IsNullOrWhiteSpace(id) && seen.Add(id))
+                    {
+                        result.Add(id);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private static string ResolveCategory(string text)
+        {
+            var kind = KindPattern.Match(text);
+            if (kind.Success && string.Equals(kind.Groups[1].Value, "talents", StringComparison.Ordinal))
+            {
+                return "talent";
+            }
+
+            return ResolveValue(text, CategoryPattern)?.Groups[1].Value ?? "other";
+        }
+
+        private static Match? ResolveValue(string text, Regex pattern)
+        {
+            var current = text;
+            for (var depth = 0; depth < MaxExtendsDepth; depth++)
+            {
+                var match = pattern.Match(current);
+                if (match.Success)
+                {
+                    return match;
+                }
+
+                var extends = ExtendsPattern.Match(current);
+                if (!extends.Success)
+                {
+                    return null;
+                }
+
+                var next = Path.Combine(DataRoot, extends.Groups[1].Value.Replace('/', Path.DirectorySeparatorChar));
+                if (!File.Exists(next))
+                {
+                    return null;
+                }
+
+                var inherited = Read(next);
+                if (inherited == null)
+                {
+                    return null;
+                }
+
+                current = inherited;
+            }
+
+            return null;
+        }
+
+        private static int ParseInt(string value, int fallback) =>
+            int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsed) && parsed > 0
+                ? parsed
+                : fallback;
+
+        private static string? Read(string file)
+        {
+            try
+            {
+                return File.ReadAllText(file);
+            }
+            catch (IOException)
+            {
+                return null;
+            }
+        }
+
+        private static IEnumerable<string> Files() =>
+            Directory.Exists(DataRoot)
+                ? Directory.EnumerateFiles(DataRoot, "*.json", SearchOption.AllDirectories)
+                : Array.Empty<string>();
+    }
+}

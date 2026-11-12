@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_terrain_swamp",
+  "titleKey": "location.terrain.swamp.title",
+  "locationKind": "wild",
+  "subtype": "terrain",
+  "role": "swamp",
+  "tags": ["outdoor", "water"],
+  "tier": 2,
+  "backgrounds": ["bg_site_anomaly"],
+  "ambience": "amb-forest-swamp",
+  "sceneArt": "loc_swamp",
+  "roadArt": "loc_road_swamp",
+  "walkBackdrop": "backdrops/walk_terrain_swamp",
+  "walkParts": ["backdrops/walkparts_loc_terrain_swamp_1", "backdrops/walkparts_loc_terrain_swamp_2", "backdrops/walkparts_loc_terrain_swamp_3"],
+  "walkRoad": "backdrops/walk_road_dirt",
+  "walkPathX": 0.5,
+  "walkPaths": [0.47, 0.5, 0.5],
+  "objectCount": [3, 5],
+  "spawnPool": ["spawn_swamp_debris", "spawn_enemy_boar", "spawn_anomaly_glow", "spawn_anomaly_chem", "spawn_anomaly_crater", "spawn_anomaly_gravity"],
+  "danger": 0.6,
+  "chainLength": [1, 3],
+  "chainWeights": { "1": 0.2, "2": 0.5, "3": 0.3 },
+  "rarity": "uncommon",
+  "spawnChance": 1,
+  "unique": false,
+  "stage": {
+    "tint": "#c4ccc4",
+    "brightness": 0.9,
+    "stashHeight": 0.7,
+    "anchors": [
+      { "slot": "left", "x": 0.20, "y": 0.14, "ppm": 160 },
+      { "slot": "right", "x": 0.70, "y": 0.11, "ppm": 168 },
+      { "slot": "center", "x": 0.50, "y": 0.19, "ppm": 150 }
+    ]
+  }
+}

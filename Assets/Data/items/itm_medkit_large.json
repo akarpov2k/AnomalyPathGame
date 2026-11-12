@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_medkit_large",
+  "nameKey": "item.itm_medkit_large.name",
+  "icon": "icons/itm_medkit_large",
+  "category": "consumable",
+  "footprint": [2, 3],
+  "maxStack": 1,
+  "tier": 2,
+  "weight": 2.2,
+  "price": { "mode": "fixed", "buy": 420, "sell": 160 },
+  "equipSlots": [],
+  "consumable": {
+    "useTime": 3,
+    "charges": 2,
+    "usableInCombat": false,
+    "effects": [{ "type": "heal", "amount": 100 }],
+    "healsInjuries": ["injury_broken_arm", "injury_broken_leg", "injury_head_concussion"]
+  }
+}

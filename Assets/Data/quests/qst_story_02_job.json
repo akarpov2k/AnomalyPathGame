@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "kind": "quests",
+  "id": "qst_story_02_job",
+  "questKind": "story",
+  "storyLine": "main",
+  "titleKey": "quest.qst_story_02_job.title",
+  "descriptionKey": "quest.qst_story_02_job.desc",
+  "giverActorId": "trd_hub_smuggler",
+  "nextQuestId": "qst_story_03_dogs",
+  "progressScope": "life",
+  "requirements": { "quests": ["qst_story_01_cordon"] },
+  "objectives": [
+    {
+      "type": "killActors",
+      "actorPool": ["enemy_bandit"],
+      "count": 2,
+      "minTier": 1,
+      "maxTier": 1
+    },
+    { "type": "openStashes", "count": 1 },
+    { "type": "inspectObjects", "objectKind": "loot", "count": 5 }
+  ],
+  "rewards": {
+    "money": 400,
+    "items": [
+      { "itemId": "ammo_545", "count": 30 },
+      { "itemId": "itm_medkit_normal", "count": 1 }
+    ]
+  },
+  "variants": [
+    {
+      "id": "hard",
+      "objectives": [
+        {
+          "type": "killActors",
+          "actorPool": ["enemy_bandit"],
+          "count": 4,
+          "minTier": 1,
+          "maxTier": 1
+        },
+        { "type": "openStashes", "count": 2 },
+        { "type": "inspectObjects", "objectKind": "loot", "count": 10 }
+      ],
+      "rewards": {
+        "money": 280,
+        "items": [
+          { "itemId": "ammo_545", "count": 21 }
+        ]
+      }
+    }
+  ]
+}

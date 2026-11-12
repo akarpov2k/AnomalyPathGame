@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "kind": "rarities",
+  "id": "rar_epic",
+  "nameKey": "rarity.rar_epic.name",
+  "order": 3,
+  "accuracyBonus": 0.06,
+  "dropWeight": 9,
+  "weaponStatBonus": 0.3,
+  "sellPriceBonus": 0.3
+}

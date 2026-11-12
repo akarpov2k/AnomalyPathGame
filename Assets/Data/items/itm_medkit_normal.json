@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_medkit_normal",
+  "nameKey": "item.itm_medkit_normal.name",
+  "icon": "icons/itm_medkit_normal",
+  "category": "consumable",
+  "footprint": [1, 2],
+  "maxStack": 1,
+  "tier": 1,
+  "weight": 0.8,
+  "price": { "mode": "fixed", "buy": 150, "sell": 60 },
+  "consumable": {
+    "useTime": 2,
+    "charges": 2,
+    "usableInCombat": true,
+    "effects": [{ "type": "heal", "amount": 30 }]
+  }
+}

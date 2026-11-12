@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "rules",
+  "id": "rules",
+  "insuranceChance": 0.15,
+  "insuranceStep": 0.05,
+  "xpLossChance": 0.4,
+  "xpLossStep": 0.1,
+  "xpLossMax": 1,
+  "respawnPercent": 0.3,
+  "baseRows": 3,
+  "gridWidth": 8,
+  "baseCarryWeight": 20,
+  "overloadKg": 5,
+  "needsMax": 100,
+  "playerActorId": "actor_player",
+  "startingMoney": 1000,
+  "tradeDifficulty": 1,
+  "tradeDifficultyMax": 3,
+  "tradeDifficultyStep": 0.1,
+  "nicknameMaxLength": 24,
+  "previewMaxRows": 32,
+  "maxRows": 32,
+  "savePageSize": 6,
+  "maxActiveQuests": 3,
+  "questCooldownHours": 48,
+  "mainStoryLine": "main",
+  "nightAccuracyPenalty": 0.2,
+  "nightAccuracyPenaltyMax": 0.5,
+  "nightAccuracyPenaltyStep": 0.05,
+  "stashLock": {
+    "attempts": 7,
+    "tiers": [
+      { "tier": 0, "codeLength": 3, "alphabetSize": 5 },
+      { "tier": 1, "codeLength": 3, "alphabetSize": 5 },
+      { "tier": 2, "codeLength": 3, "alphabetSize": 5 }
+    ]
+  },
+  "anomalyField": {
+    "width": 3,
+    "height": 2,
+    "tiers": [
+      { "tier": 0, "scans": 4, "bands": [1, 2, 3] },
+      { "tier": 1, "scans": 5, "bands": [1, 2, 3] },
+      { "tier": 2, "scans": 6, "bands": [1, 2, 4] }
+    ]
+  },
+  "tierCount": 4,
+  "needs": {
+    "foodPerHour": 2,
+    "waterPerHour": 3,
+    "hungryStaminaCostMultiplier": 1.2,
+    "hungryApCostBonus": 1,
+    "thirstDamage": 3
+  },
+  "audio": {
+    "menuMusic": "mus-menu-theme",
+    "combatMusic": "mus-combat-light",
+    "ambienceVolume": 0.55,
+    "musicVolume": 0.45,
+    "fadeSeconds": 1.5
+  },
+  "sky": {
+    "keyframes": [
+      { "hour": 0, "light": [0.72, 0.82, 1.0], "tint": [0.05, 0.09, 0.2], "tintAlpha": 0.5, "glow": 0.9 },
+      { "hour": 5, "light": [0.55, 0.6, 0.85], "tint": [0.1, 0.12, 0.28], "tintAlpha": 0.35, "glow": 0.7 },
+      { "hour": 6.5, "light": [1.0, 0.65, 0.4], "tint": [0.95, 0.55, 0.35], "tintAlpha": 0.0, "glow": 1.0 },
+      { "hour": 9, "light": [1.0, 0.93, 0.82], "tint": [1.0, 0.95, 0.9], "tintAlpha": 0.0, "glow": 1.0 },
+      { "hour": 12, "light": [1.0, 0.97, 0.9], "tint": [1.0, 1.0, 1.0], "tintAlpha": 0.0, "glow": 1.0 },
+      { "hour": 17.5, "light": [1.0, 0.8, 0.55], "tint": [1.0, 0.85, 0.6], "tintAlpha": 0.0, "glow": 1.0 },
+      { "hour": 19.5, "light": [1.0, 0.5, 0.22], "tint": [0.95, 0.45, 0.22], "tintAlpha": 0.0, "glow": 0.9 },
+      { "hour": 21, "light": [0.6, 0.65, 0.95], "tint": [0.12, 0.16, 0.35], "tintAlpha": 0.3, "glow": 0.8 },
+      { "hour": 24, "light": [0.72, 0.82, 1.0], "tint": [0.05, 0.09, 0.2], "tintAlpha": 0.5, "glow": 0.9 }
+    ]
+  },
+  "walk": {
+    "enabled": true,
+    "speed": 420,
+    "laneLength": 7200,
+    "laneMeters": 60,
+    "objectStart": 2200,
+    "objectGap": 500,
+    "minutesPerMeter": 0.5,
+    "returnMinutes": 30,
+    "useStamina": false,
+    "backtrackFactor": 3,
+    "runMultiplier": 2
+  }
+}

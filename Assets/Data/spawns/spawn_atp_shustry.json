@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_atp_shustry",
+  "titleKey": "spawn.atp.shustry.title",
+  "height": 1.8,
+  "objectKind": "npc",
+  "requiresTags": [],
+  "excludesTags": [],
+  "weight": 1,
+  "spawnChance": 1,
+  "minTier": 2,
+  "maxTier": 2,
+  "actorId": "npc_atp_shustry",
+  "unique": true
+}

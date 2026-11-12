@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_field_debris",
+  "titleKey": "spawn.spawn_field_debris.title",
+  "icon": "icons/obj_field_debris",
+  "height": 0.4,
+  "objectKind": "loot",
+  "requiresTags": ["outdoor", "rural"],
+  "excludesTags": ["hub"],
+  "weight": 2,
+  "spawnChance": 0.5,
+  "minTier": 0,
+  "maxTier": 2,
+  "lootTable": "loot_human"
+}

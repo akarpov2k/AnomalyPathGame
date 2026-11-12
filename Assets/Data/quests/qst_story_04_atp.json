@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "kind": "quests",
+  "id": "qst_story_04_atp",
+  "questKind": "story",
+  "storyLine": "main",
+  "titleKey": "quest.qst_story_04_atp.title",
+  "descriptionKey": "quest.qst_story_04_atp.desc",
+  "giverActorId": "trd_hub_smuggler",
+  "nextQuestId": "qst_story_05_angar",
+  "progressScope": "life",
+  "requirements": { "quests": ["qst_story_03_dogs"] },
+  "objectives": [
+    {
+      "type": "clearChain",
+      "chainId": "chain_atp",
+      "count": 5,
+      "completion": "talkToActor"
+    }
+  ],
+  "turnInItems": [
+    { "itemId": "itm_atp_flash", "count": 1 }
+  ],
+  "rewards": {
+    "money": 2500,
+    "items": [
+      { "itemId": "itm_medkit_army", "count": 1 }
+    ],
+    "unlocks": ["unlock_smuggler_premium"]
+  }
+}

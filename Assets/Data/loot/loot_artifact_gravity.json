@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "kind": "lootTables",
+  "id": "loot_artifact_gravity",
+  "entries": [
+    { "itemId": "art_gravity_lens", "always": true, "ignoreTierBand": true }
+  ]
+}

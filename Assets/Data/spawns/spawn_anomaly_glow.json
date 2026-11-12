@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_anomaly_glow",
+  "titleKey": "spawn.spawn_anomaly_glow.title",
+  "icon": "icons/anomaly_glow",
+  "height": 1.4,
+  "objectKind": "anomaly",
+  "anomalyId": "anomaly_glow",
+  "requiresTags": [],
+  "excludesTags": [],
+  "weight": 1,
+  "spawnChance": 0.35,
+  "minTier": 0,
+  "maxTier": 3
+}

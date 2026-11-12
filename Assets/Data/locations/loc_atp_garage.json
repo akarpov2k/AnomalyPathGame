@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_atp_garage",
+  "titleKey": "location.atp.garage.title",
+  "locationKind": "special",
+  "subtype": "building",
+  "role": "industrial",
+  "tags": ["outdoor", "indoor"],
+  "tier": 1,
+  "backgrounds": ["bg_site_house"],
+  "ambience": "amb-atp",
+  "sceneArt": "loc_atp_garage",
+  "roadArt": "loc_road_atp_garage",
+  "walkBackdrop": "backdrops/walk_atp_garage",
+  "walkParts": ["backdrops/walkparts_loc_atp_garage_1", "backdrops/walkparts_loc_atp_garage_2", "backdrops/walkparts_loc_atp_garage_3"],
+  "walkRoad": "backdrops/walk_road_concrete",
+  "walkPathX": 0.5,
+  "walkPaths": [0.47, 0.5, 0.52],
+  "interiorId": "loc_atp_garage_interior",
+  "objectCount": [0, 0],
+  "spawnPool": ["spawn_atp_garage_bandit"],
+  "danger": 0.5,
+  "rarity": "unique",
+  "spawnChance": 1,
+  "unique": true,
+  "stage": {
+    "tint": "#c9ced4",
+    "brightness": 0.95,
+    "stashHeight": 0.7,
+    "anchors": [
+      { "slot": "left", "x": 0.20, "y": 0.14, "ppm": 160 },
+      { "slot": "right", "x": 0.70, "y": 0.11, "ppm": 170 },
+      { "slot": "center", "x": 0.50, "y": 0.19, "ppm": 150 }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_enemy_bandit",
+  "titleKey": "spawn.spawn_enemy_bandit.title",
+  "height": 1.8,
+  "objectKind": "enemy",
+  "requiresTags": [],
+  "excludesTags": ["hub"],
+  "weight": 2,
+  "spawnChance": 0.45,
+  "minTier": 0,
+  "maxTier": 3,
+  "actorId": "enemy_bandit"
+}

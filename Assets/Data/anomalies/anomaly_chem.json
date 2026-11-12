@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "anomalies",
+  "id": "anomaly_chem",
+  "artifactType": "chemical",
+  "damageTypeId": "dmg_chemical",
+  "damage": 8,
+  "attempts": 3,
+  "artifactChance": 0.35,
+  "artifactTable": "loot_artifact_chemical",
+  "tiers": [0, 1, 2]
+}

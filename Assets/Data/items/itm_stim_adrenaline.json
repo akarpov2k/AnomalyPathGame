@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_stim_adrenaline",
+  "nameKey": "item.itm_stim_adrenaline.name",
+  "icon": "icons/itm_stim_adrenaline",
+  "category": "consumable",
+  "footprint": [1, 1],
+  "maxStack": 1,
+  "tier": 1,
+  "weight": 0.1,
+  "price": { "mode": "fixed", "buy": 120, "sell": 50 },
+  "consumable": {
+    "useTime": 1,
+    "charges": 1,
+    "usableInCombat": true,
+    "effects": [{ "type": "restoreAp", "amount": 3 }]
+  }
+}

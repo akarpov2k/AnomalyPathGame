@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_atp_garage_bandit",
+  "titleKey": "spawn.atp.bandit.title",
+  "height": 1.8,
+  "objectKind": "enemy",
+  "requiresTags": [],
+  "excludesTags": [],
+  "weight": 1,
+  "spawnChance": 1,
+  "minTier": 1,
+  "maxTier": 2,
+  "actorId": "enemy_bandit",
+  "unique": true
+}

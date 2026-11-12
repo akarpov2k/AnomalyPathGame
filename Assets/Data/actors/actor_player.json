@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "actors",
+  "id": "actor_player",
+  "type": "npc",
+  "nameKey": "actor.actor_player.name",
+  "combat": {
+    "tier": 1,
+    "level": 1,
+    "health": 100,
+    "ap": 3,
+    "protection": { "dmg_bullet": 0, "dmg_electric": 1, "dmg_chemical": 1, "dmg_fire": 1, "dmg_rupture": 1 },
+    "accuracy": 0.8
+  }
+}

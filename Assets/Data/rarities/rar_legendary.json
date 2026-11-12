@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "kind": "rarities",
+  "id": "rar_legendary",
+  "nameKey": "rarity.rar_legendary.name",
+  "order": 4,
+  "accuracyBonus": 0.08,
+  "dropWeight": 4.5,
+  "weaponStatBonus": 0.4,
+  "sellPriceBonus": 0.4
+}

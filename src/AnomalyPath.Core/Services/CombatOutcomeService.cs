@@ -1,0 +1,178 @@
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using AnomalyPath.Core.Abstractions;
+using AnomalyPath.Core.Combat;
+using AnomalyPath.Core.Data;
+using AnomalyPath.Core.Loot;
+using AnomalyPath.Core.Player;
+using AnomalyPath.Core.Session;
+
+namespace AnomalyPath.Core.Services
+{
+    /// <summary>
+    /// Итог боя: победа даёт опыт (с повышением уровня) и лут, поражение применяет смерть
+    /// с потерей доли опыта и, кроме пермасмерти, возвращает игрока в последний хаб
+    /// с урезанными здоровьем, едой и водой.
+    /// </summary>
+    public sealed class CombatOutcomeService : ICombatOutcomeService
+    {
+        private readonly IDeathService _death;
+        private readonly IGameRulesRepository _rules;
+        private readonly IFormulaRepository _formulas;
+        private readonly ILootService _loot;
+        private readonly IProgressionService _progression;
+        private readonly CombatSettingsTemplate _settings;
+        private readonly BalanceTemplate _balance;
+
+        /// <summary>Создаёт сервис результата боя.</summary>
+        /// <param name="death">Последствия смерти для вещей.</param>
+        /// <param name="rules">Правила прохождения: доля респавна.</param>
+        /// <param name="formulas">Формулы: опыт за победу.</param>
+        /// <param name="settings">Настройки боя: ссылка на формулу опыта.</param>
+        /// <param name="balance">Константы баланса для формулы.</param>
+        /// <param name="loot">Бросок лута с побеждённого противника.</param>
+        /// <param name="progression">Прогрессия: начисление опыта и повышение уровня.</param>
+        /// <exception cref="ArgumentNullException">Зависимость не задана.</exception>
+        public CombatOutcomeService(
+            IDeathService death,
+            IGameRulesRepository rules,
+            IFormulaRepository formulas,
+            CombatSettingsTemplate settings,
+            BalanceTemplate balance,
+            ILootService loot,
+            IProgressionService progression)
+        {
+            _death = death ?? throw new ArgumentNullException(nameof(death));
+            _rules = rules ?? throw new ArgumentNullException(nameof(rules));
+            _formulas = formulas ?? throw new ArgumentNullException(nameof(formulas));
+            _settings = settings ?? throw new ArgumentNullException(nameof(settings));
+            _balance = balance ?? throw new ArgumentNullException(nameof(balance));
+            _loot = loot ?? throw new ArgumentNullException(nameof(loot));
+            _progression = progression ?? throw new ArgumentNullException(nameof(progression));
+        }
+
+        /// <inheritdoc />
+        public CombatOutcome Resolve(GameSession session)
+        {
+            if (session == null)
+            {
+                throw new ArgumentNullException(nameof(session));
+            }
+
+            var combat = session.Combat;
+            if (combat == null)
+            {
+                return CombatOutcome.NoCombat();
+            }
+
+            if (!combat.IsFinished)
+            {
+                return CombatOutcome.NotFinished();
+            }
+
+            var player = session.State.Player;
+            if (player == null)
+            {
+                return CombatOutcome.NoCombat();
+            }
+
+            return combat.Player.IsDead
+                ? ResolveDefeat(session, player, combat)
+                : ResolveVictory(session, player, combat);
+        }
+
+        private CombatOutcome ResolveVictory(GameSession session, PlayerState player, CombatState combat)
+        {
+            player.SetHealth(ToHealth(combat.Player.Health));
+            var location = session.State.World.CurrentLocation;
+            var tier = combat.Context?.Tier ?? location.Tier;
+            var xp = CalculateXp(combat.Enemy.Template, tier);
+            _progression.AddXp(player, xp);
+            var loot = _loot.Roll(new LootContext(
+                combat.Enemy.Template.Id,
+                combat.Enemy.Template.Rarity,
+                combat.Enemy.Template.LootTableId,
+                tier,
+                NextLootSeed(session, combat)));
+            if (combat.Context?.OnRoad != true)
+            {
+                location.MarkEnemyGone();
+                location.MarkEnemyDefeated(combat.Enemy.Template.Id);
+            }
+
+            session.SetCombat(null);
+            return CombatOutcome.Victory(xp, loot);
+        }
+
+        /// <summary>
+        /// Seed броска: мир, противник, экземпляр локации, время и номер броска. Номер берётся
+        /// из состояния мира и растёт на каждую победу, иначе повторный бой в той же локации
+        /// и в тот же час выдавал бы тот же лут.
+        /// </summary>
+        private static int NextLootSeed(GameSession session, CombatState combat)
+        {
+            var world = session.State.World;
+            var clock = world.Clock;
+            var key = combat.Enemy.Template.Id
+                + "#" + (combat.Context?.Key ?? world.CurrentLocation.InstanceId)
+                + "#" + clock.Day.ToString(CultureInfo.InvariantCulture)
+                + "#" + clock.Hours.ToString("R", CultureInfo.InvariantCulture)
+                + "#" + world.NextLootSerial().ToString(CultureInfo.InvariantCulture);
+            return StableHash.Combine(world.Map.Seed, key);
+        }
+
+        private CombatOutcome ResolveDefeat(GameSession session, PlayerState player, CombatState combat)
+        {
+            var death = _death.Apply(session.State);
+            if (death.Permadeath)
+            {
+                player.SetHealth(0);
+                session.SetCombat(null);
+                return CombatOutcome.Defeat(death, false, null);
+            }
+
+            var rules = _rules.Require();
+            var health = Math.Max(
+                1,
+                (int)Math.Round(combat.Player.MaxHealth * rules.RespawnPercent, MidpointRounding.AwayFromZero));
+            player.SetHealth(health);
+
+            var foodCap = Math.Max(
+                0,
+                (int)Math.Round(player.Needs.FoodMax * rules.RespawnPercent, MidpointRounding.AwayFromZero));
+            var waterCap = Math.Max(
+                0,
+                (int)Math.Round(player.Needs.WaterMax * rules.RespawnPercent, MidpointRounding.AwayFromZero));
+            player.Needs.SetHunger(Math.Min(player.Needs.Hunger, foodCap));
+            player.Needs.SetThirst(Math.Min(player.Needs.Thirst, waterCap));
+
+            var hubId = session.State.World.LastHubId;
+            session.State.World.MoveTo(hubId);
+            session.SetCombat(null);
+            return CombatOutcome.Defeat(death, true, hubId);
+        }
+
+        private int CalculateXp(ActorTemplate enemy, int locationTier)
+        {
+            var enemyXp = enemy.Combat?.Xp ?? 0;
+            if (enemyXp <= 0)
+            {
+                return 0;
+            }
+
+            var variables = new Dictionary<string, double>(StringComparer.Ordinal)
+            {
+                ["enemyXp"] = enemyXp,
+                ["locationTier"] = locationTier
+            };
+            var formula = _formulas.Get(_settings.XpFormulaId);
+            var value = formula.Evaluate(variables, _balance.Constants, 0, null);
+            return value <= 0 ? 0 : (int)value;
+        }
+
+        private static int ToHealth(double health) =>
+            health <= 0 ? 0 : (int)Math.Round(health, MidpointRounding.AwayFromZero);
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "collection": true,
+  "id": "col_skills",
+  "entries": [
+    "skills/skill_shot.json",
+    "skills/skill_burst.json",
+    "skills/skill_aimed.json",
+    "skills/skill_stock.json",
+    "skills/skill_rifle_aimed.json",
+    "skills/skill_suppression.json",
+    "skills/skill_brace.json",
+    "skills/skill_shotgun_buckshot.json",
+    "skills/skill_shotgun_slug.json",
+    "skills/skill_shotgun_double.json",
+    "skills/skill_sniper_prepare.json",
+    "skills/skill_sniper_called.json",
+    "skills/skill_bite.json",
+    "skills/skill_gore.json",
+    "skills/skill_maul.json"
+  ]
+}

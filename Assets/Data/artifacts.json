@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "artifactSettings",
+  "id": "artifacts",
+  "falloff": 0.5,
+  "rarities": [
+    { "rarity": "common", "chance": 0.45, "positiveFactor": 1.0, "negativeFactor": 1.0, "extraMin": 0, "extraMax": 0 },
+    { "rarity": "rare", "chance": 0.25, "positiveFactor": 1.1, "negativeFactor": 0.9, "extraMin": 0, "extraMax": 0 },
+    { "rarity": "special", "chance": 0.15, "positiveFactor": 1.25, "negativeFactor": 0.75, "extraMin": 0, "extraMax": 0 },
+    { "rarity": "epic", "chance": 0.09, "positiveFactor": 1.4, "negativeFactor": 0.6, "extraMin": 0, "extraMax": 0 },
+    { "rarity": "legendary", "chance": 0.045, "positiveFactor": 1.6, "negativeFactor": 0.4, "extraMin": 1, "extraMax": 2 },
+    { "rarity": "unique", "chance": 0.015, "positiveFactor": 1.8, "negativeFactor": 0.2, "extraMin": 1, "extraMax": 2 }
+  ]
+}

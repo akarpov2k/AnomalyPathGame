@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_room_desk",
+  "titleKey": "spawn.spawn_room_desk.title",
+  "icon": "icons/obj_room_desk",
+  "height": 0.78,
+  "objectKind": "loot",
+  "requiresTags": ["indoor", "house"],
+  "excludesTags": ["hub"],
+  "weight": 2,
+  "spawnChance": 0.5,
+  "minTier": 0,
+  "maxTier": 2,
+  "lootTable": "loot_human"
+}

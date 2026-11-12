@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "anomalies",
+  "collection": true,
+  "id": "col_anomalies",
+  "entries": [
+    "anomalies/anomaly_chem.json",
+    "anomalies/anomaly_crater.json",
+    "anomalies/anomaly_glow.json",
+    "anomalies/anomaly_gravity.json"
+  ]
+}

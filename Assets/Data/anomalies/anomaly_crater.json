@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "anomalies",
+  "id": "anomaly_crater",
+  "artifactType": "fire",
+  "damageTypeId": "dmg_fire",
+  "damage": 14,
+  "attempts": 2,
+  "artifactChance": 0.4,
+  "artifactTable": "loot_artifact_fire",
+  "tiers": [1, 2]
+}

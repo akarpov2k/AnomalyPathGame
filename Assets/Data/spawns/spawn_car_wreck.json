@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_car_wreck",
+  "titleKey": "spawn.spawn_car_wreck.title",
+  "icon": "icons/obj_car_wreck",
+  "height": 1.5,
+  "objectKind": "loot",
+  "requiresTags": ["road", "outdoor"],
+  "excludesTags": ["hub"],
+  "weight": 3,
+  "spawnChance": 0.7,
+  "minTier": 0,
+  "maxTier": 2,
+  "lootTable": "loot_human"
+}

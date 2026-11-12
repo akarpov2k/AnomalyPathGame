@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_room_shelf",
+  "titleKey": "spawn.spawn_room_shelf.title",
+  "icon": "icons/obj_room_shelf",
+  "height": 1.75,
+  "objectKind": "loot",
+  "requiresTags": ["indoor", "house"],
+  "excludesTags": ["hub"],
+  "weight": 3,
+  "spawnChance": 0.5,
+  "minTier": 0,
+  "maxTier": 2,
+  "lootTable": "loot_human"
+}

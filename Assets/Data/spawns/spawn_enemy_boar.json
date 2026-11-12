@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_enemy_boar",
+  "titleKey": "spawn.spawn_enemy_boar.title",
+  "height": 0.9,
+  "objectKind": "enemy",
+  "requiresTags": ["outdoor"],
+  "excludesTags": ["hub"],
+  "weight": 2,
+  "spawnChance": 0.35,
+  "minTier": 1,
+  "maxTier": 3,
+  "actorId": "mutant_boar"
+}

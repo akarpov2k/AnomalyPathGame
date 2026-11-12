@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "wpn_ks23",
+  "extends": "_base/weapon_rifle.json",
+  "include": ["_base/priced_standard.json"],
+  "nameKey": "item.wpn_ks23.name",
+  "descriptionKey": "item.wpn_ks23.desc",
+  "icon": "icons/wpn_ks23",
+  "footprint": [2, 3],
+  "tier": 5,
+  "weight": 3.9,
+  "rarity": "special",
+  "equipSlots": ["main", "secondary"],
+  "price": { "mode": "fixed", "buy": 4500, "sell": 1800 },
+  "weapon": {
+    "classId": "wclass_shotgun",
+    "damage": 25,
+    "accuracyCoefficient": 0.9,
+    "magazine": 4,
+    "ammoCaliber": "23x75",
+    "durabilityMax": 120,
+    "durabilityPerShot": 1.0,
+    "reloadPerShell": true,
+    "skills": ["skill_shotgun_buckshot", "skill_shotgun_slug", "skill_shotgun_double", "skill_stock"],
+    "defaultSkillId": "skill_shotgun_buckshot"
+  }
+}

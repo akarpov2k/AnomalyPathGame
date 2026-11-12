@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_surv",
+  "nameKey": "item.itm_surv.name",
+  "icon": "icons/itm_surv",
+  "category": "consumable",
+  "footprint": [2, 2],
+  "maxStack": 1,
+  "tier": 3,
+  "weight": 2.5,
+  "price": { "mode": "fixed", "buy": 650, "sell": 260 },
+  "equipSlots": [],
+  "consumable": {
+    "useTime": 3,
+    "charges": 3,
+    "usableInCombat": false,
+    "effects": [{ "type": "heal", "amount": 40 }],
+    "healsInjuries": ["injury_broken_arm", "injury_broken_leg", "injury_head_concussion"]
+  }
+}

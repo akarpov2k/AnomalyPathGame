@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_sniper_prepare",
+  "nameKey": "skill.skill_sniper_prepare.name",
+  "descriptionKey": "skill.skill_sniper_prepare.desc",
+  "type": "utility",
+  "apCost": 1,
+  "ammoCost": 0,
+  "accuracy": 1.0,
+  "effects": [
+    { "type": "status", "target": "self", "statusId": "status_aim", "accuracy": 0.15, "damageMultiplier": 0.25, "turns": 1 }
+  ]
+}

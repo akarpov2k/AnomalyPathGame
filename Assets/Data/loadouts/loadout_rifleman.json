@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "loadouts",
+  "id": "loadout_rifleman",
+  "nameKey": "loadout.loadout_rifleman.name",
+  "descriptionKey": "loadout.loadout_rifleman.description",
+  "startingMoney": 1000,
+  "weapon": "wpn_ak74",
+  "secondaryWeapon": "wpn_pm",
+  "armor": "itm_armor_plate",
+  "helmet": "itm_helmet_light",
+  "backpack": "itm_backpack_small",
+  "belt": "itm_belt_artifact",
+  "consumables": [
+    { "itemId": "ammo_545", "count": 120 },
+    { "itemId": "ammo_9x18", "count": 30 },
+    { "itemId": "itm_food_stew", "count": 2 },
+    { "itemId": "itm_water_bottle", "count": 2 },
+    { "itemId": "itm_medkit_normal", "count": 2 }
+  ]
+}

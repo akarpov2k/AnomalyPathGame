@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "actors",
+  "collection": true,
+  "id": "col_actors",
+  "entries": [
+    "actors/actor_player.json",
+    "actors/enemy_bandit.json",
+    "actors/enemy_merc.json",
+    "actors/mutant_boar.json",
+    "actors/mutant_wolf.json",
+    "actors/mutant_bear.json",
+    "actors/trd_hub_smuggler.json",
+    "actors/trd_hub_medic.json",
+    "actors/npc_atp_shustry.json",
+    "actors/npc_angar_gvozd.json"
+  ]
+}

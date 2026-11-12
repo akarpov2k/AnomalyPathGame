@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_hub_settlement",
+  "titleKey": "location.hub.settlement.title",
+  "locationKind": "hub",
+  "subtype": "hub",
+  "tags": ["hub", "outdoor", "road"],
+  "tier": 1,
+  "backgrounds": ["bg_hub_house"],
+  "ambience": "amb-hub-settlement",
+  "hubView": "house",
+  "worldMap": { "left": 0.335, "bottom": 0.055, "right": 0.690, "top": 0.325 },
+  "objectCount": [0, 0],
+  "danger": 0,
+  "chainLength": [1, 1],
+  "rarity": "common",
+  "spawnChance": 1,
+  "unique": false,
+  "traders": ["trd_hub_smuggler", "trd_hub_medic"],
+  "questBoard": {
+    "slots": [
+      { "difficulty": "easy", "refreshHours": 24 },
+      { "difficulty": "easy", "refreshHours": 24 },
+      { "difficulty": "medium", "refreshHours": 48 },
+      { "difficulty": "medium", "refreshHours": 48 },
+      { "difficulty": "hard", "refreshHours": 72 },
+      { "difficulty": "hard", "refreshHours": 72 }
+    ],
+    "questPool": [
+      "qst_clear_house",
+      "qst_kill_mutants",
+      "qst_find_weapons",
+      "qst_find_armor",
+      "qst_clear_anomaly",
+      "qst_gather_artifacts"
+    ]
+  }
+}

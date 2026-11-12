@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "kind": "chains",
+  "id": "chain_atp",
+  "completionItemId": "itm_atp_flash",
+  "locations": [
+    { "locationId": "loc_atp_gate", "enemySpawnId": "spawn_atp_gate_bandit" },
+    { "locationId": "loc_atp_yard", "enemySpawnId": "spawn_atp_yard_bandit" },
+    { "locationId": "loc_atp_garage", "enemySpawnId": "spawn_atp_garage_bandit" },
+    { "locationId": "loc_atp_barracks", "enemySpawnId": "spawn_atp_barracks_bandit" },
+    {
+      "locationId": "loc_atp_dispatch",
+      "enemySpawnId": "spawn_atp_dispatch_merc",
+      "npcSpawnId": "spawn_atp_shustry"
+    }
+  ]
+}

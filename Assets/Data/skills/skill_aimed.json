@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_aimed",
+  "nameKey": "skill.skill_aimed.name",
+  "descriptionKey": "skill.skill_aimed.desc",
+  "type": "attack",
+  "apCost": 2,
+  "ammoCost": 1,
+  "accuracy": 1.2,
+  "effects": [
+    { "type": "damage", "multiplier": 1.0, "hits": 1 }
+  ]
+}

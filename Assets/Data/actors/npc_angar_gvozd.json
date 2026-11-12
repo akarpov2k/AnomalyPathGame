@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "kind": "actors",
+  "id": "npc_angar_gvozd",
+  "type": "npc",
+  "nameKey": "actor.npc_angar_gvozd.name",
+  "descriptionKey": "actor.npc_angar_gvozd.desc",
+  "roles": ["quest"],
+  "dialogId": "dlg_angar_gvozd"
+}

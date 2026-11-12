@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "actors",
+  "id": "enemy_bandit",
+  "type": "enemy",
+  "nameKey": "actor.enemy_bandit.name",
+  "portrait": "portraits/enemy_bandit",
+  "portraitMode": "full",
+  "costume": "costumes/combat_enemy_bandit",
+  "roles": ["human"],
+  "rarity": "common",
+  "lootTable": "loot_human",
+  "combat": {
+    "tier": 1,
+    "level": 1,
+    "health": 45,
+    "ap": 3,
+    "xp": 40,
+    "protection": { "dmg_bullet": 2 },
+    "accuracy": 0.7,
+    "attack": { "weaponIds": ["wpn_pm", "wpn_obrez"] }
+  }
+}

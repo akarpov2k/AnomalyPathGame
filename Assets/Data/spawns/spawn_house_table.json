@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "spawns",
+  "id": "spawn_house_table",
+  "titleKey": "spawn.spawn_house_table.title",
+  "icon": "icons/obj_house_table",
+  "height": 0.75,
+  "objectKind": "loot",
+  "requiresTags": ["indoor", "house"],
+  "excludesTags": ["hub"],
+  "weight": 3,
+  "spawnChance": 0.5,
+  "minTier": 0,
+  "maxTier": 2,
+  "lootTable": "loot_human"
+}

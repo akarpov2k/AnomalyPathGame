@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "wpn_akm",
+  "extends": "_base/weapon_rifle.json",
+  "include": ["_base/priced_standard.json"],
+  "nameKey": "item.wpn_akm.name",
+  "icon": "icons/wpn_akm",
+  "footprint": [2, 3],
+  "tier": 3,
+  "weight": 3.8,
+  "rarity": "epic",
+  "price": { "mode": "fixed", "buy": 900, "sell": 350 },
+  "weapon": {
+    "classId": "wclass_rifle",
+    "damage": 14,
+    "accuracyCoefficient": 1.0,
+    "magazine": 30,
+    "ammoCaliber": "7.62x39",
+    "skills": ["skill_shot", "skill_burst", "skill_rifle_aimed", "skill_suppression", "skill_stock", "skill_brace"],
+    "defaultSkillId": "skill_shot"
+  }
+}

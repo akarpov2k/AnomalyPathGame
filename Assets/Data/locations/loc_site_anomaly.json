@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_site_anomaly",
+  "titleKey": "location.site.anomaly.title",
+  "locationKind": "wild",
+  "subtype": "terrain",
+  "role": "anomaly",
+  "tags": ["outdoor", "anomaly"],
+  "tier": 2,
+  "backgrounds": ["bg_site_anomaly"],
+  "ambience": "amb-highway-anomaly",
+  "sceneArt": "loc_site_anomaly",
+  "roadArt": "loc_road_anomaly",
+  "walkBackdrop": "backdrops/walk_site_anomaly",
+  "walkParts": ["backdrops/walkparts_loc_site_anomaly_1", "backdrops/walkparts_loc_site_anomaly_2", "backdrops/walkparts_loc_site_anomaly_3"],
+  "walkRoad": "backdrops/walk_road_dirt",
+  "walkPathX": 0.5,
+  "objectCount": [3, 5],
+  "spawnPool": ["spawn_anomaly_crater", "spawn_anomaly_glow", "spawn_enemy_boar", "spawn_anomaly_chem", "spawn_anomaly_gravity"],
+  "danger": 0.8,
+  "chainLength": [1, 2],
+  "chainWeights": { "1": 0.6, "2": 0.4 },
+  "rarity": "uncommon",
+  "spawnChance": 1,
+  "unique": false,
+  "stage": {
+    "tint": "#d8cfd8",
+    "brightness": 0.92,
+    "stashHeight": 0.7,
+    "anchors": [
+      { "slot": "left", "x": 0.20, "y": 0.14, "ppm": 160 },
+      { "slot": "right", "x": 0.70, "y": 0.11, "ppm": 168 },
+      { "slot": "center", "x": 0.50, "y": 0.2, "ppm": 150 }
+    ]
+  }
+}

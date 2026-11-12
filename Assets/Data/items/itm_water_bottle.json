@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_water_bottle",
+  "extends": "_base/consumable_noncombat.json",
+  "nameKey": "item.itm_water_bottle.name",
+  "icon": "icons/itm_water_bottle",
+  "footprint": [1, 2],
+  "maxStack": 10,
+  "tier": 1,
+  "weight": 0.7,
+  "price": { "mode": "fixed", "buy": 25, "sell": 10 },
+  "consumable": {
+    "effects": [{ "type": "restoreWater", "amount": 40 }]
+  }
+}

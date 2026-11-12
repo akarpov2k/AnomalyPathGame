@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "kind": "injuries",
+  "collection": true,
+  "id": "col_injuries",
+  "entries": [
+    "injuries/injury_broken_leg.json",
+    "injuries/injury_broken_arm.json",
+    "injuries/injury_head_concussion.json"
+  ]
+}

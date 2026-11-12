@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_suppression",
+  "nameKey": "skill.skill_suppression.name",
+  "descriptionKey": "skill.skill_suppression.desc",
+  "type": "attack",
+  "apCost": 2,
+  "ammoCost": 3,
+  "accuracy": 0.8,
+  "effects": [
+    { "type": "damage", "multiplier": 0.5, "hits": 3 },
+    { "type": "status", "target": "enemy", "statusId": "status_suppressed", "accuracy": -0.15, "actionApCost": 1, "turns": 1 }
+  ]
+}

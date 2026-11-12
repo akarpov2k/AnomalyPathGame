@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "kind": "topology",
+  "id": "topology",
+  "route": {
+    "transitions": [
+      { "from": "hub", "to": "path", "via": ["road", "path"], "weight": 1 },
+      { "from": "path", "to": "path", "via": ["road", "path"], "weight": 1 },
+      { "from": "path", "to": "building", "toRole": "residential", "via": ["path"], "weight": 3 },
+      { "from": "path", "to": "building", "toRole": "industrial", "via": ["path"], "weight": 2 },
+      { "from": "building", "to": "building", "fromRole": "industrial", "toRole": "laboratory", "via": ["corridor"], "weight": 1 },
+      { "from": "building", "to": "building", "fromRole": "industrial", "toRole": "industrial", "via": ["corridor"], "weight": 1 },
+      { "from": "building", "to": "building", "fromRole": "residential", "toRole": "residential", "via": ["corridor"], "weight": 1 },
+      { "from": "building", "to": "building", "fromRole": "laboratory", "toRole": "laboratory", "via": ["corridor"], "weight": 1 },
+      { "from": "building", "to": "path", "via": ["path"], "weight": 1 },
+      { "from": "path", "to": "terrain", "via": ["path"], "weight": 3 },
+      { "from": "terrain", "to": "terrain", "via": ["path"], "weight": 2 },
+      { "from": "terrain", "to": "path", "via": ["path"], "weight": 1 }
+    ],
+    "lookaheadEdges": 3,
+    "maxTransitionsPerNode": 3,
+    "hubReturn": { "stamina": 1, "minutes": 20 },
+    "branches": { "oddRange": [1, 3], "evenGrowth": 1, "maxChains": 1 }
+  },
+  "costs": {
+    "road": { "stamina": 1, "minutes": 25 },
+    "path": { "stamina": 2, "minutes": 40 },
+    "gate": { "stamina": 0, "minutes": 10 },
+    "tunnel": { "stamina": 2, "minutes": 45 },
+    "corridor": { "stamina": 0, "minutes": 5 }
+  },
+  "travel": {
+    "onFoot": { "minutesPerStep": 240, "staminaPerStep": 2, "encounterChancePerStep": 0.2 },
+    "guide": { "minutesPerStep": 240, "moneyPerStep": 200 }
+  },
+  "rest": {
+    "staminaPerHour": 2,
+    "raidAttackChancePerHour": 0.1
+  },
+  "initialStamina": 10,
+  "dayStartHour": 10,
+  "nightStartHour": 22
+}

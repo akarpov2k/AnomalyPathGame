@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_food_soup",
+  "extends": "_base/consumable_noncombat.json",
+  "nameKey": "item.itm_food_soup.name",
+  "icon": "icons/itm_food_soup",
+  "footprint": [1, 1],
+  "tier": 1,
+  "weight": 0.4,
+  "price": { "mode": "fixed", "buy": 50, "sell": 20 },
+  "consumable": {
+    "effects": [
+      { "type": "restoreFood", "amount": 30 },
+      { "type": "restoreWater", "amount": 30 }
+    ]
+  }
+}

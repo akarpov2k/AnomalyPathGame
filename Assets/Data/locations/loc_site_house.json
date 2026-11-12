@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "kind": "locations",
+  "id": "loc_site_house",
+  "titleKey": "location.site.house.title",
+  "locationKind": "wild",
+  "subtype": "building",
+  "role": "residential",
+  "tags": ["outdoor", "indoor", "house"],
+  "tier": 1,
+  "backgrounds": ["bg_site_house"],
+  "ambience": "amb-forest-swamp",
+  "sceneArt": "loc_wooden_house",
+  "roadArt": "loc_road_house",
+  "walkBackdrop": "backdrops/walk_forest_path",
+  "walkParts": ["backdrops/walkparts_loc_site_house_1", "backdrops/walkparts_loc_site_house_2", "backdrops/walkparts_loc_site_house_3"],
+  "walkRoad": "backdrops/walk_road_dirt",
+  "walkPathX": 0.5,
+  "walkPaths": [0.55, 0.4, 0.6],
+  "interiorId": "loc_site_house_interior",
+  "objectCount": [3, 5],
+  "spawnPool": ["spawn_house_cabinet", "spawn_house_table", "spawn_room_desk", "spawn_room_shelf", "spawn_enemy_bandit", "spawn_anomaly_glow", "spawn_anomaly_chem", "spawn_anomaly_crater"],
+  "danger": 0.2,
+  "chainLength": [1, 1],
+  "rarity": "common",
+  "spawnChance": 1,
+  "unique": false,
+  "stage": {
+    "tint": "#e8dcc6",
+    "brightness": 0.93,
+    "stashHeight": 0.7,
+    "anchors": [
+      { "slot": "left", "x": 0.18, "y": 0.15, "ppm": 165 },
+      { "slot": "right", "x": 0.66, "y": 0.11, "ppm": 175 },
+      { "slot": "center", "x": 0.50, "y": 0.22, "ppm": 152 }
+    ]
+  }
+}

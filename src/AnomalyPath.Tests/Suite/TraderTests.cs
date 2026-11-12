@@ -1,0 +1,363 @@
+#nullable enable
+using System;
+using System.Collections.Generic;
+using AnomalyPath.Core.Abstractions;
+using AnomalyPath.Core.Combat;
+using AnomalyPath.Core.Di;
+using AnomalyPath.Core.Inventory;
+using AnomalyPath.Core.Player;
+using AnomalyPath.Core.Save;
+using AnomalyPath.Core.Session;
+using AnomalyPath.Core.Templates;
+using AnomalyPath.Core.Trade;
+using AnomalyPath.Core.World;
+
+namespace AnomalyPath.Tests
+{
+    /// <summary>Торговцы: данные, привязка к хабу, условия, запас, покупка и продажа.</summary>
+    public sealed class TraderTests : DataTestBase
+    {
+        private const string TraderId = "trd_hub_smuggler";
+
+        /// <summary>Создаёт категорию тестов торговцев.</summary>
+        /// <param name="dataRoot">Корень данных.</param>
+        public TraderTests(string dataRoot)
+            : base(dataRoot)
+        {
+        }
+
+        /// <inheritdoc />
+        public override void Run()
+        {
+            var services = BuildServices();
+            var trades = services.Resolve<ITradeService>();
+            var actors = services.Resolve<IActorRepository>();
+            var locations = services.Resolve<ILocationRepository>();
+
+            Check("торговцы: привязаны к хабу в данных локации", () =>
+            {
+                var hub = locations.Get("loc_hub_settlement");
+                Equal(2, hub.Traders.Count, "торговцев в хабе");
+                Equal(TraderId, hub.Traders[0], "первый торговец");
+                Equal("trd_hub_medic", hub.Traders[1], "второй торговец");
+                Equal(ActorType.Trader, actors.Get(TraderId).Type, "тип торговца");
+                Equal("portraits/trd_hub_smuggler", actors.Get(TraderId).Portrait, "портрет");
+                Equal(PortraitMode.Waist, actors.Get("trd_hub_medic").PortraitMode, "кадрирование портрета");
+            });
+
+            Check("торговцы: товар скрыт условиями", () =>
+            {
+                var session = NewSession(services);
+                var offers = trades.GetOffers(session, TraderId);
+                True(Contains(offers, "wpn_pm"), "пистолет в продаже");
+                False(Contains(offers, "wpn_akm"), "автомат за квестом скрыт");
+                False(Contains(offers, "wpn_sv98"), "снайперка за открытием скрыта");
+            });
+
+            Check("торговцы: выполненный квест открывает товар", () =>
+            {
+                var session = NewSession(services, quests: new[] { "qst_story_02_job" });
+                var offers = trades.GetOffers(session, TraderId);
+                True(Contains(offers, "wpn_akm"), "автомат открыт квестом");
+                False(Contains(offers, "wpn_sv98"), "снайперка всё ещё скрыта");
+            });
+
+            Check("торговцы: открытие разблокирует товар", () =>
+            {
+                var session = NewSession(services, unlocks: new[] { "unlock_smuggler_premium" });
+                var offers = trades.GetOffers(session, TraderId);
+                True(Contains(offers, "wpn_sv98"), "снайперка открыта");
+            });
+
+            Check("торговцы: цена учитывает множитель торговца", () =>
+            {
+                var session = NewSession(services);
+                var offers = trades.GetOffers(session, TraderId);
+                var pistol = Find(offers, "wpn_pm");
+                Equal(275, pistol!.UnitPrice, "250 × 1.1");
+            });
+
+            Check("торговцы: покупка списывает деньги и запас", () =>
+            {
+                var session = NewSession(services, money: 1000);
+                var before = Find(trades.GetOffers(session, TraderId), "ammo_9x18")!;
+                var result = trades.Buy(session, TraderId, "ammo_9x18", 5);
+                True(result.Succeeded, "покупка");
+                Equal(5, result.Count, "куплено");
+                Equal(30, result.Price, "6 × 5");
+                Equal(970, session.State.Player!.Money, "деньги");
+                Equal(5, CountItem(session.State.Player, "ammo_9x18"), "патроны в инвентаре");
+                Equal(before.Stock - 5, Find(trades.GetOffers(session, TraderId), "ammo_9x18")!.Stock, "запас");
+            });
+
+            Check("торговцы: купленное оружие разряжено", () =>
+            {
+                var session = NewSession(services, money: 1000);
+                var result = trades.Buy(session, TraderId, "wpn_pm");
+                True(result.Succeeded, "покупка");
+                var weapon = FindItem(session.State.Player!.Inventory, "wpn_pm");
+                True(weapon != null, "оружие в инвентаре");
+                Equal(0, weapon!.MagazineRounds, "магазин пуст");
+                Equal(weapon.DurabilityMax, weapon.Durability, "прочность полная");
+            });
+
+            Check("торговцы: не хватает денег — товар и деньги не меняются", () =>
+            {
+                var session = NewSession(services, money: 0);
+                var before = Find(trades.GetOffers(session, TraderId), "ammo_9x18")!;
+                var result = trades.Buy(session, TraderId, "ammo_9x18");
+                Equal(TradeStatus.NotEnoughMoney, result.Status, "статус");
+                Equal(0, session.State.Player!.Money, "деньги");
+                Equal(before.Stock, Find(trades.GetOffers(session, TraderId), "ammo_9x18")!.Stock, "запас");
+            });
+
+            Check("торговцы: нет места — покупка отменяется", () =>
+            {
+                var session = NewSession(services, money: 1000, width: 1, rows: 1);
+                var result = trades.Buy(session, TraderId, "wpn_pm");
+                Equal(TradeStatus.NoRoom, result.Status, "статус");
+                Equal(1000, session.State.Player!.Money, "деньги не списаны");
+                Equal(0, CountItem(session.State.Player, "wpn_pm"), "оружия нет");
+            });
+
+            Check("торговцы: запас пополняется через период", () =>
+            {
+                var session = NewSession(services, money: 1000);
+                True(trades.Buy(session, TraderId, "wpn_pm").Succeeded, "первая покупка");
+                Equal(2, Find(trades.GetOffers(session, TraderId), "wpn_pm")!.Stock, "остаток");
+                session.State.World.Clock.Advance(12);
+                Equal(3, Find(trades.GetOffers(session, TraderId), "wpn_pm")!.Stock, "после пополнения");
+            });
+
+            Check("торговцы: продажа добавляет деньги и убирает предмет", () =>
+            {
+                var session = NewSession(services, money: 1000);
+                var inventory = services.Resolve<IInventoryService>();
+                inventory.TryAdd(session.State.Player!.Inventory, "wpn_pm", 1, out _);
+                var sell = trades.GetSellOffers(session, TraderId);
+                var offer = FindSell(sell, "wpn_pm");
+                True(offer != null, "предмет можно продать");
+                var result = trades.Sell(session, TraderId, offer!.InstanceId);
+                True(result.Succeeded, "продажа");
+                Equal(50, result.Price, "100 × 0.5");
+                Equal(1050, session.State.Player.Money, "деньги");
+                Equal(0, CountItem(session.State.Player, "wpn_pm"), "предмет убран");
+            });
+
+            Check("торговцы: продажа части стопки оставляет остаток", () =>
+            {
+                var session = NewSession(services, money: 1000);
+                var inventory = services.Resolve<IInventoryService>();
+                inventory.TryAdd(session.State.Player!.Inventory, "ammo_9x18", 10, out _);
+                var offer = FindSell(trades.GetSellOffers(session, TraderId), "ammo_9x18");
+                True(offer != null, "патроны можно продать");
+                var result = trades.Sell(session, TraderId, offer!.InstanceId, 4);
+                True(result.Succeeded, "продажа части стопки");
+                Equal(4, result.Count, "продано");
+                Equal(4, result.Price, "2 × 0.5 × 4");
+                Equal(1004, session.State.Player.Money, "деньги");
+                Equal(6, CountItem(session.State.Player, "ammo_9x18"), "остаток в инвентаре");
+                True(session.State.Player.Inventory.Find(offer.InstanceId) != null, "тот же экземпляр остался");
+            });
+
+            Check("торговцы: редкость повышает цену продажи на 10% за ступень", () =>
+            {
+                var session = NewSession(services, money: 1000);
+                var player = session.State.Player!;
+                var inventory = services.Resolve<IInventoryService>();
+                var commonKey = RarityVariantCodec.Format(Rarity.Common);
+                var epicKey = RarityVariantCodec.Format(Rarity.Epic);
+                inventory.TryAdd(player.Inventory, "wpn_pm", 1, null, commonKey, out _);
+                inventory.TryAdd(player.Inventory, "wpn_pm", 1, null, epicKey, out _);
+
+                string? commonId = null;
+                string? epicId = null;
+                foreach (var item in player.Inventory.Items)
+                {
+                    if (item.VariantKey == commonKey)
+                    {
+                        commonId = item.InstanceId;
+                    }
+                    else if (item.VariantKey == epicKey)
+                    {
+                        epicId = item.InstanceId;
+                    }
+                }
+
+                True(commonId != null, "обычный экземпляр в инвентаре");
+                True(epicId != null, "эпический экземпляр в инвентаре");
+                var sell = trades.GetSellOffers(session, TraderId);
+                Equal(50, FindSellById(sell, commonId!)!.UnitPrice, "обычная: 100 × 0.5");
+                Equal(65, FindSellById(sell, epicId!)!.UnitPrice, "эпическая: 100 × 0.5 × 1.3");
+                var sold = trades.Sell(session, TraderId, epicId!);
+                True(sold.Succeeded, "продажа эпического");
+                Equal(65, sold.Price, "деньги за эпический");
+                Equal(1065, player.Money, "деньги игрока");
+            });
+
+            Check("торговцы: патроны для АКМ есть в продаже", () =>
+            {
+                var session = NewSession(services);
+                var offers = trades.GetOffers(session, TraderId);
+                var regular = Find(offers, "ammo_762x39");
+                True(regular != null, "обычные 7.62×39 в продаже");
+                Equal(60, regular!.Stock, "запас обычных");
+                True(Find(offers, "ammo_762x39_ap") != null, "бронебойные 7.62×39 в продаже");
+            });
+
+            Check("торговцы: продажа больше стопки и нуля отклоняется", () =>
+            {
+                var session = NewSession(services, money: 1000);
+                var inventory = services.Resolve<IInventoryService>();
+                inventory.TryAdd(session.State.Player!.Inventory, "ammo_9x18", 10, out _);
+                var offer = FindSell(trades.GetSellOffers(session, TraderId), "ammo_9x18");
+                True(offer != null, "патроны можно продать");
+                Equal(TradeStatus.InvalidCount, trades.Sell(session, TraderId, offer!.InstanceId, 11).Status, "больше стопки");
+                Equal(TradeStatus.InvalidCount, trades.Sell(session, TraderId, offer.InstanceId, 0).Status, "ноль");
+                Equal(1000, session.State.Player.Money, "деньги не изменились");
+                Equal(10, CountItem(session.State.Player, "ammo_9x18"), "стопка цела");
+            });
+
+            Check("торговцы: продажа стопки целиком через количество убирает экземпляр", () =>
+            {
+                var session = NewSession(services, money: 1000);
+                var inventory = services.Resolve<IInventoryService>();
+                inventory.TryAdd(session.State.Player!.Inventory, "ammo_9x18", 5, out _);
+                var offer = FindSell(trades.GetSellOffers(session, TraderId), "ammo_9x18");
+                True(offer != null, "патроны можно продать");
+                var result = trades.Sell(session, TraderId, offer!.InstanceId, 5);
+                True(result.Succeeded, "продажа всей стопки");
+                Equal(5, result.Count, "продано");
+                Equal(5, result.Price, "2 × 0.5 × 5");
+                Equal(1005, session.State.Player.Money, "деньги");
+                Equal(0, CountItem(session.State.Player, "ammo_9x18"), "предмета нет");
+                True(session.State.Player.Inventory.Find(offer.InstanceId) == null, "экземпляр удалён");
+            });
+
+            Check("торговцы: вне хаба торговец недоступен", () =>
+            {
+                var session = NewSession(services);
+                MoveToWild(session);
+                False(trades.IsAvailable(session, TraderId), "доступность");
+                var result = trades.Buy(session, TraderId, "wpn_pm");
+                Equal(TradeStatus.WrongLocation, result.Status, "статус");
+            });
+
+            Check("торговцы: неизвестный id и не-торговец", () =>
+            {
+                var session = NewSession(services);
+                Equal(TradeStatus.TraderNotFound, trades.Buy(session, "missing", "wpn_pm").Status, "неизвестный");
+                Equal(TradeStatus.NotTrader, trades.Buy(session, "actor_player", "wpn_pm").Status, "не торговец");
+            });
+
+            Check("торговцы: сейв сохраняет запас и время пополнения", () =>
+            {
+                var session = NewSession(services, money: 1000);
+                True(trades.Buy(session, TraderId, "wpn_pm").Succeeded, "покупка");
+                var state = session.State.GetOrCreateTrader(TraderId);
+                Equal(2, state.Count("wpn_pm"), "остаток до сейва");
+                Equal(10.0, state.LastRestockAt, "время пополнения");
+            });
+        }
+
+        private static GameSession NewSession(
+            ServiceContainer services,
+            int money = 1000,
+            int width = 8,
+            int rows = 4,
+            IReadOnlyList<string>? quests = null,
+            IReadOnlyList<string>? unlocks = null)
+        {
+            var generator = services.Resolve<IWorldGenerator>();
+            var world = WorldState.Start(generator.Generate(42));
+            var grid = new GridContainer("player", width, rows);
+            var equipment = new Equipment("player", 4);
+            var player = new PlayerState(
+                "player",
+                1,
+                0,
+                100,
+                8,
+                grid,
+                equipment,
+                Array.Empty<string>(),
+                new NeedsState(100, 100, 100),
+                "Тест",
+                money,
+                quests,
+                unlocks);
+            return new GameSession(new GameState(world, player));
+        }
+
+        private static bool Contains(IReadOnlyList<TraderOffer> offers, string itemId) =>
+            Find(offers, itemId) != null;
+
+        private static TraderOffer? Find(IReadOnlyList<TraderOffer> offers, string itemId)
+        {
+            foreach (var offer in offers)
+            {
+                if (offer.ItemId == itemId)
+                {
+                    return offer;
+                }
+            }
+
+            return null;
+        }
+
+        private static TraderSellOffer? FindSell(IReadOnlyList<TraderSellOffer> offers, string itemId)
+        {
+            foreach (var offer in offers)
+            {
+                if (offer.ItemId == itemId)
+                {
+                    return offer;
+                }
+            }
+
+            return null;
+        }
+
+        private static TraderSellOffer? FindSellById(IReadOnlyList<TraderSellOffer> offers, string instanceId)
+        {
+            foreach (var offer in offers)
+            {
+                if (string.Equals(offer.InstanceId, instanceId, StringComparison.Ordinal))
+                {
+                    return offer;
+                }
+            }
+
+            return null;
+        }
+
+        private static ItemInstance? FindItem(GridContainer grid, string itemId)
+        {
+            foreach (var item in grid.Items)
+            {
+                if (item.ItemId == itemId)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
+
+        private static int CountItem(PlayerState player, string itemId) =>
+            RequirementsTemplate.CountItem(player, itemId);
+
+        private static void MoveToWild(GameSession session)
+        {
+            var map = session.State.World.Map;
+            foreach (var location in map.Locations)
+            {
+                if (location.Subtype != LocationSubtype.Hub)
+                {
+                    session.State.World.MoveTo(location.InstanceId);
+                    return;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_brace",
+  "nameKey": "skill.skill_brace.name",
+  "descriptionKey": "skill.skill_brace.desc",
+  "type": "utility",
+  "apCost": 1,
+  "ammoCost": 0,
+  "accuracy": 1.0,
+  "effects": [
+    { "type": "removestatus", "target": "self", "statusId": "status_recoil" },
+    { "type": "status", "target": "self", "statusId": "status_brace", "accuracy": 0.1, "turns": 1 }
+  ]
+}

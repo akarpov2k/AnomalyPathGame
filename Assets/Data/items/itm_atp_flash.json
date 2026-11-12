@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "items",
+  "id": "itm_atp_flash",
+  "nameKey": "item.itm_atp_flash.name",
+  "icon": "icons/itm_atp_flash",
+  "category": "trophy",
+  "footprint": [1, 1],
+  "maxStack": 1,
+  "tier": 1,
+  "weight": 0.05,
+  "unlosable": true,
+  "price": { "mode": "fixed", "buy": 0, "sell": 0 }
+}

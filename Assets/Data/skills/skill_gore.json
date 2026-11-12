@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "skills",
+  "id": "skill_gore",
+  "nameKey": "skill.skill_gore.name",
+  "descriptionKey": "skill.skill_gore.desc",
+  "type": "attack",
+  "apCost": 1,
+  "ammoCost": 0,
+  "accuracy": 1.0,
+  "injuries": ["injury_broken_leg"],
+  "effects": [
+    { "type": "damage", "multiplier": 1.0, "hits": 1 }
+  ]
+}

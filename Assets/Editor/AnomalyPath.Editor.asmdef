@@ -1,0 +1,22 @@
+{
+  "name": "AnomalyPath.Editor",
+  "rootNamespace": "AnomalyPath.Editor",
+  "references": [
+    "AnomalyPath.Core",
+    "AnomalyPath.Runtime",
+    "Unity.InputSystem",
+    "Unity.Recorder",
+    "Unity.Recorder.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

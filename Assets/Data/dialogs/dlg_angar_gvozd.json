@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "dialogs",
+  "id": "dlg_angar_gvozd",
+  "startNodeId": "root",
+  "nodes": [
+    {
+      "id": "root",
+      "speakerActorId": "npc_angar_gvozd",
+      "textKey": "dialog.dlg_angar_gvozd.root",
+      "options": [
+        {
+          "id": "help",
+          "textKey": "dialog.dlg_angar_gvozd.opt.help",
+          "nextNodeId": "help"
+        },
+        {
+          "id": "rest",
+          "textKey": "dialog.dlg_angar_gvozd.opt.rest",
+          "nextNodeId": "rest"
+        },
+        {
+          "id": "rude",
+          "textKey": "dialog.dlg_angar_gvozd.opt.rude",
+          "nextNodeId": "rude"
+        },
+        {
+          "id": "ready",
+          "textKey": "dialog.dlg_angar_gvozd.opt.ready",
+          "requirements": { "questStates": [{ "questId": "qst_story_05_angar", "state": "ready" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s5_ready"
+        },
+        {
+          "id": "bye",
+          "textKey": "dialog.common.bye",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "help",
+      "textKey": "dialog.dlg_angar_gvozd.help",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "rest",
+      "textKey": "dialog.dlg_angar_gvozd.rest",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "rude",
+      "textKey": "dialog.dlg_angar_gvozd.rude",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s5_ready",
+      "textKey": "dialog.dlg_angar_gvozd.s5_ready",
+      "options": [
+        {
+          "id": "thanks",
+          "textKey": "dialog.common.thanks",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_05_angar" }],
+          "end": true
+        },
+        {
+          "id": "work",
+          "textKey": "dialog.dlg_angar_gvozd.opt.work",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_05_angar" }],
+          "nextNodeId": "next_chapter"
+        }
+      ]
+    },
+    {
+      "id": "next_chapter",
+      "textKey": "dialog.dlg_angar_gvozd.next_chapter",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    }
+  ]
+}

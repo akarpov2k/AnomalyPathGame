@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f11c347260d004ba9bc706ddfa30a2, type: 3}
+  m_Name: AudioCatalog
+  m_EditorClassIdentifier: AnomalyPath.Runtime::AnomalyPath.Runtime.Audio.AudioCatalog
+  entries:
+  - id: amb-atp
+    value: {fileID: 8300000, guid: 60bc9e89f12e8a04a93e9b498444c056, type: 3}
+  - id: amb-forest-swamp
+    value: {fileID: 8300000, guid: 1ca414873324a3c40b69ba8529bf4fdb, type: 3}
+  - id: amb-highway-anomaly
+    value: {fileID: 8300000, guid: bab2aa634521b914689995666f78c7d3, type: 3}
+  - id: amb-hub-settlement
+    value: {fileID: 8300000, guid: 042b3672c26f30948a81ca8712ba7343, type: 3}
+  - id: mus-combat-light
+    value: {fileID: 8300000, guid: b79aecbc2e90c354cb7ce862786f088b, type: 3}
+  - id: mus-menu-theme
+    value: {fileID: 8300000, guid: 6173e081081f1b5429089c3ab76808a2, type: 3}

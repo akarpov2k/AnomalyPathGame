@@ -1,0 +1,70 @@
+#nullable enable
+using AnomalyPath.Core.Inventory;
+using AnomalyPath.Core.Templates;
+using AnomalyPath.Runtime.Ui.Core;
+using UnityEngine;
+
+namespace AnomalyPath.Runtime.Ui.Items
+{
+    /// <summary>Как предмет выглядит в интерфейсе: подпись и цвет плашки из данных.</summary>
+    public static class ItemPresentation
+    {
+        /// <summary>Возвращает шаблон предмета или <c>null</c>, если его нет в данных.</summary>
+        /// <param name="host">Хост интерфейса.</param>
+        /// <param name="item">Экземпляр.</param>
+        /// <returns>Шаблон или <c>null</c>.</returns>
+        public static ItemTemplate? Template(IUiHost host, ItemInstance item) =>
+            host.Items.TryGet(item.ItemId, out var template) ? template : null;
+
+        /// <summary>Подпись предмета: название, количество, патроны в магазине, прочность.</summary>
+        /// <param name="host">Хост интерфейса.</param>
+        /// <param name="item">Экземпляр.</param>
+        /// <returns>Текст для слота или клетки.</returns>
+        public static string Describe(IUiHost host, ItemInstance item)
+        {
+            var template = Template(host, item);
+            var name = template != null ? host.Texts.Get(template.NameKey) : item.ItemId;
+            if (item.Stack > 1)
+            {
+                name += " ×" + item.Stack;
+            }
+
+            if (template?.Weapon != null)
+            {
+                name += $" · {item.MagazineRounds}/{template.Weapon.Magazine}";
+            }
+
+            if (item.Durability.HasValue && item.DurabilityMax.HasValue && item.DurabilityMax.Value > 0)
+            {
+                name += $" · {item.Durability.Value}/{item.DurabilityMax.Value}";
+            }
+
+            return name;
+        }
+
+        /// <summary>Цвет предмета по категории.</summary>
+        /// <param name="host">Хост интерфейса.</param>
+        /// <param name="item">Экземпляр.</param>
+        /// <returns>Цвет плашки.</returns>
+        public static Color ColorFor(IUiHost host, ItemInstance item)
+        {
+            var template = Template(host, item);
+            if (template == null)
+            {
+                return ItemPalette.Other;
+            }
+
+            return template.Category switch
+            {
+                ItemCategory.Weapon => ItemPalette.Weapon,
+                ItemCategory.Ammo => ItemPalette.Ammo,
+                ItemCategory.Armor => ItemPalette.Armor,
+                ItemCategory.Helmet => ItemPalette.Armor,
+                ItemCategory.Backpack => ItemPalette.Armor,
+                ItemCategory.Belt => ItemPalette.Armor,
+                ItemCategory.Artifact => ItemPalette.Artifact,
+                _ => ItemPalette.Other,
+            };
+        }
+    }
+}

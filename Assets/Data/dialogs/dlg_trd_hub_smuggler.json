@@ -1,0 +1,836 @@
+{
+  "schemaVersion": 1,
+  "kind": "dialogs",
+  "id": "dlg_trd_hub_smuggler",
+  "startNodeId": "root",
+  "nodes": [
+    {
+      "id": "root",
+      "speakerActorId": "trd_hub_smuggler",
+      "textKey": "dialog.dlg_trd_hub_smuggler.root",
+      "options": [
+        {
+          "id": "s1_std",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s1_std",
+          "requirements": { "questStates": [{ "questId": "qst_story_01_cordon", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "effects": [
+            { "type": "quest", "action": "give", "questId": "qst_story_01_cordon", "variantId": "standard" },
+            { "type": "item", "itemId": "itm_food_stew", "count": 1 },
+            { "type": "item", "itemId": "itm_water_bottle", "count": 1 }
+          ],
+          "nextNodeId": "s1_accept_std"
+        },
+        {
+          "id": "s1_hard",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s1_hard",
+          "requirements": { "questStates": [{ "questId": "qst_story_01_cordon", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "effects": [
+            { "type": "quest", "action": "give", "questId": "qst_story_01_cordon", "variantId": "hard" },
+            { "type": "item", "itemId": "itm_food_stew", "count": 1 },
+            { "type": "item", "itemId": "itm_water_bottle", "count": 1 }
+          ],
+          "nextNodeId": "s1_accept_hard"
+        },
+        {
+          "id": "s1_ask",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s1_ask",
+          "requirements": { "questStates": [{ "questId": "qst_story_01_cordon", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s1_question"
+        },
+        {
+          "id": "s1_no",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s1_no",
+          "requirements": { "questStates": [{ "questId": "qst_story_01_cordon", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s1_decline"
+        },
+        {
+          "id": "s1_active",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s1_active",
+          "requirements": { "questStates": [{ "questId": "qst_story_01_cordon", "state": "active" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s1_active"
+        },
+        {
+          "id": "s1_ready",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s1_ready",
+          "requirements": { "questStates": [{ "questId": "qst_story_01_cordon", "state": "ready" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s1_ready"
+        },
+        {
+          "id": "s2",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s2",
+          "requirements": {
+            "quests": ["qst_story_01_cordon"],
+            "questStates": [{ "questId": "qst_story_02_job", "state": "available" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s2_offer"
+        },
+        {
+          "id": "s2_active",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s2_active",
+          "requirements": {
+            "quests": ["qst_story_01_cordon"],
+            "questStates": [{ "questId": "qst_story_02_job", "state": "active" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s2_active"
+        },
+        {
+          "id": "s2_ready",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s2_ready",
+          "requirements": {
+            "quests": ["qst_story_01_cordon"],
+            "questStates": [{ "questId": "qst_story_02_job", "state": "ready" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s2_ready"
+        },
+        {
+          "id": "s3",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s3",
+          "requirements": {
+            "quests": ["qst_story_02_job"],
+            "questStates": [{ "questId": "qst_story_03_dogs", "state": "available" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s3_offer"
+        },
+        {
+          "id": "s3_active",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s3_active",
+          "requirements": {
+            "quests": ["qst_story_02_job"],
+            "questStates": [{ "questId": "qst_story_03_dogs", "state": "active" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s3_active"
+        },
+        {
+          "id": "s3_ready",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s3_ready",
+          "requirements": {
+            "quests": ["qst_story_02_job"],
+            "questStates": [{ "questId": "qst_story_03_dogs", "state": "ready" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s3_ready"
+        },
+        {
+          "id": "s4",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s4",
+          "requirements": {
+            "quests": ["qst_story_03_dogs"],
+            "questStates": [{ "questId": "qst_story_04_atp", "state": "available" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s4_offer"
+        },
+        {
+          "id": "s4_active",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s4_active",
+          "requirements": {
+            "quests": ["qst_story_03_dogs"],
+            "questStates": [{ "questId": "qst_story_04_atp", "state": "active" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s4_active"
+        },
+        {
+          "id": "s4_ready",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s4_ready",
+          "requirements": {
+            "quests": ["qst_story_03_dogs"],
+            "questStates": [{ "questId": "qst_story_04_atp", "state": "ready" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s4_ready"
+        },
+        {
+          "id": "s5",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s5",
+          "requirements": {
+            "quests": ["qst_story_04_atp"],
+            "questStates": [{ "questId": "qst_story_05_angar", "state": "available" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s5_offer"
+        },
+        {
+          "id": "s5_active",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s5_active",
+          "requirements": {
+            "quests": ["qst_story_04_atp"],
+            "questStates": [{ "questId": "qst_story_05_angar", "state": "active" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s5_active"
+        },
+        {
+          "id": "bye",
+          "textKey": "dialog.common.bye",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "s1_question",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s1_question",
+      "options": [
+        {
+          "id": "take",
+          "textKey": "dialog.common.take",
+          "requirements": { "questStates": [{ "questId": "qst_story_01_cordon", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "effects": [
+            { "type": "quest", "action": "give", "questId": "qst_story_01_cordon", "variantId": "standard" },
+            { "type": "item", "itemId": "itm_food_stew", "count": 1 },
+            { "type": "item", "itemId": "itm_water_bottle", "count": 1 }
+          ],
+          "nextNodeId": "s1_accept_std"
+        },
+        {
+          "id": "ifdead",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.ifdead",
+          "nextNodeId": "s1_ifdead"
+        },
+        {
+          "id": "later",
+          "textKey": "dialog.common.later",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "s1_ifdead",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s1_ifdead",
+      "options": [
+        {
+          "id": "take",
+          "textKey": "dialog.common.take",
+          "effects": [
+            { "type": "quest", "action": "give", "questId": "qst_story_01_cordon", "variantId": "standard" },
+            { "type": "item", "itemId": "itm_food_stew", "count": 1 },
+            { "type": "item", "itemId": "itm_water_bottle", "count": 1 }
+          ],
+          "nextNodeId": "s1_accept_std"
+        },
+        {
+          "id": "think",
+          "textKey": "dialog.common.think",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "s1_accept_std",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s1_accept_std",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.thanks", "end": true }
+      ]
+    },
+    {
+      "id": "s1_accept_hard",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s1_accept_hard",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s1_decline",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s1_decline",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s1_active",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s1_active",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s1_ready",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s1_ready",
+      "options": [
+        {
+          "id": "std",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s1_reward_std",
+          "requirements": {
+            "questStates": [{ "questId": "qst_story_01_cordon", "state": "ready" }],
+            "questVariants": [{ "questId": "qst_story_01_cordon", "variantId": "standard" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s1_reward_std"
+        },
+        {
+          "id": "hard",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s1_reward_hard",
+          "requirements": {
+            "questStates": [{ "questId": "qst_story_01_cordon", "state": "ready" }],
+            "questVariants": [{ "questId": "qst_story_01_cordon", "variantId": "hard" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s1_reward_hard"
+        },
+        {
+          "id": "not",
+          "textKey": "dialog.common.not_yet",
+          "nextNodeId": "s1_active"
+        }
+      ]
+    },
+    {
+      "id": "s1_reward_std",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s1_reward",
+      "options": [
+        {
+          "id": "thanks",
+          "textKey": "dialog.common.thanks",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_01_cordon" }],
+          "end": true
+        },
+        {
+          "id": "next",
+          "textKey": "dialog.common.next",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_01_cordon" }],
+          "nextNodeId": "s2_offer"
+        }
+      ]
+    },
+    {
+      "id": "s1_reward_hard",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s1_reward_hard",
+      "options": [
+        {
+          "id": "thanks",
+          "textKey": "dialog.common.thanks",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_01_cordon" }],
+          "end": true
+        },
+        {
+          "id": "next",
+          "textKey": "dialog.common.next",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_01_cordon" }],
+          "nextNodeId": "s2_offer"
+        }
+      ]
+    },
+    {
+      "id": "s2_offer",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s2_offer",
+      "options": [
+        {
+          "id": "accept",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s2_accept",
+          "requirements": { "questStates": [{ "questId": "qst_story_02_job", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_02_job" }],
+          "nextNodeId": "s2_accept"
+        },
+        {
+          "id": "question",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s2_question",
+          "requirements": { "questStates": [{ "questId": "qst_story_02_job", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s2_question"
+        },
+        {
+          "id": "rude",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s2_rude",
+          "requirements": { "questStates": [{ "questId": "qst_story_02_job", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_02_job", "variantId": "hard" }],
+          "nextNodeId": "s2_accept_hard"
+        },
+        {
+          "id": "no",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s2_no",
+          "requirements": { "questStates": [{ "questId": "qst_story_02_job", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s2_decline"
+        }
+      ]
+    },
+    {
+      "id": "s2_question",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s2_question",
+      "options": [
+        {
+          "id": "take",
+          "textKey": "dialog.common.ok",
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_02_job" }],
+          "nextNodeId": "s2_accept"
+        },
+        {
+          "id": "later",
+          "textKey": "dialog.common.later",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "s2_accept",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s2_accept_text",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s2_accept_hard",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s2_accept_hard",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s2_decline",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s2_decline",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s2_active",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s2_active",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s2_ready",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s2_ready",
+      "options": [
+        {
+          "id": "std",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s2_reward_std",
+          "requirements": {
+            "questStates": [{ "questId": "qst_story_02_job", "state": "ready" }],
+            "questVariants": [{ "questId": "qst_story_02_job", "variantId": "standard" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s2_reward_std"
+        },
+        {
+          "id": "hard",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s2_reward_hard",
+          "requirements": {
+            "questStates": [{ "questId": "qst_story_02_job", "state": "ready" }],
+            "questVariants": [{ "questId": "qst_story_02_job", "variantId": "hard" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s2_reward_hard"
+        },
+        {
+          "id": "not",
+          "textKey": "dialog.common.not_yet",
+          "nextNodeId": "s2_active"
+        }
+      ]
+    },
+    {
+      "id": "s2_reward_std",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s2_reward",
+      "options": [
+        {
+          "id": "thanks",
+          "textKey": "dialog.common.thanks",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_02_job" }],
+          "end": true
+        },
+        {
+          "id": "next",
+          "textKey": "dialog.common.next",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_02_job" }],
+          "nextNodeId": "s3_offer"
+        }
+      ]
+    },
+    {
+      "id": "s2_reward_hard",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s2_reward_hard",
+      "options": [
+        {
+          "id": "thanks",
+          "textKey": "dialog.common.thanks",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_02_job" }],
+          "end": true
+        },
+        {
+          "id": "next",
+          "textKey": "dialog.common.next",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_02_job" }],
+          "nextNodeId": "s3_offer"
+        }
+      ]
+    },
+    {
+      "id": "s3_offer",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s3_offer",
+      "options": [
+        {
+          "id": "accept",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s3_accept",
+          "requirements": { "questStates": [{ "questId": "qst_story_03_dogs", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_03_dogs" }],
+          "nextNodeId": "s3_accept"
+        },
+        {
+          "id": "rude",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s3_rude",
+          "requirements": { "questStates": [{ "questId": "qst_story_03_dogs", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_03_dogs", "variantId": "hard" }],
+          "nextNodeId": "s3_accept_hard"
+        },
+        {
+          "id": "question",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s3_question",
+          "requirements": { "questStates": [{ "questId": "qst_story_03_dogs", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s3_question"
+        },
+        {
+          "id": "no",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s3_no",
+          "requirements": { "questStates": [{ "questId": "qst_story_03_dogs", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s3_decline"
+        }
+      ]
+    },
+    {
+      "id": "s3_question",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s3_question",
+      "options": [
+        {
+          "id": "take",
+          "textKey": "dialog.common.ok",
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_03_dogs" }],
+          "nextNodeId": "s3_accept"
+        },
+        {
+          "id": "later",
+          "textKey": "dialog.common.later",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "s3_accept",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s3_accept_text",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s3_accept_hard",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s3_accept_hard",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s3_decline",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s3_decline",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s3_active",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s3_active",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s3_ready",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s3_ready",
+      "options": [
+        {
+          "id": "std",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s3_reward_std",
+          "requirements": {
+            "questStates": [{ "questId": "qst_story_03_dogs", "state": "ready" }],
+            "questVariants": [{ "questId": "qst_story_03_dogs", "variantId": "standard" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s3_reward_std"
+        },
+        {
+          "id": "hard",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s3_reward_hard",
+          "requirements": {
+            "questStates": [{ "questId": "qst_story_03_dogs", "state": "ready" }],
+            "questVariants": [{ "questId": "qst_story_03_dogs", "variantId": "hard" }]
+          },
+          "hiddenIfUnavailable": true,
+          "nextNodeId": "s3_reward_hard"
+        },
+        {
+          "id": "not",
+          "textKey": "dialog.common.not_yet",
+          "nextNodeId": "s3_active"
+        }
+      ]
+    },
+    {
+      "id": "s3_reward_std",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s3_reward",
+      "options": [
+        {
+          "id": "thanks",
+          "textKey": "dialog.common.thanks",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_03_dogs" }],
+          "end": true
+        },
+        {
+          "id": "next",
+          "textKey": "dialog.common.next",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_03_dogs" }],
+          "nextNodeId": "s4_offer"
+        }
+      ]
+    },
+    {
+      "id": "s3_reward_hard",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s3_reward_hard",
+      "options": [
+        {
+          "id": "thanks",
+          "textKey": "dialog.common.thanks",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_03_dogs" }],
+          "end": true
+        },
+        {
+          "id": "next",
+          "textKey": "dialog.common.next",
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_03_dogs" }],
+          "nextNodeId": "s4_offer"
+        }
+      ]
+    },
+    {
+      "id": "s4_offer",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_offer",
+      "options": [
+        {
+          "id": "thing",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s4_thing",
+          "nextNodeId": "s4_thing"
+        },
+        {
+          "id": "money",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s4_money",
+          "nextNodeId": "s4_money"
+        },
+        {
+          "id": "why",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s4_why",
+          "nextNodeId": "s4_why"
+        },
+        {
+          "id": "accept",
+          "textKey": "dialog.common.take",
+          "requirements": { "questStates": [{ "questId": "qst_story_04_atp", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_04_atp" }],
+          "nextNodeId": "s4_accept"
+        },
+        {
+          "id": "decline",
+          "textKey": "dialog.common.later",
+          "nextNodeId": "s4_decline"
+        }
+      ]
+    },
+    {
+      "id": "s4_thing",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_thing",
+      "options": [
+        {
+          "id": "who",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s4_who",
+          "nextNodeId": "s4_shustry"
+        },
+        {
+          "id": "accept",
+          "textKey": "dialog.common.take",
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_04_atp" }],
+          "nextNodeId": "s4_accept"
+        },
+        {
+          "id": "later",
+          "textKey": "dialog.common.later",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "s4_shustry",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_shustry",
+      "options": [
+        {
+          "id": "ok",
+          "textKey": "dialog.common.ok",
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_04_atp" }],
+          "nextNodeId": "s4_accept"
+        }
+      ]
+    },
+    {
+      "id": "s4_money",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_money",
+      "options": [
+        {
+          "id": "accept",
+          "textKey": "dialog.common.take",
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_04_atp" }],
+          "nextNodeId": "s4_accept"
+        },
+        {
+          "id": "later",
+          "textKey": "dialog.common.later",
+          "end": true
+        }
+      ]
+    },
+    {
+      "id": "s4_why",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_why",
+      "options": [
+        {
+          "id": "accept",
+          "textKey": "dialog.common.ok",
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_04_atp" }],
+          "nextNodeId": "s4_accept"
+        }
+      ]
+    },
+    {
+      "id": "s4_accept",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_accept",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s4_decline",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_decline",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s4_active",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_active",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s4_ready",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_ready",
+      "options": [
+        {
+          "id": "flash",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s4_flash",
+          "requirements": {
+            "questStates": [{ "questId": "qst_story_04_atp", "state": "ready" }],
+            "items": [{ "itemId": "itm_atp_flash", "count": 1 }]
+          },
+          "hiddenIfUnavailable": true,
+          "effects": [{ "type": "quest", "action": "turnIn", "questId": "qst_story_04_atp" }],
+          "nextNodeId": "s4_reward_flash"
+        },
+        {
+          "id": "not",
+          "textKey": "dialog.common.not_yet",
+          "nextNodeId": "s4_active"
+        }
+      ]
+    },
+    {
+      "id": "s4_reward_flash",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s4_reward_flash",
+      "options": [
+        { "id": "thanks", "textKey": "dialog.common.thanks", "end": true },
+        { "id": "next", "textKey": "dialog.common.next", "nextNodeId": "s5_offer" }
+      ]
+    },
+    {
+      "id": "s5_offer",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s5_offer",
+      "options": [
+        { "id": "where", "textKey": "dialog.dlg_trd_hub_smuggler.opt.s5_where", "nextNodeId": "s5_where" },
+        { "id": "who", "textKey": "dialog.dlg_trd_hub_smuggler.opt.s5_who", "nextNodeId": "s5_who" },
+        {
+          "id": "accept",
+          "textKey": "dialog.common.thanks",
+          "requirements": { "questStates": [{ "questId": "qst_story_05_angar", "state": "available" }] },
+          "hiddenIfUnavailable": true,
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_05_angar" }],
+          "nextNodeId": "s5_accept"
+        },
+        {
+          "id": "decline",
+          "textKey": "dialog.dlg_trd_hub_smuggler.opt.s5_no",
+          "nextNodeId": "s5_decline"
+        }
+      ]
+    },
+    {
+      "id": "s5_where",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s5_where",
+      "options": [
+        {
+          "id": "ok",
+          "textKey": "dialog.common.ok",
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_05_angar" }],
+          "nextNodeId": "s5_accept"
+        }
+      ]
+    },
+    {
+      "id": "s5_who",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s5_who",
+      "options": [
+        {
+          "id": "ok",
+          "textKey": "dialog.common.ok",
+          "effects": [{ "type": "quest", "action": "give", "questId": "qst_story_05_angar" }],
+          "nextNodeId": "s5_accept"
+        }
+      ]
+    },
+    {
+      "id": "s5_accept",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s5_accept",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s5_decline",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s5_decline",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    },
+    {
+      "id": "s5_active",
+      "textKey": "dialog.dlg_trd_hub_smuggler.s5_active",
+      "options": [
+        { "id": "ok", "textKey": "dialog.common.ok", "end": true }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "kind": "combat",
+  "id": "combat",
+  "damageFormulaId": "formula_damage_base",
+  "xpFormulaId": "formula_combat_xp",
+  "clampMin": 0,
+  "apRestore": "full",
+  "reloadApCost": 1,
+  "weaponSwapApCost": 1,
+  "aiPlanDepth": 5,
+  "medkitHpThreshold": 0.3
+}
