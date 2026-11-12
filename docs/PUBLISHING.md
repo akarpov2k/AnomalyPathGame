@@ -154,11 +154,20 @@ GitHub у прежней версии могут остаться — поэто
 `Build/Windows/AnomalyPath_Data/StreamingAssets/Data`. Размер каталога 1,2 ГБ, из них
 757 МБ — `AnomalyPath_BackUpThisFolder_ButDontShipItWithYourGame` (символы, не идёт в раздачу);
 к раздаче ≈445 МБ (`sharedassets0.assets.resS` — 350 МБ).
-5. Публикация билда — **отложено** (2026-11-12, площадка раздачи не выбрана). Когда дойдёт:
-   заархивировать `Build/Windows` (без `*_BackUpThisFolder_ButDontShipItWithYourGame`) в
-   `Builds/AnomalyPath-0.1-Windows.zip`, выложить архив + `sha256`. Старый архив от 2026-11-05
-   в раздачу не годится: он собран на Mono и старше правок ноября. В git артефакт не кладётся:
-   `Build/` и `Builds/` в `.gitignore`, GitHub отклоняет файлы больше 100 МБ.
+5. Публикация билда — **отложено** (2026-11-12, площадка раздачи не выбрана), но **установщик
+   собран 2026-11-12**: `tools/installer/build-setup.ps1` (свой WinForms-установщик, без
+   Inno/NSIS; см. `tools/installer/README.md`) упаковал IL2CPP-билд в один файл:
+   `Builds/AnomalyPath-Setup.exe` — 241,1 МБ (`sha256 4969E3EC…A92C2D24`), рядом
+   `Builds/AnomalyPath-Windows.zip` — 237,5 МБ (`sha256 62C0C8CB…E558BFEC9`) и распакованная
+   папка 445,2 МБ / 232 файла. Постер и иконка установщика берутся из `generated/`
+   (в публичный репозиторий не входят): при сборке передаются как
+   `-Poster <путь> -Icon <путь>`; без них скрипт берёт `generated\poster_anomalypath_final_v2.png`
+   и `generated\installer\icon.ico`. Проверено: `/selftest` — `ok=true`; `/shot` — окно 600×894
+   с постером; `/silent /dir <папка>` — 233 файла, затем установленная игра запускается и пишет
+   «Проверка данных пройдена: ошибок нет»; `Uninstall.exe /silent` убирает папку и запись
+   `HKCU\…\Uninstall\AnomalyPath`. В git артефакты не кладутся: `Build/`, `Builds/` в `.gitignore`,
+   GitHub отклоняет файлы больше 100 МБ. Версия в установщике — `0.1`, издатель — `companyName`
+   из `ProjectSettings.asset` (`VlomInc`).
 
 ```powershell
 Get-FileHash Builds\AnomalyPath-Windows.zip -Algorithm SHA256
