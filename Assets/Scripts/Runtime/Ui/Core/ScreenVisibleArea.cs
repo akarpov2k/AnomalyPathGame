@@ -6,10 +6,11 @@ using UnityEngine;
 namespace AnomalyPath.Runtime.Ui.Core
 {
     /// <summary>
-    /// Видимая часть клиентской области окна на Windows: окно без рамки может заходить низом
-    /// под панель задач, и нижняя кромка интерфейса (полоса опыта, нижний ряд кнопок) тогда
-    /// не видна. Здесь считается, какая часть клиента реально видна, чтобы разметка поднялась
-    /// выше панели задач. На других платформах возвращается весь экран.
+    /// Видимая часть клиентской области окна на Windows: окно без рамки может оказаться выше
+    /// или шире монитора, и тогда кромка интерфейса (полоса опыта, нижний ряд кнопок) уходит
+    /// за край экрана. Здесь считается, какая часть клиента реально видна, чтобы разметка
+    /// поднялась выше. Панель задач не учитывается: она может быть скрыта или перекрыта окном,
+    /// и запас под неё давал чёрную полосу внизу. На других платформах возвращается весь экран.
     /// </summary>
     public static class ScreenVisibleArea
     {
@@ -34,7 +35,7 @@ namespace AnomalyPath.Runtime.Ui.Core
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
         private const uint MonitorDefaultToNearest = 2;
 
-        /// <summary>Пересечение клиентской области с рабочей областью монитора.</summary>
+        /// <summary>Пересечение клиентской области с прямоугольником монитора.</summary>
         /// <param name="rect">Видимый прямоугольник в координатах клиента.</param>
         /// <returns><c>true</c>, если рамки окна и монитора удалось прочитать.</returns>
         private static bool TryRead(out Rect rect)
@@ -90,10 +91,10 @@ namespace AnomalyPath.Runtime.Ui.Core
                     return false;
                 }
 
-                var left = Math.Max(origin.X, info.Work.Left) - origin.X;
-                var right = Math.Min(origin.X + width, info.Work.Right) - origin.X;
-                var top = Math.Max(origin.Y, info.Work.Top) - origin.Y;
-                var bottom = Math.Min(origin.Y + height, info.Work.Bottom) - origin.Y;
+                var left = Math.Max(origin.X, info.Monitor.Left) - origin.X;
+                var right = Math.Min(origin.X + width, info.Monitor.Right) - origin.X;
+                var top = Math.Max(origin.Y, info.Monitor.Top) - origin.Y;
+                var bottom = Math.Min(origin.Y + height, info.Monitor.Bottom) - origin.Y;
                 if (right <= left || bottom <= top)
                 {
                     return false;
@@ -101,7 +102,7 @@ namespace AnomalyPath.Runtime.Ui.Core
 
                 // Экранные координаты идут сверху вниз, Rect — снизу вверх.
                 rect = new Rect(left, height - bottom, right - left, bottom - top);
-                return true;
+                return right - left < width || bottom - top < height;
             }
             catch (Exception)
             {
