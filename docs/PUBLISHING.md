@@ -211,9 +211,16 @@ Get-FileHash Builds\AnomalyPath-Windows.zip -Algorithm SHA256
 - [x] тесты зелёные: `dotnet` 1348/1348, Unity EditMode 1/1, полный PlayMode 316 — 313 прошло,
       0 падений, 3 ручных `[Explicit]` (`Logs/TestResults.PlayMode.final.xml`); битые к этому
       моменту тесты (стаб, версия меню, имя NPC, Esc в наградах, три walk-проверки) исправлены;
-- [x] билд собран IL2CPP: 2026-11-12, `Logs/Build2.log` — `Build Finished, Result: Success`,
-      `Build/Windows/GameAssembly.dll` есть, `MonoBleedingEdge/` нет. Проверка **на чистой машине
-      ещё не делалась** — нужен отдельный прогон `AnomalyPath.exe` на другой машине;
+- [x] билд собран IL2CPP: 2026-11-12, `Logs/Build3.log` — `Build Finished, Result: Success`,
+      `Build/Windows/GameAssembly.dll` есть, `MonoBleedingEdge/` нет. Локальный прогон
+      `AnomalyPath.exe` (12 с): окно открылось, `Проверка данных пройдена: ошибок нет`, исключений
+      нет. Первый прогон нашёл IL2CPP-дефект: `BorderlessWindow.WindowProcImpl` без
+      `[MonoPInvokeCallback]` — на Mono работал, на IL2CPP падал в `Marshal.GetFunctionPointerForDelegate`;
+      исправлено, предупреждение ушло. Известный шум сборки: URP пишет
+      `Hidden/Universal Render Pipeline/GaussianDepthOfField ... has been stripped`, потому что
+      2D-рендерер ссылается на 3D-`PostProcessData`; `Volume` в сцене Main нет, пост-обработка
+      не используется, на игру не влияет. Проверка **на чистой машине** ещё не делалась — нужен
+      отдельный прогон на другой машине;
 - [x] донаты не привязаны к доступу к билду: билд бесплатный (`README.md`, `NOTICE.md`);
 - [ ] тег подписан, хеш билда опубликован — отложено вместе с площадкой раздачи;
 - [ ] старый репозиторий архивирован или удалён.

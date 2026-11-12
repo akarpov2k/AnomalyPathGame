@@ -321,6 +321,12 @@ namespace AnomalyPath.Runtime.Ui.Core
             _hookedWindow = window;
         }
 
+        /// <summary>
+        /// Оконная процедура хука. Атрибут обязателен для IL2CPP: без него AOT не создаёт
+        /// обратный P/Invoke-переход, и <see cref="Marshal.GetFunctionPointerForDelegate"/> падает
+        /// с «To marshal a managed method, please add an attribute named 'MonoPInvokeCallback'».
+        /// </summary>
+        [AOT.MonoPInvokeCallback(typeof(WindowProc))]
         private static IntPtr WindowProcImpl(IntPtr window, uint message, IntPtr wParam, IntPtr lParam)
         {
             if (message == WmNcHitTest)
