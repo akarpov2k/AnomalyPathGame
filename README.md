@@ -1,6 +1,6 @@
 # AnomalyPath — Аномальное путешествие
 
-**▶ [Скачать AnomalyPath-Setup.exe](https://github.com/akarpov2k/AnomalyPathGame/releases/latest/download/AnomalyPath-Setup.exe)**
+**▶ [Скачать AnomalyPath-Setup.exe](https://github.com/akarpov2k/AnomalyPathGame/releases/download/v0.1/AnomalyPath-Setup.exe)**
 · `0.1 Alpha Demo` · Windows 10/11 x64 · 241 МБ
 
 [Все файлы релиза](https://github.com/akarpov2k/AnomalyPathGame/releases/latest) ·
