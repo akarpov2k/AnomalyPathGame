@@ -208,10 +208,10 @@ Get-FileHash Builds\AnomalyPath-Windows.zip -Algorithm SHA256
       добавлен исключением в `.gitignore` (иначе исходники Core не попадали в git); остатки
       прогонов (`Assets/InitTestScene*.unity`) и шаблонная `Assets/Scenes/SampleScene.unity`
       удалены, `Assets/InitTestScene*` добавлен в `.gitignore`;
-- [x] тесты зелёные: `dotnet` 1348/1348, Unity EditMode 1/1, полный PlayMode 316 — 313 прошло,
-      0 падений, 3 ручных `[Explicit]` (`Logs/TestResults.PlayMode.final.xml`); битые к этому
+- [x] тесты зелёные: `dotnet` 1348/1348, Unity EditMode 1/1, полный PlayMode 317 — 314 прошло,
+      0 падений, 3 ручных `[Explicit]` (`Logs/TestResults.PlayMode.xpbar.xml`); битые к этому
       моменту тесты (стаб, версия меню, имя NPC, Esc в наградах, три walk-проверки) исправлены;
-- [x] билд собран IL2CPP: 2026-11-12, `Logs/Build3.log` — `Build Finished, Result: Success`,
+- [x] билд собран IL2CPP: 2026-11-12, `Logs/Build6.log` — `Build Finished, Result: Success`,
       `Build/Windows/GameAssembly.dll` есть, `MonoBleedingEdge/` нет. Локальный прогон
       `AnomalyPath.exe` (12 с): окно открылось, `Проверка данных пройдена: ошибок нет`, исключений
       нет. Первый прогон нашёл IL2CPP-дефект: `BorderlessWindow.WindowProcImpl` без
@@ -221,6 +221,13 @@ Get-FileHash Builds\AnomalyPath-Windows.zip -Algorithm SHA256
       2D-рендерер ссылается на 3D-`PostProcessData`; `Volume` в сцене Main нет, пост-обработка
       не используется, на игру не влияет. Проверка **на чистой машине** ещё не делалась — нужен
       отдельный прогон на другой машине;
+- [x] окно билда на 2K: найдено 2026-11-12 на прогоне при 2560×1440 — окно без рамки выходило
+      за рабочую область (клиент 2576×1479 при экране 2560×1440 и рабочей области 2560×1392),
+      низ интерфейса вместе с полосой опыта оказывался под панелью задач. Теперь окно вписывается
+      в рабочую область монитора (`BorderlessWindow.TryPrimaryWorkArea` + `FitClientToArea`),
+      удерживается там первые 10 секунд после старта (`BorderlessWindowKeeper`) и полоса опыта
+      выводится поверх соседних слоёв (`PlayScreen.RefreshXp`); закреплено тестом
+      `WalkMode_XpBar_DrawsAboveLane`;
 - [x] донаты не привязаны к доступу к билду: билд бесплатный (`README.md`, `NOTICE.md`);
 - [ ] тег подписан, хеш билда опубликован — отложено вместе с площадкой раздачи;
 - [ ] старый репозиторий архивирован или удалён.

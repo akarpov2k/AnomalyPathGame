@@ -60,6 +60,26 @@ namespace AnomalyPath.Runtime.Ui.Core
 #endif
         }
 
+        /// <summary>
+        /// Повторно вписывает окно в рабочую область после старта. Unity применяет разрешение
+        /// из командной строки и настроек уже после первого кадра и возвращает окно за край
+        /// экрана: низ интерфейса, где лежит полоса опыта, уходит под панель задач.
+        /// </summary>
+        public static void EnforceWindow()
+        {
+#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+            try
+            {
+                ApplyStyle();
+                PlaceWindow();
+            }
+            catch (Exception error)
+            {
+                Debug.LogWarning($"AnomalyPath: borderless window failed: {error.Message}");
+            }
+#endif
+        }
+
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
         /// <summary>Стартовый размер окна: опорный размер разметки, если монитор позволяет.</summary>
         private static readonly WindowSize DefaultSize = new WindowSize(1920, 1080);
@@ -92,6 +112,7 @@ namespace AnomalyPath.Runtime.Ui.Core
         private const int GripSize = 6;
         private const int DragStrip = 24;
         private const uint MonitorDefaultToNearest = 2;
+        private const uint MonitorDefaultToPrimary = 1;
 
         private delegate IntPtr WindowProc(IntPtr window, uint message, IntPtr wParam, IntPtr lParam);
 
@@ -123,6 +144,12 @@ namespace AnomalyPath.Runtime.Ui.Core
 
         [DllImport("user32.dll")]
         private static extern bool GetWindowRect(IntPtr window, out WindowRect rect);
+
+        [DllImport("user32.dll", EntryPoint = "GetClientRect")]
+        private static extern bool GetClientRect(IntPtr window, out WindowRect rect);
+
+        [DllImport("user32.dll")]
+        private static extern bool ClientToScreen(IntPtr window, ref WindowPoint point);
 
         [DllImport("user32.dll", EntryPoint = "CallWindowProcW")]
         private static extern IntPtr CallWindowProc(
@@ -242,7 +269,17 @@ namespace AnomalyPath.Runtime.Ui.Core
                 return;
             }
 
-            var fitted = WindowLayout.Fit(new WindowSize(displayWidth, displayHeight), DesiredSize());
+            // Рабочая область, а не весь монитор: окно во весь экран заходит низом под панель
+            // задач, и нижняя полоса интерфейса (полоса опыта) оказывается закрытой.
+            var areaWidth = displayWidth;
+            var areaHeight = displayHeight;
+            if (TryPrimaryWorkArea(out _, out _, out var workWidth, out var workHeight))
+            {
+                areaWidth = Math.Min(areaWidth, workWidth);
+                areaHeight = Math.Min(areaHeight, workHeight);
+            }
+
+            var fitted = WindowLayout.Fit(new WindowSize(areaWidth, areaHeight), DesiredSize());
             if (Screen.fullScreenMode == FullScreenMode.Windowed &&
                 Screen.width == fitted.Width &&
                 Screen.height == fitted.Height)
@@ -251,6 +288,40 @@ namespace AnomalyPath.Runtime.Ui.Core
             }
 
             Screen.SetResolution(fitted.Width, fitted.Height, FullScreenMode.Windowed);
+        }
+
+        /// <summary>
+        /// Рабочая область основного монитора без панели задач и док-панелей. Окно, посаженное
+        /// в неё, не теряет нижнюю кромку интерфейса за системной панелью.
+        /// </summary>
+        /// <param name="left">Левый край рабочей области.</param>
+        /// <param name="top">Верхний край рабочей области.</param>
+        /// <param name="width">Ширина рабочей области.</param>
+        /// <param name="height">Высота рабочей области.</param>
+        /// <returns><c>true</c>, если размеры удалось прочитать.</returns>
+        private static bool TryPrimaryWorkArea(out int left, out int top, out int width, out int height)
+        {
+            left = 0;
+            top = 0;
+            width = 0;
+            height = 0;
+            var monitor = MonitorFromWindow(IntPtr.Zero, MonitorDefaultToPrimary);
+            if (monitor == IntPtr.Zero)
+            {
+                return false;
+            }
+
+            var info = new MonitorInfo { Size = Marshal.SizeOf<MonitorInfo>() };
+            if (!GetMonitorInfo(monitor, ref info))
+            {
+                return false;
+            }
+
+            left = info.Work.Left;
+            top = info.Work.Top;
+            width = info.Work.Right - info.Work.Left;
+            height = info.Work.Bottom - info.Work.Top;
+            return width > 0 && height > 0;
         }
 
         private static WindowSize DesiredSize()
@@ -499,10 +570,72 @@ namespace AnomalyPath.Runtime.Ui.Core
                 return;
             }
 
-            var fitted = WindowLayout.Fit(new WindowSize(displayWidth, displayHeight), DesiredSize());
-            var x = Math.Max(0, (displayWidth - fitted.Width) / 2);
-            var y = Math.Max(0, (displayHeight - fitted.Height) / 2);
-            SetWindowPos(window, IntPtr.Zero, x, y, fitted.Width, fitted.Height, SwpNoZOrder | SwpNoActivate);
+            // Центрируем в рабочей области: иначе низ окна на полном мониторе уходит под панель задач.
+            var areaLeft = 0;
+            var areaTop = 0;
+            var areaWidth = displayWidth;
+            var areaHeight = displayHeight;
+            if (TryPrimaryWorkArea(out var workLeft, out var workTop, out var workWidth, out var workHeight))
+            {
+                areaLeft = workLeft;
+                areaTop = workTop;
+                areaWidth = Math.Min(areaWidth, workWidth);
+                areaHeight = Math.Min(areaHeight, workHeight);
+            }
+
+            // Текущий размер, вписанный в рабочую область: разрешение, выбранное в настройках
+            // или заданное командной строкой, сохраняется, но окно не выходит за край экрана.
+            var fitted = WindowLayout.Fit(
+                new WindowSize(areaWidth, areaHeight),
+                new WindowSize(Screen.width, Screen.height));
+            var left = areaLeft + Math.Max(0, (areaWidth - fitted.Width) / 2);
+            var top = areaTop + Math.Max(0, (areaHeight - fitted.Height) / 2);
+            FitClientToArea(window, left, top, fitted.Width, fitted.Height);
+        }
+
+        /// <summary>
+        /// Ставит клиентскую область окна в заданный прямоугольник. Windows добавляет окну
+        /// невидимую рамку изменения размера, поэтому <see cref="SetWindowPos"/> по размерам
+        /// клиентской области сдвигает кадр вниз: на полном мониторе низ интерфейса уходит за
+        /// край экрана. Здесь рамка измеряется и вычитается.
+        /// </summary>
+        /// <param name="window">Окно игрока.</param>
+        /// <param name="left">Левый край клиентской области на экране.</param>
+        /// <param name="top">Верхний край клиентской области на экране.</param>
+        /// <param name="width">Ширина клиентской области.</param>
+        /// <param name="height">Высота клиентской области.</param>
+        private static void FitClientToArea(IntPtr window, int left, int top, int width, int height)
+        {
+            for (var pass = 0; pass < 2; pass++)
+            {
+                if (!GetWindowRect(window, out var outer) || !GetClientRect(window, out var client))
+                {
+                    return;
+                }
+
+                var origin = new WindowPoint();
+                if (!ClientToScreen(window, ref origin))
+                {
+                    return;
+                }
+
+                var frameWidth = (outer.Right - outer.Left) - (client.Right - client.Left);
+                var frameHeight = (outer.Bottom - outer.Top) - (client.Bottom - client.Top);
+                var offsetX = origin.X - outer.Left;
+                var offsetY = origin.Y - outer.Top;
+                var x = left - offsetX;
+                var y = top - offsetY;
+                var targetWidth = width + frameWidth;
+                var targetHeight = height + frameHeight;
+                if (outer.Left == x && outer.Top == y &&
+                    outer.Right - outer.Left == targetWidth &&
+                    outer.Bottom - outer.Top == targetHeight)
+                {
+                    return;
+                }
+
+                SetWindowPos(window, IntPtr.Zero, x, y, targetWidth, targetHeight, SwpNoZOrder | SwpNoActivate);
+            }
         }
 #endif
     }

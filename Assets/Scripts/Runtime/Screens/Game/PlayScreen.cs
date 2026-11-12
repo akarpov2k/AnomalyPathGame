@@ -302,6 +302,9 @@ namespace AnomalyPath.Runtime.Screens.Game
             }
 
             _xpBar.gameObject.SetActive(true);
+            // Полоса опыта живёт у самой нижней кромки: выводим её поверх соседних слоёв,
+            // иначе в походе её закрывает фон, доходящий до низа экрана.
+            _xpBar.transform.SetAsLastSibling();
             var level = Math.Max(1, player.Level);
             var required = Math.Max(1, _host.Progression.RequiredXp(level));
             var levelFloor = _host.Progression.TotalXpToLevel(level);
@@ -336,6 +339,10 @@ namespace AnomalyPath.Runtime.Screens.Game
         private void ShowXpTooltip(bool visible)
         {
             _xpTooltip.gameObject.SetActive(visible && _xpBar.gameObject.activeSelf);
+            if (_xpTooltip.gameObject.activeSelf)
+            {
+                _xpTooltip.transform.SetAsLastSibling();
+            }
         }
     }
 }

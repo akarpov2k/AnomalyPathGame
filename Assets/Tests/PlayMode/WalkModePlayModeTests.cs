@@ -273,6 +273,32 @@ namespace AnomalyPath.Tests.PlayMode
             Capture(play, "walk-interior-full");
         }
 
+        /// <summary>Полоса опыта видна в походе и лежит поверх слоя похода, у самой нижней кромки.</summary>
+        /// <returns>Корутина теста.</returns>
+        [UnityTest]
+        public IEnumerator WalkMode_XpBar_DrawsAboveLane()
+        {
+            yield return StartGame();
+            Click("LeaveHub");
+            yield return null;
+
+            var play = Object.FindAnyObjectByType<PlayScreen>();
+            Assert.IsNotNull(play, "Нет игрового экрана");
+            play!.SetWalkMode(true);
+            yield return null;
+
+            var bar = FindAnywhere("PlayerXpBar");
+            Assert.IsNotNull(bar, "Нет полосы опыта");
+            Assert.IsTrue(bar!.activeInHierarchy, "полоса опыта скрыта в походе");
+            var rect = (RectTransform)bar.transform;
+            Assert.Greater(rect.rect.width, 0f, "у полосы опыта нулевая ширина");
+            Assert.Greater(rect.rect.height, 0f, "у полосы опыта нулевая высота");
+            Assert.AreEqual(
+                rect.parent.childCount - 1,
+                rect.GetSiblingIndex(),
+                "полоса опыта должна рисоваться поверх остальных слоёв");
+        }
+
         /// <summary>Широкая машина стоит низом на дороге, а не висит над ней.</summary>
         /// <returns>Корутина теста.</returns>
         [UnityTest]
