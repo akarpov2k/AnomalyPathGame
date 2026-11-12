@@ -1,12 +1,14 @@
 # AnomalyPath — Аномальное путешествие
 
-**▶ [Скачать AnomalyPath-Setup.exe](https://github.com/akarpov2k/AnomalyPathGame/releases/latest/download/AnomalyPath-Setup.exe)**
-· `0.1 Alpha Demo` · Windows 10/11 x64 · 241 МБ
+**▶ [Скачать AnomalyPath-Setup.exe](https://github.com/akarpov2k/AnomalyPathGame/releases/download/v0.1/AnomalyPath-Setup.exe)**
+· `0.1 Alpha Demo` · Windows 10/11 x64 · 241 МБ · скачивание начинается сразу
 
-[Все файлы релиза](https://github.com/akarpov2k/AnomalyPathGame/releases/latest) ·
+[Страница релиза](https://github.com/akarpov2k/AnomalyPathGame/releases/tag/v0.1) ·
 [исходники](#техническая-часть) · [документация](#документация)
 
 Тот же установщик лежит в релизе: в репозиторий его не положить — GitHub не принимает файлы больше 100 МБ.
+Ссылка ведёт на файл релиза `v0.1` напрямую (короткая форма `/releases/latest/...` не работает, пока
+релиз помечен как pre-release).
 
 ![Главное меню AnomalyPath](docs/screenshots/menu.jpg)
 
@@ -72,6 +74,7 @@
 - План работ: [docs/ROADMAP.md](docs/ROADMAP.md).
 - Лицензия и состав прав: [LICENSE](LICENSE), [NOTICE.md](NOTICE.md).
 - Порядок публикации и защиты прав: [docs/PUBLISHING.md](docs/PUBLISHING.md).
+- Тексты карточки на VK Play и канал обратной связи: [docs/store](docs/store).
 
 ## Техническая часть
 
